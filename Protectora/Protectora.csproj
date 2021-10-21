@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="lock2.png" />
+    <None Remove="lock_icon.png" />
+    <None Remove="reallock.png" />
+    <None Remove="realuser.png" />
+    <None Remove="user_icon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="lock2.png" />
+    <Resource Include="lock_icon.png" />
+    <Resource Include="reallock.png" />
+    <Resource Include="realuser.png" />
+    <Resource Include="user_icon.png" />
+  </ItemGroup>
+
+</Project>
