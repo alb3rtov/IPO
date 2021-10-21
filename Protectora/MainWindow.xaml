@@ -16,19 +16,97 @@
             <ColumnDefinition Width="405*"/>
             <ColumnDefinition Width="77*"/>
         </Grid.ColumnDefinitions>
+        <Border BorderThickness="1" BorderBrush="#FFABADB3" Grid.Column="1" Margin="39,77,39,71" Grid.Row="1" CornerRadius="20"/>
         <StackPanel Grid.Column="1" Margin="0,32,0,0">
             <Label Content="Protectora" Height="79" FontSize="36" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="{x:Null}"/>
         </StackPanel>
         <StackPanel Grid.Column="1" Margin="0,65,0,73" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
             <WrapPanel Height="42" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <Image Height="20" Width="20" Source="/img/user_icon.png" OpacityMask="White" Margin="0,0,10,0"/>
-                <TextBox Text="Usuario" TextWrapping="Wrap" Width="189" Height="34" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" HorizontalAlignment="Center" VerticalAlignment="Center" TextChanged="TextBox_TextChanged" Margin="0,0,0,0" Padding="5,0,0,0"/>
+                <Border BorderThickness="1" BorderBrush="#FFABADB3" Width="38" Height="34" RenderTransformOrigin="0.5,0.5">
+                    <Border.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform AngleX="0.298"/>
+                            <RotateTransform/>
+                            <TranslateTransform X="0.089"/>
+                        </TransformGroup>
+                    </Border.RenderTransform>
+                    <Image Height="12" Source="user_icon.png" OpacityMask="White" HorizontalAlignment="Center" VerticalAlignment="Center" Width="14" RenderTransformOrigin="0.5,0.5">
+                        <Image.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="0"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Image.RenderTransform>
+                    </Image>
+                </Border>
+                <TextBox  TextWrapping="Wrap" Width="189" Height="34" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="5,0,0,0">
+                    <TextBox.Style>
+                        <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
+                            <Style.Resources>
+                                <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                                    <VisualBrush.Visual>
+                                        <Label Content="Usuario" Foreground="LightGray" />
+                                    </VisualBrush.Visual>
+                                </VisualBrush>
+                            </Style.Resources>
+                            <Style.Triggers>
+                                <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                </Trigger>
+                                <Trigger Property="Text" Value="{x:Null}">
+                                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                </Trigger>
+                                <Trigger Property="IsKeyboardFocused" Value="True">
+                                    <Setter Property="Background" Value="White" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                </TextBox>
             </WrapPanel>
             <WrapPanel Height="42">
-                <Image Height="20" Width="20" Source="/img/lock_icon.png" OpacityMask="White" Margin="0,0,10,0"/>
-                <TextBox Text="Contraseña" TextWrapping="Wrap" Width="189" Height="34" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="5,0,0,0"/>
+                <Border BorderThickness="1" BorderBrush="#FFABADB3" Width="38" Height="34" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Border.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform AngleX="0.298"/>
+                            <RotateTransform/>
+                            <TranslateTransform X="0.089"/>
+                        </TransformGroup>
+                    </Border.RenderTransform>
+                    <Image Source="lock_icon.png" OpacityMask="White" HorizontalAlignment="Center" VerticalAlignment="Center" Height="14" Width="11"/>
+                </Border>
+                <TextBox TextWrapping="Wrap" Width="189" Height="34" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="5,0,0,0">
+                    <TextBox.Style>
+                        <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
+                            <Style.Resources>
+                                <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                                    <VisualBrush.Visual>
+                                        <Label Content="Constraseña" Foreground="LightGray" />
+                                    </VisualBrush.Visual>
+                                </VisualBrush>
+                            </Style.Resources>
+                            <Style.Triggers>
+                                <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                </Trigger>
+                                <Trigger Property="Text" Value="{x:Null}">
+                                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                </Trigger>
+                                <Trigger Property="IsKeyboardFocused" Value="True">
+                                    <Setter Property="Background" Value="White" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                </TextBox>
             </WrapPanel>
         </StackPanel>
+        <Image Grid.Column="1" Margin="146,20,146,312" Grid.Row="1" Source="/149071.png"/>
+        <Button Content="Iniciar sesión" Grid.Column="1" Margin="141,319,141,96" Grid.Row="1" Click="Button_Click"/>
     </Grid>
 </Window>
 
