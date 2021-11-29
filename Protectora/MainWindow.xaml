@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Protectora"
         mc:Ignorable="d"
-        Title="MainWindow" Height="576" Width="559" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+        Title="Protectora" Height="576" Width="559" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" WindowStartupLocation="CenterScreen">
     <Grid Height="560" VerticalAlignment="Top">
         <Grid.Background>
-            <ImageBrush ImageSource="/Images/bg.jpg"/>
+            <ImageBrush ImageSource="/Images/background.jpg"/>
         </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="115*"/>
@@ -49,7 +49,7 @@
                         </Image.RenderTransform>
                     </Image>
                 </Border>
-                <TextBox  TextWrapping="Wrap" Width="184" Height="44" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="5,0,0,0" FontSize="14" FontFamily="Arial">
+                <TextBox x:Name="txtUsuario" TextWrapping="Wrap" Width="184" Height="44" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="5,0,0,0" FontSize="14" FontFamily="Arial" KeyUp="txtUsuario_KeyUp">
                     <TextBox.Style>
                         <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
                             <Style.Resources>
@@ -78,7 +78,7 @@
                 <Border BorderThickness="1" BorderBrush="#FFABADB3" Width="44" Height="44" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Center" Background="White">
                     <Image Source="/Images/lock_icon.png" OpacityMask="White" HorizontalAlignment="Center" VerticalAlignment="Center" Height="20" Width="16"/>
                 </Border>
-                <TextBox TextWrapping="Wrap" Width="184" Height="44" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="5,0,0,0" FontSize="14" FontFamily="Arial">
+                <TextBox x:Name="txtPassword" TextWrapping="Wrap" Width="184" Height="44" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="5,0,0,0" FontSize="14" FontFamily="Arial" KeyUp="txtPassword_KeyUp">
                     <TextBox.Style>
                         <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
                             <Style.Resources>
@@ -103,7 +103,8 @@
                     </TextBox.Style>
                 </TextBox>
             </WrapPanel>
-            <TextBox Text="¿Olvidó su contraseña?" TextWrapping="Wrap" Width="132" Height="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontStyle="Italic" Foreground="#FFD4D4D4">
+            
+            <TextBox Text="¿Olvidó su contraseña?" TextWrapping="Wrap" Width="132" Height="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontStyle="Italic" Foreground="White" SelectionBrush="{x:Null}">
                 <TextBox.BorderBrush>
                     <ImageBrush/>
                 </TextBox.BorderBrush>
@@ -114,7 +115,7 @@
                     <ImageBrush/>
                 </TextBox.Background>
             </TextBox>
-            <Button Content="Iniciar sesión" Click="Button_Click" Height="37" Width="178" Margin="0,20,0,0" FontSize="15" Background="#FF556080" Foreground="White"/>
+            <Button Content="Iniciar sesión" Click="Button_Click" Height="37" Width="178" Margin="0,20,0,0" FontSize="15" Background="#FF556080" Foreground="White" KeyDown="Button_KeyDown"/>
         </StackPanel>
     </Grid>
 </Window>
