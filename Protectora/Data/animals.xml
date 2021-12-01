@@ -1,0 +1,7 @@
+<Animals>
+	<Animal Name="Coco" Sex="Hembra" Breed="Bulldog" Size="45" Weight="20" Age="4" Chip="001" Picture="Images/Coco.jpg"/>
+	<Animal Name="Thor" Sex="Macho" Breed="Labrador retriever" Size="53" Weight="25" Age="8" Chip="002"  Picture="Images/Thor.jpg"/>
+	<Animal Name="Max" Sex="Hembra" Breed="Pastor alemán" Size="58" Weight="28" Age="10" Chip="003"  Picture="Images/Max.jpg"/>
+	<Animal Name="Rocky" Sex="Macho" Breed="Caniche" Size="30" Weight="7" Age="3" Chip="004"  Picture="Images/Rocky.jpg"/>
+	<Animal Name="Toby" Sex="Macho" Breed="Golden retriever" Size="57" Weight="17" Age="5" Chip="005"  Picture="Images/Toby.jpg"/>
+</Animals>

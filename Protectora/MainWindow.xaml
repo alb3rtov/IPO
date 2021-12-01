@@ -26,7 +26,7 @@
             <ColumnDefinition Width="77*"/>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="1" Margin="0,32,0,0" Grid.ColumnSpan="3">
-            <Label Content="Protectora" Height="79" FontSize="36" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="{x:Null}" Foreground="#FFE4E4E4"/>
+            <Label Content="Protectora" Height="79" FontSize="36" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="{x:Null}" Foreground="White"/>
         </StackPanel>
         <StackPanel Grid.Column="2" Margin="0,0,0,1" HorizontalAlignment="Center" Width="228" Grid.RowSpan="4" Grid.Row="1">
             <Image Source="/Images/login.png" Height="126" Width="228" Margin="0,0,0,20"/>
@@ -49,7 +49,7 @@
                         </Image.RenderTransform>
                     </Image>
                 </Border>
-                <TextBox x:Name="txtUsuario" TextWrapping="Wrap" Width="184" Height="44" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="5,0,0,0" FontSize="14" FontFamily="Arial" KeyUp="txtUsuario_KeyUp">
+                <TextBox x:Name="txtUser" TextWrapping="Wrap" Width="184" Height="44" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="5,0,0,0" FontSize="14" FontFamily="Arial">
                     <TextBox.Style>
                         <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
                             <Style.Resources>
@@ -78,7 +78,7 @@
                 <Border BorderThickness="1" BorderBrush="#FFABADB3" Width="44" Height="44" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Center" Background="White">
                     <Image Source="/Images/lock_icon.png" OpacityMask="White" HorizontalAlignment="Center" VerticalAlignment="Center" Height="20" Width="16"/>
                 </Border>
-                <TextBox x:Name="txtPassword" TextWrapping="Wrap" Width="184" Height="44" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="5,0,0,0" FontSize="14" FontFamily="Arial" KeyUp="txtPassword_KeyUp">
+                <TextBox x:Name="txtPassword" TextWrapping="Wrap" Width="184" Height="44" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="5,0,0,0" FontSize="14" FontFamily="Arial">
                     <TextBox.Style>
                         <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
                             <Style.Resources>
@@ -115,7 +115,7 @@
                     <ImageBrush/>
                 </TextBox.Background>
             </TextBox>
-            <Button Content="Iniciar sesión" Click="Button_Click" Height="37" Width="178" Margin="0,20,0,0" FontSize="15" Background="#FF556080" Foreground="White" KeyDown="Button_KeyDown"/>
+            <Button Content="Iniciar sesión" Click="Button_Click" Height="37" Width="178" Margin="0,20,0,0" FontSize="15" Background="#FF556080" Foreground="White"/>
         </StackPanel>
     </Grid>
 </Window>

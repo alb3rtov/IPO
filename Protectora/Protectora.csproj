@@ -11,10 +11,18 @@
     <None Remove="149071.png" />
     <None Remove="background.jpg" />
     <None Remove="bg.jpg" />
+    <None Remove="Data\animals.xml" />
+    <None Remove="Images\Coco.jpg" />
+    <None Remove="Images\logout.png" />
+    <None Remove="Images\Max.jpg" />
+    <None Remove="Images\Rocky.jpg" />
+    <None Remove="Images\Thor.jpg" />
+    <None Remove="Images\Toby.jpg" />
     <None Remove="Images\user.png" />
     <None Remove="lock2.png" />
     <None Remove="lock_icon.png" />
     <None Remove="login.png" />
+    <None Remove="logout.png" />
     <None Remove="reallock.png" />
     <None Remove="realuser.png" />
     <None Remove="user.png" />
@@ -22,11 +30,19 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Data\animals.xml" />
     <Resource Include="Images\background.jpg" />
     <Resource Include="Images\bg.jpg" />
+    <Resource Include="Images\Coco.jpg" />
     <Resource Include="Images\lock_icon.png" />
+    <Resource Include="Images\logout.png" />
+    <Resource Include="Images\Max.jpg" />
+    <Resource Include="Images\Rocky.jpg" />
+    <Resource Include="Images\Thor.jpg" />
+    <Resource Include="Images\Toby.jpg" />
     <Resource Include="Images\user_icon.png" />
     <Resource Include="Images\login.png" />
+    <Resource Include="logout.png" />
   </ItemGroup>
 
 </Project>
