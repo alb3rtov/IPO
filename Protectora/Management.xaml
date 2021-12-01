@@ -40,20 +40,49 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition Width="7.375"/>
-                        <ColumnDefinition Width="441.625"/>
+                        <ColumnDefinition Width="441.624"/>
                     </Grid.ColumnDefinitions>
-                    <ListBox x:Name="lstListaAnimales" Grid.Column="0" SelectedIndex="0" Margin="5,5,3,5" ItemsSource="{Binding}">
+                    <ListBox x:Name="lstListaAnimales" Grid.Column="0" SelectedIndex="0" Margin="5,5,3,5" ItemsSource="{Binding}" MouseLeftButtonUp="lstListaAnimales_MouseLeftButtonUp">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <Image Width="32" Height="37" Source="{Binding Picture}"/>
+                                    <Image Width="32" Height="37" Source="{Binding Pictures[0]}"/>
                                     <TextBlock VerticalAlignment="Center" Margin="10,0,0,0" Text="{Binding Name}"/>
                                 </StackPanel>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="Margin" Value="2"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Foreground" Value="Black"/>
+                                        <Setter Property="FontWeight" Value="Bold"/>
+                                        <Setter Property="BorderBrush" Value="Black"/>
+                                        <Setter Property="BorderThickness" Value="2"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
                     </ListBox>
                     <GridSplitter HorizontalAlignment="Stretch" Margin="2,0,2,0" Grid.Column="1" />
-                    <StackPanel x:Name="spDetallesPelicula" Grid.Column="2" Orientation="Vertical" Margin="61,0,0,0">
+                    <StackPanel x:Name="spDetallesAnimal" Grid.Column="2" Orientation="Vertical" Margin="3,0,221,0">
+                        <Label x:Name="lblName" FontWeight="Bold" FontSize="20" Content="{Binding ElementName=lstListaAnimales,Path=SelectedItem.Name}"/>
+                        <Label FontWeight="Bold">Sexo:</Label>
+                        <Label x:Name="lblAnio" Content="{Binding ElementName=lstListaAnimales, Path=SelectedItem.Sex}"/>
+                        <Label FontWeight="Bold">Raza:</Label>
+                        <Label x:Name="lblDuracion" Content="{Binding ElementName=lstListaAnimales, Path=SelectedItem.Breed}"/>
+                        <Label FontWeight="Bold">Tamaño:</Label>
+                        <TextBlock x:Name="txtArgumento" Margin="5" Text="{Binding ElementName=lstListaAnimales, Path=SelectedItem.Size}"/>
+
+                    </StackPanel>
+
+                    <StackPanel x:Name="spImage" Grid.Column="2" HorizontalAlignment="Right" Orientation="Vertical" Width="196" Margin="0,10,0,145">
+                        <Image x:Name="imgPicture" Height="153" Width="192" Source="{Binding SelectedItem.Pictures[0], ElementName=lstListaAnimales}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                        <StackPanel x:Name="spPreviousNextImage"  Grid.Column="2" Orientation="Horizontal" Width="196" Margin="0,10,0,145">
+                            <Button x:Name="btbPreviousImage" Content="&lt;" HorizontalAlignment="Left" Width="21" Margin="10,0,73,0" Click="btbPreviousImage_Click"/>
+                            <Button x:Name="btbNextImage" Content="&gt;" HorizontalAlignment="Right" Width="21" Margin="63,0,0,0" Click="btbNextImage_Click"/>
+                        </StackPanel>
                     </StackPanel>
                 </Grid>
             </TabItem>

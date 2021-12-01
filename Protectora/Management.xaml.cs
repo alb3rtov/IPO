@@ -23,6 +23,8 @@ namespace Protectora
     public partial class Management : Window
     {
         private List<Animal> animalList;
+        private int imgIndex = 0;
+        
         public Management(String user)
         {
             InitializeComponent();
@@ -44,7 +46,8 @@ namespace Protectora
             doc.Load(fichero.Stream);
             foreach (XmlNode node in doc.DocumentElement.ChildNodes)
             {
-                var newAnimal = new Animal("", "", "", 0, 0, 0, 0, "");
+                List<string> pictures = new List<string>();
+                var newAnimal = new Animal("", "", "", 0, 0, 0, 0, pictures);
                 newAnimal.Name = node.Attributes["Name"].Value;
                 newAnimal.Sex = node.Attributes["Sex"].Value;
                 newAnimal.Breed = node.Attributes["Breed"].Value;
@@ -52,10 +55,14 @@ namespace Protectora
                 newAnimal.Weight = Convert.ToInt32(node.Attributes["Weight"].Value);
                 newAnimal.Age = Convert.ToInt32(node.Attributes["Age"].Value);
                 newAnimal.Chip = Convert.ToInt32(node.Attributes["Chip"].Value);
-                newAnimal.Picture = node.Attributes["Picture"].Value;
+                newAnimal.Pictures.Add(node.Attributes["Picture1"].Value);
+                newAnimal.Pictures.Add(node.Attributes["Picture2"].Value);
+                newAnimal.Pictures.Add(node.Attributes["Picture3"].Value);
+                newAnimal.Pictures.Add(node.Attributes["Picture4"].Value);
 
                 list.Add(newAnimal);
             }
+            
             return list;
         }
 
@@ -64,10 +71,58 @@ namespace Protectora
             if (MessageBox.Show("¿Desea cerrar sesión?", "Cerrar sesión", MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.Yes)
             {
                 
-                string datetime = "Último acceso: " + DateTime.Now.ToString("dd-MM-yyyy hh:mm");
+                string datetime = "Último acceso: " + DateTime.Now.ToString("dd-MM-yyyy HH:mm");
                 File.WriteAllText("datetime.txt", datetime);
                 Application.Current.Shutdown();
             }
+        }
+        private int getCurrentIndex() {
+            int index = 0;
+            for (int i = 0; i < animalList.Count; i++)
+            {
+                if (lblName.Content.ToString() == animalList[i].Name)
+                {
+                    index = i;
+                    break;
+                }
+            }
+            return index;
+        }
+        private void btbPreviousImage_Click(object sender, RoutedEventArgs e)
+        {
+            int index = getCurrentIndex();
+            int size = animalList[index].Pictures.Count;
+
+            imgIndex--;
+            if (imgIndex < 0) {
+                imgIndex = imgIndex + size;
+            }
+            var bitmap = new BitmapImage(new Uri(animalList[index].Pictures[imgIndex % size], UriKind.Relative));
+            imgPicture.Source = bitmap;
+        }
+
+        private void btbNextImage_Click(object sender, RoutedEventArgs e)
+        {
+            int index = getCurrentIndex();
+            int size = animalList[index].Pictures.Count;
+
+            imgIndex++;
+            if (imgIndex < 0)
+            {
+                imgIndex = imgIndex + size;
+            }
+            var bitmap = new BitmapImage(new Uri(animalList[index].Pictures[imgIndex % size], UriKind.Relative));
+            imgPicture.Source = bitmap;
+        }
+
+        private void lstListaAnimales_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            int index = getCurrentIndex();
+
+            var bitmap = new BitmapImage(new Uri(animalList[index].Pictures[0], UriKind.Relative));
+            imgPicture.Source = bitmap;
+
+
         }
     }
 }
