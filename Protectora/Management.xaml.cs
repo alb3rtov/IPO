@@ -24,6 +24,7 @@ namespace Protectora
     {
         private List<Animal> animalList;
         private int imgIndex = 0;
+        bool first = true;
         
         public Management(String user)
         {
@@ -35,6 +36,8 @@ namespace Protectora
             animalList = LoadContentXML();
             // Indicar que el origen de datos del ListBox es listadoPeliculas
             DataContext = animalList;
+
+            btnAdd.ToolTip = "Añadir animal";
         }
 
         private List<Animal> LoadContentXML()
@@ -123,6 +126,42 @@ namespace Protectora
             imgPicture.Source = bitmap;
 
 
+        }
+
+        private void btnEliminar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnAniadir_Click(object sender, RoutedEventArgs e)
+        {
+
+           
+        }
+
+        private void tcPestanas_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (!first)
+            {
+                switch (((TabItem)tcPestanas.SelectedItem).Header.ToString())
+                {
+                    case "Animales":
+                        btnAdd.ToolTip = "Añadir animal";
+                        btnDelete.ToolTip = "Eliminar animal";
+                        break;
+                    case "Socios":
+                        btnAdd.ToolTip = "Añadir socio";
+                        btnDelete.ToolTip = "Eliminar socio";
+                        break;
+                    case "Voluntarios":
+                        btnAdd.ToolTip = "Añadir voluntario";
+                        btnDelete.ToolTip = "Eliminar voluntario";
+                        break;
+                }
+            }
+            else {
+                first = false;
+            }
         }
     }
 }

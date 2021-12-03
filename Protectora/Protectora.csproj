@@ -12,19 +12,33 @@
     <None Remove="background.jpg" />
     <None Remove="bg.jpg" />
     <None Remove="Data\animals.xml" />
+    <None Remove="Images\add_c.png" />
+    <None Remove="Images\add_c2.png" />
     <None Remove="Images\Coco1.jpg" />
     <None Remove="Images\Coco2.jpg" />
     <None Remove="Images\Coco3.jpg" />
     <None Remove="Images\Coco4.jpg" />
+    <None Remove="Images\lock_icon_small.png" />
+    <None Remove="Images\login_small.png" />
     <None Remove="Images\logout.png" />
     <None Remove="Images\Max1.jpg" />
     <None Remove="Images\Max2.jpg" />
     <None Remove="Images\Max3.jpg" />
     <None Remove="Images\Max4.jpg" />
+    <None Remove="Images\next.png" />
+    <None Remove="Images\next_b.png" />
+    <None Remove="Images\next_button.png" />
+    <None Remove="Images\play_c.png" />
+    <None Remove="Images\previous.png" />
+    <None Remove="Images\previous_b.png" />
+    <None Remove="Images\previous_button.png" />
+    <None Remove="Images\remove_c.png" />
+    <None Remove="Images\remove_c2.png" />
     <None Remove="Images\Rocky1.jpg" />
     <None Remove="Images\Rocky2.jpg" />
     <None Remove="Images\Rocky3.jpg" />
     <None Remove="Images\Rocky4.jpg" />
+    <None Remove="Images\salir_c.png" />
     <None Remove="Images\Thor1.jpg" />
     <None Remove="Images\Thor2.jpg" />
     <None Remove="Images\Thor3.jpg" />
@@ -34,6 +48,7 @@
     <None Remove="Images\Toby3.jpg" />
     <None Remove="Images\Toby4.jpg" />
     <None Remove="Images\user.png" />
+    <None Remove="Images\user_icon_small.png" />
     <None Remove="lock2.png" />
     <None Remove="lock_icon.png" />
     <None Remove="login.png" />
@@ -46,6 +61,8 @@
 
   <ItemGroup>
     <Resource Include="Data\animals.xml" />
+    <Resource Include="Images\add_c.png" />
+    <Resource Include="Images\add_c2.png" />
     <Resource Include="Images\background.jpg" />
     <Resource Include="Images\bg.jpg" />
     <Resource Include="Images\Coco1.jpg" />
@@ -53,15 +70,27 @@
     <Resource Include="Images\Coco3.jpg" />
     <Resource Include="Images\Coco4.jpg" />
     <Resource Include="Images\lock_icon.png" />
+    <Resource Include="Images\lock_icon_small.png" />
+    <Resource Include="Images\login_small.png" />
     <Resource Include="Images\logout.png" />
     <Resource Include="Images\Max1.jpg" />
     <Resource Include="Images\Max2.jpg" />
     <Resource Include="Images\Max3.jpg" />
     <Resource Include="Images\Max4.jpg" />
+    <Resource Include="Images\next.png" />
+    <Resource Include="Images\next_b.png" />
+    <Resource Include="Images\next_button.png" />
+    <Resource Include="Images\play_c.png" />
+    <Resource Include="Images\previous.png" />
+    <Resource Include="Images\previous_b.png" />
+    <Resource Include="Images\previous_button.png" />
+    <Resource Include="Images\remove_c.png" />
+    <Resource Include="Images\remove_c2.png" />
     <Resource Include="Images\Rocky1.jpg" />
     <Resource Include="Images\Rocky2.jpg" />
     <Resource Include="Images\Rocky3.jpg" />
     <Resource Include="Images\Rocky4.jpg" />
+    <Resource Include="Images\salir_c.png" />
     <Resource Include="Images\Thor1.jpg" />
     <Resource Include="Images\Thor2.jpg" />
     <Resource Include="Images\Thor3.jpg" />
@@ -72,6 +101,7 @@
     <Resource Include="Images\Toby4.jpg" />
     <Resource Include="Images\user_icon.png" />
     <Resource Include="Images\login.png" />
+    <Resource Include="Images\user_icon_small.png" />
     <Resource Include="logout.png" />
   </ItemGroup>
 
