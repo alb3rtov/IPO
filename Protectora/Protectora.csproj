@@ -4,6 +4,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,6 +22,7 @@
     <None Remove="Images\lock_icon_small.png" />
     <None Remove="Images\login_small.png" />
     <None Remove="Images\logout.png" />
+    <None Remove="Images\log_out.png" />
     <None Remove="Images\Max1.jpg" />
     <None Remove="Images\Max2.jpg" />
     <None Remove="Images\Max3.jpg" />
@@ -73,6 +75,7 @@
     <Resource Include="Images\lock_icon_small.png" />
     <Resource Include="Images\login_small.png" />
     <Resource Include="Images\logout.png" />
+    <Resource Include="Images\log_out.png" />
     <Resource Include="Images\Max1.jpg" />
     <Resource Include="Images\Max2.jpg" />
     <Resource Include="Images\Max3.jpg" />

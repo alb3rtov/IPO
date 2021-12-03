@@ -8,47 +8,35 @@
         Title="Gestion de protectora" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="33*"/>
-            <RowDefinition Height="41*"/>
-            <RowDefinition Height="360*"/>
+            <RowDefinition Height="7*"/>
+            <RowDefinition Height="55*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="787*"/>
             <ColumnDefinition Width="13*"/>
         </Grid.ColumnDefinitions>
-        <ToolBar x:Name="tbBarraHerramientas" Grid.Row="0" Grid.ColumnSpan="2" Background="White" Margin="0,0,0,31" Grid.RowSpan="2" >
-            <Button x:Name="btnAdd" ToolTip="Añadir" Click="btnAniadir_Click">
+
+        <StackPanel Orientation="Horizontal" Width="394" HorizontalAlignment="Left">
+            <Button x:Name="btnAdd"  Height="42" Width="42" ToolTip="Añadir" Click="btnAniadir_Click" BorderBrush="{x:Null}" Background="{x:Null}">
                 <Image Source="Images/add_c2.png" />
             </Button>
-            <Button x:Name="btnDelete" ToolTip="Eliminar" Click="btnEliminar_Click">
+            <Button x:Name="btnDelete"  Height="42" Width="42"  ToolTip="Eliminar" Click="btnEliminar_Click" BorderBrush="{x:Null}" Background="{x:Null}">
                 <Image Source="Images/remove_c2.png"/>
             </Button>
-            <Separator></Separator>
-            <Button x:Name="btnExit" ToolTip="Salir" Click="buttonLogout_Click" >
-                <Image Source="Images/salir_c.png" />
+
+            <Button x:Name="btnExit"  Height="42" Width="42"  ToolTip="Salir" Click="buttonLogout_Click" BorderBrush="{x:Null}" Background="{x:Null}">
+                <Image Source="Images/log_out.png" />
             </Button>
-            <Label x:Name="lblLastDate" FontSize="10" HorizontalAlignment="Center" Width="172" Height="21" VerticalAlignment="Center" Grid.RowSpan="2" Margin="350,0,0,0"/>
-
-            <StackPanel Orientation="Horizontal" Grid.Column="2" Grid.RowSpan="2" Height="38" Width="101" HorizontalAlignment="Center" Margin="20,0,0,0">
-                <Image Source="/Images/login_small.png" Height="33" Width="43"/>
-                <Label x:Name="lblUser" Content=""  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
-                <!--
-            <Button x:Name="buttonLogout" Width="26" Height="26" Click="buttonLogout_Click" Margin="15,0,0,0" >
-                <Button.BorderBrush>
-                    <ImageBrush/>
-                </Button.BorderBrush>
-                <Button.Background>
-                    <ImageBrush ImageSource="/Images/logout.png"/>
-                </Button.Background>
-            </Button>-->
-
-            </StackPanel>
-        </ToolBar>
+        </StackPanel>
 
 
+        <StackPanel Orientation="Horizontal" Width="293" HorizontalAlignment="Left" Margin="494,0,0,0">
+            <Label x:Name="lblLastDate" FontSize="10" Width="187" Height="21" VerticalAlignment="Center" Grid.RowSpan="2" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right"/>
+            <Image Source="/Images/login_small.png" Height="33" Width="43"/>
+            <Label x:Name="lblUser" Content=""  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
+        </StackPanel>
 
-
-        <TabControl x:Name="tcPestanas" Margin="0,10,10,10" Grid.RowSpan="2" Grid.ColumnSpan="2" Grid.Row="1" SelectionChanged="tcPestanas_SelectionChanged">
+        <TabControl x:Name="tcPestanas" Margin="0,49,10,10" Grid.ColumnSpan="2" SelectionChanged="tcPestanas_SelectionChanged" Grid.RowSpan="2">
             <TabItem Header="Animales">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -80,26 +68,47 @@
                         </ListBox.ItemContainerStyle>
                     </ListBox>
                     <GridSplitter HorizontalAlignment="Stretch" Margin="2,0,2,0" Grid.Column="1" />
-                    <StackPanel x:Name="spDetallesAnimal" Grid.Column="2" Orientation="Vertical" Margin="3,0,221,0">
-                        <Label x:Name="lblName" FontWeight="Bold" FontSize="20" Content="{Binding ElementName=lstListaAnimales,Path=SelectedItem.Name}"/>
-                        <Label FontWeight="Bold">Sexo:</Label>
-                        <Label x:Name="lblSex" Content="{Binding ElementName=lstListaAnimales, Path=SelectedItem.Sex}"/>
-                        <Label FontWeight="Bold">Raza:</Label>
-                        <Label x:Name="lblBreed" Content="{Binding ElementName=lstListaAnimales, Path=SelectedItem.Breed}"/>
-                        <Label FontWeight="Bold">Tamaño:</Label>
-                        <Label x:Name="lblSize" Content="{Binding ElementName=lstListaAnimales, Path=SelectedItem.Size}"/>
+                    <ScrollViewer Grid.Column="2" Margin="3,0,0,0">
+                        <Grid>
+                            <Label x:Name="lblName" FontWeight="Bold" FontSize="20" Content="{Binding ElementName=lstListaAnimales,Path=SelectedItem.Name}" Margin="3,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="36" Width="184"/>
+                            <StackPanel x:Name="spDetallesAnimal1" Orientation="Vertical" Margin="3,36,473,0" Grid.ColumnSpan="2">
+                                <Label FontWeight="Bold" Content="Sexo:"/>
+                                <Label x:Name="lblSex" Content="{Binding SelectedItem.Sex, ElementName=lstListaAnimales}"/>
+                                <Label FontWeight="Bold" Content="Raza:"/>
+                                <Label x:Name="lblBreed" Content="{Binding SelectedItem.Breed, ElementName=lstListaAnimales}"/>
+                                <Label FontWeight="Bold" Content="Tamaño:"/>
+                                <Label x:Name="lblSize" Content="{Binding SelectedItem.Size, ElementName=lstListaAnimales}"/>
+                            </StackPanel>
+                            <StackPanel x:Name="spDetallesAnimal2" Orientation="Vertical"  Margin="111,36,353,0">
 
-                    </StackPanel>
+                                <Label FontWeight="Bold">Peso:</Label>
+                                <Label x:Name="lblWeight" Content="{Binding ElementName=lstListaAnimales, Path=SelectedItem.Weight}"/>
+                                <Label FontWeight="Bold">Edad:</Label>
+                                <Label x:Name="lblAge" Content="{Binding ElementName=lstListaAnimales, Path=SelectedItem.Age}"/>
+                                <Label FontWeight="Bold">Chip:</Label>
+                                <Label x:Name="lblChip" Content="{Binding ElementName=lstListaAnimales, Path=SelectedItem.Chip}"/>
 
-                    <StackPanel x:Name="spImage" Grid.Column="2" HorizontalAlignment="Right" Orientation="Horizontal" Width="264" Margin="0,10,10,154">
-                        <Button  x:Name="btbPreviousImage" Width="24" Click="btbPreviousImage_Click" Height="24" Background="{x:Null}" BorderBrush="{x:Null}">
-                            <Image Source="Images/previous_b.png" />
-                        </Button>
-                        <Image x:Name="imgPicture" Height="153" Width="192" Source="{Binding SelectedItem.Pictures[0], ElementName=lstListaAnimales}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,0,10,0"/>
-                        <Button x:Name="btbNextImage" HorizontalAlignment="Right" Width="24" Height="24" Click="btbNextImage_Click" Background="{x:Null}" BorderBrush="{x:Null}">
-                            <Image Source="Images/next_b.png" />
-                        </Button>
-                    </StackPanel>
+                            </StackPanel>
+
+                            <StackPanel x:Name="spImage"  HorizontalAlignment="Right" Orientation="Horizontal" Width="338" Margin="0,36,15,103">
+                                <Button  x:Name="btbPreviousImage" Width="24" Click="btbPreviousImage_Click" Height="24" Background="{x:Null}" BorderBrush="{x:Null}">
+                                    <Image Source="Images/previous_b.png" />
+                                </Button>
+                                <Image x:Name="imgPicture" Height="179" Width="270" Source="{Binding SelectedItem.Pictures[0], ElementName=lstListaAnimales}" VerticalAlignment="Stretch" Margin="10,0,10,0"/>
+                                <Button x:Name="btbNextImage" HorizontalAlignment="Right" Width="24" Height="24" Click="btbNextImage_Click" Background="{x:Null}" BorderBrush="{x:Null}">
+                                    <Image Source="Images/next_b.png" />
+                                </Button>
+                            </StackPanel>
+                        </Grid>
+                    </ScrollViewer>
+
+
+
+
+
+
+
+
                 </Grid>
             </TabItem>
             <TabItem Header="Socios">
