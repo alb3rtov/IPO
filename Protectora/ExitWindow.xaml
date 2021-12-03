@@ -1,0 +1,22 @@
+﻿<Window x:Class="Protectora.ExitWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Protectora"
+        mc:Ignorable="d"
+        Title="Cerrar sesion" Height="202" Width="270" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" MouseLeftButtonDown="Window_MouseLeftButtonDown">
+    <Window.Background>
+        <ImageBrush ImageSource="/window.png"/>
+    </Window.Background>
+    <Grid>
+        <Label Content="¿Desea salir?" Margin="92,99,86,76"/>
+        <Button x:Name="btbYes" Margin="147,131,62,33" Content="Zis" Click="btbYes_Click">
+            
+        </Button>
+
+        <Button x:Name="btbNo" Margin="62,131,147,33" Content="Nos" Click="btbNo_Click" >
+
+        </Button>
+    </Grid>
+</Window>

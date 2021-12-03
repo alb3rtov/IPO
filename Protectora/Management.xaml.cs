@@ -25,16 +25,15 @@ namespace Protectora
         private List<Animal> animalList;
         private int imgIndex = 0;
         bool first = true;
-        
+        private Window exitWindow;
+
         public Management(String user)
         {
             InitializeComponent();
             lblUser.Content = user;
             lblLastDate.Content = File.ReadAllText("datetime.txt");
 
-            // Se cargarán los datos de prueba de un fichero XML
             animalList = LoadContentXML();
-            // Indicar que el origen de datos del ListBox es listadoPeliculas
             DataContext = animalList;
 
             btnAdd.ToolTip = "Añadir animal";
@@ -71,13 +70,17 @@ namespace Protectora
 
         private void buttonLogout_Click(object sender, RoutedEventArgs e)
         {
+
+            exitWindow = new ExitWindow();
+            exitWindow.Show();
+            /*
             if (MessageBox.Show("¿Desea cerrar sesión?", "Cerrar sesión", MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.Yes)
             {
                 
                 string datetime = "Último acceso: " + DateTime.Now.ToString("dd-MM-yyyy HH:mm");
                 File.WriteAllText("datetime.txt", datetime);
                 Application.Current.Shutdown();
-            }
+            }*/
         }
         private int getCurrentIndex() {
             int index = 0;
