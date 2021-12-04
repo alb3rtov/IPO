@@ -106,7 +106,7 @@
                         </Image.RenderTransform>
                     </Image>
                 </Border>
-                <TextBox x:Name="txtUser" TextWrapping="Wrap" Width="184" Height="44" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="5,0,0,0" FontSize="14" FontFamily="Arial">
+                <TextBox x:Name="txtUser" TextWrapping="Wrap" Width="184" Height="44" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="5,0,0,0" FontSize="14" FontFamily="Arial" KeyUp="txtUser_KeyUp">
                     <TextBox.Style>
                         <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
                             <Style.Resources>
@@ -137,7 +137,7 @@
                 </Border>
                 <Border Width="184">
                     <Grid>
-                        <PasswordBox x:Name="txtPassword" PasswordChar="*" VerticalContentAlignment="Center" Width="184" Padding="5,0,0,0" GotFocus="txtPassword_GotFocus" LostFocus="txtPassword_LostFocus"/>
+                        <PasswordBox x:Name="txtPassword" PasswordChar="*" VerticalContentAlignment="Center" Width="184" Padding="5,0,0,0" GotFocus="txtPassword_GotFocus" LostFocus="txtPassword_LostFocus" KeyUp="txtPassword_KeyUp"/>
                         <Label x:Name="lblPassword" Content="Contraseña" Foreground="#FF9C9A9A" FontSize="16" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" />
                     </Grid>
                 </Border>

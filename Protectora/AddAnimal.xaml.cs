@@ -29,7 +29,6 @@ namespace Protectora
         {
             InitializeComponent();
             parent = window;
-
             animals = animalList;
             DataContext = animals;
         }

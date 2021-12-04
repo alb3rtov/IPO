@@ -40,15 +40,21 @@ namespace Protectora
             }
             else if (txtUser.Text == "" || txtPassword.Password == "")
             {
-                MessageBox.Show("Debe introducir alguna cadena en los campos de usuario y constraseña", "Credenciales incorrectas", MessageBoxButton.OK, MessageBoxImage.Error);   
+                this.IsEnabled = false;
+                MessageBox.Show("Debe introducir alguna cadena en los campos de usuario y constraseña", "Credenciales incorrectas", MessageBoxButton.OK, MessageBoxImage.Error);
+                this.IsEnabled = true;
                 txtUser.Text = "";
                 txtPassword.Password = "";
+                lblPassword.Visibility = Visibility.Visible;
             }
             else
             {
+                this.IsEnabled = false;
                 MessageBox.Show("El usuario o la contraseña no es correcto", "Credenciales incorrectas", MessageBoxButton.OK, MessageBoxImage.Error);
+                this.IsEnabled = true;
                 txtUser.Text = "";
                 txtPassword.Password = "";
+                lblPassword.Visibility = Visibility.Visible;
             }
         }
 
@@ -57,17 +63,10 @@ namespace Protectora
             checkCredentials();
         }
 
-        private void Label_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            System.Diagnostics.Debug.WriteLine("HOLA");
-        }
-
         private void WrapPanel_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             lblPassword.Visibility = Visibility.Hidden;
             txtPassword.Focus();
-
-            //System.Diagnostics.Debug.WriteLine("hOLA");
         }
 
         private void txtPassword_GotFocus(object sender, RoutedEventArgs e)
@@ -80,6 +79,22 @@ namespace Protectora
             if (txtPassword.Password.Length == 0)
             {
                 lblPassword.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void txtUser_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                checkCredentials();
+            }
+        }
+
+        private void txtPassword_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                checkCredentials();
             }
         }
     }

@@ -99,7 +99,9 @@ namespace Protectora
             if (imgIndex < 0) {
                 imgIndex = imgIndex + size;
             }
-            var bitmap = new BitmapImage(new Uri(animalList[index].Pictures[imgIndex % size], UriKind.Relative));
+
+            var bitmap = new BitmapImage(new Uri(animalList[index].Pictures[imgIndex % size], UriKind.RelativeOrAbsolute));
+
             imgPicture.Source = bitmap;
         }
 
@@ -113,16 +115,14 @@ namespace Protectora
             {
                 imgIndex = imgIndex + size;
             }
-            var bitmap = new BitmapImage(new Uri(animalList[index].Pictures[imgIndex % size], UriKind.Relative));
+            var bitmap = new BitmapImage(new Uri(animalList[index].Pictures[imgIndex % size], UriKind.RelativeOrAbsolute));
+
             imgPicture.Source = bitmap;
         }
 
         private void lstListaAnimales_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            int index = getCurrentIndex();
-
-            var bitmap = new BitmapImage(new Uri(animalList[index].Pictures[0], UriKind.Relative));
-            imgPicture.Source = bitmap;
+            fixImageDisplay();
         }
 
         private void btnEliminar_Click(object sender, RoutedEventArgs e)
@@ -188,9 +188,28 @@ namespace Protectora
             Application.Current.Shutdown();
         }
 
-        private void Window_GotFocus(object sender, RoutedEventArgs e)
+
+        private void fixImageDisplay()
         {
-            DataContext = animalList;
+            int index = getCurrentIndex();
+            var bitmap = new BitmapImage(new Uri(animalList[index].Pictures[0], UriKind.RelativeOrAbsolute));
+            imgPicture.Source = bitmap;
+        }
+
+        private void lstListaAnimales_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Down || e.Key == Key.Up) {
+                fixImageDisplay();
+            }
+        }
+
+        private void Window_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (this.IsEnabled) {
+                int size = lstListaAnimales.Items.Count;
+                lstListaAnimales.SelectedItem = lstListaAnimales.Items[size-1];
+                lstListaAnimales.ScrollIntoView(lstListaAnimales.Items[size-1]);
+            }
         }
     }
 }
