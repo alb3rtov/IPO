@@ -131,34 +131,16 @@
                     </TextBox.Style>
                 </TextBox>
             </WrapPanel>
-            <WrapPanel  Height="44" HorizontalAlignment="Center" Margin="0,0,0,10" Width="228" VerticalAlignment="Center">
+            <WrapPanel  Height="44" HorizontalAlignment="Center" Margin="0,0,0,10" Width="228" VerticalAlignment="Center" MouseLeftButtonUp="WrapPanel_MouseLeftButtonUp">
                 <Border BorderThickness="1" BorderBrush="#FFABADB3" Width="44" Height="44" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Center" Background="White">
                     <Image Source="/Images/lock_icon_small.png" OpacityMask="White" HorizontalAlignment="Center" VerticalAlignment="Center" Height="20" Width="16"/>
                 </Border>
-                <TextBox x:Name="txtPassword" TextWrapping="Wrap" Width="184" Height="44" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="5,0,0,0" FontSize="14" FontFamily="Arial">
-                    <TextBox.Style>
-                        <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
-                            <Style.Resources>
-                                <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
-                                    <VisualBrush.Visual>
-                                        <Label Content="Contraseña" FontSize="16" Width="184" Height="44" Background="White" VerticalContentAlignment="Center" Foreground="#FF9C9A9A" />
-                                    </VisualBrush.Visual>
-                                </VisualBrush>
-                            </Style.Resources>
-                            <Style.Triggers>
-                                <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
-                                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
-                                </Trigger>
-                                <Trigger Property="Text" Value="{x:Null}">
-                                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
-                                </Trigger>
-                                <Trigger Property="IsKeyboardFocused" Value="True">
-                                    <Setter Property="Background" Value="White" />
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </TextBox.Style>
-                </TextBox>
+                <Border Width="184">
+                    <Grid>
+                        <PasswordBox x:Name="txtPassword" PasswordChar="*" VerticalContentAlignment="Center" Width="184" Padding="5,0,0,0" GotFocus="txtPassword_GotFocus" LostFocus="txtPassword_LostFocus"/>
+                        <Label x:Name="lblPassword" Content="Contraseña" Foreground="#FF9C9A9A" FontSize="16" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" />
+                    </Grid>
+                </Border>
             </WrapPanel>
             
             <TextBox Text="¿Olvidó su contraseña?" TextWrapping="Wrap" Width="132" Height="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontStyle="Italic" Foreground="White" SelectionBrush="{x:Null}">
