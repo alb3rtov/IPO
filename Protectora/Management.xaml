@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Protectora"
         mc:Ignorable="d"
-        Title="Gestion de protectora" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+        Closing="Window_Closing"
+        Title="Gestion de protectora" Height="450" Width="800" WindowStartupLocation="CenterScreen" GotFocus="Window_GotFocus">
     <Window.Background>
         <ImageBrush ImageSource="/background.jpg"/>
     </Window.Background>
@@ -22,6 +23,9 @@
         <StackPanel Orientation="Horizontal" Height="49" VerticalAlignment="Center" Margin="0,0,393,0">
             <Button x:Name="btnAdd"  Height="42" Width="42" ToolTip="Añadir" Click="btnAniadir_Click" BorderBrush="{x:Null}" Background="{x:Null}">
                 <Image Source="Images/add_c2.png" />
+            </Button>
+            <Button x:Name="btnEdit"  Height="42" Width="42"  ToolTip="Editar" Click="btnEliminar_Click" BorderBrush="{x:Null}" Background="{x:Null}">
+                <Image Source="Images/edit_c2.png"/>
             </Button>
             <Button x:Name="btnDelete"  Height="42" Width="42"  ToolTip="Eliminar" Click="btnEliminar_Click" BorderBrush="{x:Null}" Background="{x:Null}">
                 <Image Source="Images/remove_c2.png"/>
@@ -122,6 +126,11 @@
                 <Grid>
                 </Grid>
             </TabItem>
+            <TabItem Header="Ayuda">
+                <Grid>
+                </Grid>
+            </TabItem>
+            
         </TabControl>
 
     </Grid>

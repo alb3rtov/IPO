@@ -27,8 +27,6 @@ namespace Protectora
 
         private void btbYes_Click(object sender, RoutedEventArgs e)
         {
-            string datetime = "Último acceso: " + DateTime.Now.ToString("dd-MM-yyyy HH:mm");
-            File.WriteAllText("datetime.txt", datetime);
             Application.Current.Shutdown();
         }
 

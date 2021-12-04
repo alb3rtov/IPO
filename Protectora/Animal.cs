@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Protectora
 {
-    class Animal
+    public class Animal
     {
         public string Name { set; get; }
         public string Sex { set; get; }

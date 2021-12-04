@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -22,10 +24,12 @@ namespace Protectora
     /// </summary>
     public partial class Management : Window
     {
-        private List<Animal> animalList;
+        //public List<Animal> animalList;
+        public ObservableCollection<Animal> animalList;
         private int imgIndex = 0;
         bool first = true;
         private Window exitWindow;
+        private Window newWindow;
 
         public Management(String user)
         {
@@ -34,14 +38,15 @@ namespace Protectora
             lblLastDate.Content = File.ReadAllText("datetime.txt");
 
             animalList = LoadContentXML();
+
             DataContext = animalList;
 
             btnAdd.ToolTip = "Añadir animal";
         }
 
-        private List<Animal> LoadContentXML()
+        private ObservableCollection<Animal> LoadContentXML()
         {
-            List<Animal> list = new List<Animal>();
+            ObservableCollection<Animal> list = new ObservableCollection<Animal>();
             // Cargar contenido de prueba
             XmlDocument doc = new XmlDocument();
             var fichero = Application.GetResourceStream(new Uri("Data/animals.xml", UriKind.Relative));
@@ -61,7 +66,7 @@ namespace Protectora
                 newAnimal.Pictures.Add(node.Attributes["Picture2"].Value);
                 newAnimal.Pictures.Add(node.Attributes["Picture3"].Value);
                 newAnimal.Pictures.Add(node.Attributes["Picture4"].Value);
-
+                
                 list.Add(newAnimal);
             }
             
@@ -70,17 +75,8 @@ namespace Protectora
 
         private void buttonLogout_Click(object sender, RoutedEventArgs e)
         {
-
             exitWindow = new ExitWindow();
             exitWindow.Show();
-            /*
-            if (MessageBox.Show("¿Desea cerrar sesión?", "Cerrar sesión", MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.Yes)
-            {
-                
-                string datetime = "Último acceso: " + DateTime.Now.ToString("dd-MM-yyyy HH:mm");
-                File.WriteAllText("datetime.txt", datetime);
-                Application.Current.Shutdown();
-            }*/
         }
         private int getCurrentIndex() {
             int index = 0;
@@ -127,8 +123,6 @@ namespace Protectora
 
             var bitmap = new BitmapImage(new Uri(animalList[index].Pictures[0], UriKind.Relative));
             imgPicture.Source = bitmap;
-
-
         }
 
         private void btnEliminar_Click(object sender, RoutedEventArgs e)
@@ -138,9 +132,23 @@ namespace Protectora
 
         private void btnAniadir_Click(object sender, RoutedEventArgs e)
         {
-
-           
+            switch (((TabItem)tcPestanas.SelectedItem).Header.ToString())
+            {
+                case "Animales":
+                    this.IsEnabled = false;
+                    newWindow = new AddAnimal(this, animalList);
+                    newWindow.Show();
+                    break;
+                case "Socios":
+                    break;
+                case "Voluntarios":
+                    break;
+                case "Ayuda":
+                    /*DISABLE BUTTONS*/
+                    break;
+            }
         }
+
 
         private void tcPestanas_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -150,21 +158,39 @@ namespace Protectora
                 {
                     case "Animales":
                         btnAdd.ToolTip = "Añadir animal";
+                        btnEdit.ToolTip = "Editar animal";
                         btnDelete.ToolTip = "Eliminar animal";
                         break;
                     case "Socios":
                         btnAdd.ToolTip = "Añadir socio";
+                        btnEdit.ToolTip = "Editar animal";
                         btnDelete.ToolTip = "Eliminar socio";
                         break;
                     case "Voluntarios":
                         btnAdd.ToolTip = "Añadir voluntario";
+                        btnEdit.ToolTip = "Editar animal";
                         btnDelete.ToolTip = "Eliminar voluntario";
+                        break;
+                    case "Ayuda":
+                        /*DISABLE BUTTONS*/
                         break;
                 }
             }
             else {
                 first = false;
             }
+        }
+
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            string datetime = "Último acceso: " + DateTime.Now.ToString("dd-MM-yyyy HH:mm");
+            File.WriteAllText("datetime.txt", datetime);
+            Application.Current.Shutdown();
+        }
+
+        private void Window_GotFocus(object sender, RoutedEventArgs e)
+        {
+            DataContext = animalList;
         }
     }
 }
