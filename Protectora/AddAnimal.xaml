@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Closing="Window_Closing"
         Title="Añadir animal" Height="592" Width="363" WindowStartupLocation="CenterScreen">
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="8*"/>
@@ -35,7 +36,7 @@
             <ColumnDefinition Width="22*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBox x:Name="txtName" Text="" VerticalContentAlignment="Center" TextWrapping="Wrap" Margin="0,0,0,19" Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="3" Grid.RowSpan="2">
+        <TextBox x:Name="txtName" Text="" VerticalContentAlignment="Center" TextWrapping="Wrap" Margin="0,0,0,19" Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="3" Grid.RowSpan="2" LostFocus="txtName_LostFocus" KeyUp="txtName_KeyUp">
             <TextBox.Style>
                 <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
                     <Style.Resources>
@@ -90,7 +91,8 @@
             </TextBox.Style>
         </TextBox>
 -->
-        <TextBox x:Name="txtBreed" Text="" VerticalContentAlignment="Center" TextWrapping="Wrap" Margin="0,0,0,19" Grid.Column="3" Grid.Row="5" Grid.RowSpan="2">
+        <TextBox x:Name="txtBreed" VerticalContentAlignment="Center" TextWrapping="Wrap" Margin="0,0,0,19" Grid.Column="3" Grid.Row="5" Grid.RowSpan="2" LostFocus="txtBreed_LostFocus" KeyUp="txtBreed_KeyUp">
+
             <TextBox.Style>
                 <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
                     <Style.Resources>
@@ -115,7 +117,7 @@
             </TextBox.Style>
         </TextBox>
 
-        <TextBox x:Name="txtSize" Text="" VerticalContentAlignment="Center" TextWrapping="Wrap" Margin="0,0,0,1" Grid.Column="1" Grid.Row="7">
+        <TextBox x:Name="txtSize" VerticalContentAlignment="Center" TextWrapping="Wrap" Margin="0,0,0,1" Grid.Column="1" Grid.Row="7" LostFocus="txtSize_LostFocus" KeyUp="txtSize_KeyUp">
             <TextBox.Style>
                 <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
                     <Style.Resources>
@@ -138,9 +140,12 @@
                     </Style.Triggers>
                 </Style>
             </TextBox.Style>
+
+          
         </TextBox>
 
-        <TextBox x:Name="txtWeight" Text="" VerticalContentAlignment="Center" TextWrapping="Wrap" Margin="0,0,0,1" Grid.Column="3" Grid.Row="7">
+        <TextBox x:Name="txtWeight" VerticalContentAlignment="Center" TextWrapping="Wrap" Margin="0,0,0,1" Grid.Column="3" Grid.Row="7" LostFocus="txtWeight_LostFocus" KeyUp="txtWeight_KeyUp">
+
             <TextBox.Style>
                 <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
                     <Style.Resources>
@@ -165,7 +170,7 @@
             </TextBox.Style>
         </TextBox>
 
-        <TextBox x:Name="txtAge" Text="" TextWrapping="Wrap" VerticalContentAlignment="Center" Margin="0,0,0,23" Grid.Column="1" Grid.Row="9" Grid.RowSpan="2">
+        <TextBox x:Name="txtAge" Text="" TextWrapping="Wrap" VerticalContentAlignment="Center" Margin="0,0,0,23" Grid.Column="1" Grid.Row="9" Grid.RowSpan="2" LostFocus="txtAge_LostFocus" KeyUp="txtAge_KeyUp">
             <TextBox.Style>
                 <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
                     <Style.Resources>
@@ -190,7 +195,7 @@
             </TextBox.Style>
         </TextBox>
 
-        <TextBox x:Name="txtChip" Text="" TextWrapping="Wrap" VerticalContentAlignment="Center" Margin="0,0,0,23" Grid.Column="3" Grid.Row="9" Grid.RowSpan="2">
+        <TextBox x:Name="txtChip" Text="" TextWrapping="Wrap" VerticalContentAlignment="Center" Margin="0,0,0,23" Grid.Column="3" Grid.Row="9" Grid.RowSpan="2" LostFocus="txtChip_LostFocus" KeyUp="txtChip_KeyUp">
             <TextBox.Style>
                 <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
                     <Style.Resources>
@@ -217,22 +222,22 @@
 
         <Button x:Name="addImages1" Margin="0,19,0,0" Click="addImages_Click" Grid.Column="1" Grid.Row="12" Grid.RowSpan="2" BorderBrush="Black">
             <Button.Background>
-                <ImageBrush ImageSource="/default_animal.png" Stretch="Uniform"/>
+                <ImageBrush ImageSource="Images/default_animal3.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
         <Button x:Name="addImages2" Click="addImages_Click" Grid.Column="3" Grid.Row="11" BorderBrush="Black">
             <Button.Background>
-                <ImageBrush ImageSource="/default_animal.png" Stretch="Uniform"/>
+                <ImageBrush ImageSource="Images/default_animal3.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
         <Button x:Name="addImages3" Click="addImages_Click" Grid.Column="1" Grid.Row="11" BorderBrush="Black">
             <Button.Background>
-                <ImageBrush ImageSource="/default_animal.png" Stretch="Uniform"/>
+                <ImageBrush ImageSource="Images/default_animal3.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
         <Button x:Name="addImages4" Margin="0,19,0,0" Click="addImages_Click" Grid.Column="3" Grid.Row="12" Grid.RowSpan="2" BorderBrush="Black">
             <Button.Background>
-                <ImageBrush ImageSource="/default_animal.png" Stretch="Uniform"/>
+                <ImageBrush ImageSource="Images/default_animal3.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
         <Button Style="{StaticResource RoundedButtonStyle}" Background="#FF556080" Foreground="White" x:Name="btbAdd" Content="Añadir" Margin="0,14,0,0" Click="btbAdd_Click" Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="14" Grid.RowSpan="2"/>

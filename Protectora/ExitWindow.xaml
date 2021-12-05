@@ -11,11 +11,11 @@
     </Window.Background>
     <Grid>
         <Label Content="¿Desea salir?" Margin="92,99,86,76"/>
-        <Button x:Name="btbYes" Margin="147,131,62,33" Content="Zis" Click="btbYes_Click">
+        <Button x:Name="btbYes" Margin="147,131,62,33" Content="Si" Click="btbYes_Click">
             
         </Button>
 
-        <Button x:Name="btbNo" Margin="62,131,147,33" Content="Nos" Click="btbNo_Click" >
+        <Button x:Name="btbNo" Margin="62,131,147,33" Content="No" Click="btbNo_Click" >
 
         </Button>
     </Grid>

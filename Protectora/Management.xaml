@@ -24,7 +24,7 @@
             <Button x:Name="btnAdd"  Height="42" Width="42" ToolTip="Añadir" Click="btnAniadir_Click" BorderBrush="{x:Null}" Background="{x:Null}">
                 <Image Source="Images/add_c2.png" />
             </Button>
-            <Button x:Name="btnEdit"  Height="42" Width="42"  ToolTip="Editar" Click="btnEliminar_Click" BorderBrush="{x:Null}" Background="{x:Null}">
+            <Button x:Name="btnEdit"  Height="42" Width="42"  ToolTip="Editar" Click="btnEdit_Click" BorderBrush="{x:Null}" Background="{x:Null}">
                 <Image Source="Images/edit_c2.png"/>
             </Button>
             <Button x:Name="btnDelete"  Height="42" Width="42"  ToolTip="Eliminar" Click="btnEliminar_Click" BorderBrush="{x:Null}" Background="{x:Null}">

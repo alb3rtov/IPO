@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Protectora"
         mc:Ignorable="d"
         Title="Protectora" Height="576" Width="559" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" WindowStartupLocation="CenterScreen">
+    
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/Images/background.jpg"/>

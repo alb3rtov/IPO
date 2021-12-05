@@ -132,6 +132,18 @@ namespace Protectora
             if (MessageBox.Show("¿Desea eliminar el animal " + animalList[index].Name + "?", "Eliminar animal", MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.Yes)
             {
                 animalList.RemoveAt(index);
+                int size = lstListaAnimales.Items.Count;
+
+                if (size != 0)
+                {
+                    imgPicture.Visibility = Visibility.Visible;
+                    lstListaAnimales.SelectedItem = lstListaAnimales.Items[size - 1];
+                    lstListaAnimales.ScrollIntoView(lstListaAnimales.Items[size - 1]);
+                    fixImageDisplay();
+                }
+                else {
+                    imgPicture.Visibility = Visibility.Hidden;
+                }
             }  
         }
 
@@ -193,12 +205,12 @@ namespace Protectora
             Application.Current.Shutdown();
         }
 
-
         private void fixImageDisplay()
         {
             int index = getCurrentIndex();
             var bitmap = new BitmapImage(new Uri(animalList[index].Pictures[0], UriKind.RelativeOrAbsolute));
             imgPicture.Source = bitmap;
+            imgPicture.Visibility = Visibility.Visible;
         }
 
         private void lstListaAnimales_KeyUp(object sender, KeyEventArgs e)
@@ -216,6 +228,11 @@ namespace Protectora
                 lstListaAnimales.ScrollIntoView(lstListaAnimales.Items[size-1]);
                 fixImageDisplay();
             }
+        }
+
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
