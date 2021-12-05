@@ -40,7 +40,7 @@ namespace Protectora
 
         private void btbAdd_Click(object sender, RoutedEventArgs e)
         {
-            Animal animal = new Animal(txtName.Text, txtSex.Text, txtBreed.Text, 0, 0, 0, 0, filenames);
+            Animal animal = new Animal(txtName.Text, cbSex.Text, txtBreed.Text, int.Parse(txtSize.Text), int.Parse(txtWeight.Text), int.Parse(txtAge.Text), int.Parse(txtChip.Text), filenames);
             animals.Add(animal);
             this.Close();
         }

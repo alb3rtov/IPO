@@ -127,7 +127,12 @@ namespace Protectora
 
         private void btnEliminar_Click(object sender, RoutedEventArgs e)
         {
-
+            int index = getCurrentIndex();
+            
+            if (MessageBox.Show("¿Desea eliminar el animal " + animalList[index].Name + "?", "Eliminar animal", MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.Yes)
+            {
+                animalList.RemoveAt(index);
+            }  
         }
 
         private void btnAniadir_Click(object sender, RoutedEventArgs e)
@@ -209,6 +214,7 @@ namespace Protectora
                 int size = lstListaAnimales.Items.Count;
                 lstListaAnimales.SelectedItem = lstListaAnimales.Items[size-1];
                 lstListaAnimales.ScrollIntoView(lstListaAnimales.Items[size-1]);
+                fixImageDisplay();
             }
         }
     }
