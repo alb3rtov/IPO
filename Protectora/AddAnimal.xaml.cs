@@ -24,7 +24,7 @@ namespace Protectora
     {
         private Window parent;
         private ObservableCollection<Animal> animals;
-        private string[] filenames;
+        private List<string> filenames = new List<string>();
         public AddAnimal(Window window, ObservableCollection<Animal> animalList)
         {
             InitializeComponent();
@@ -40,13 +40,7 @@ namespace Protectora
 
         private void btbAdd_Click(object sender, RoutedEventArgs e)
         {
-            List<string> pictures = new List<string>();
-
-            for (int i = 0; i < filenames.Length; i++) {
-                pictures.Add(filenames[i]);
-            }
-
-            Animal animal = new Animal(txtName.Text, txtSex.Text, txtBreed.Text, 0, 0, 0, 0, pictures);
+            Animal animal = new Animal(txtName.Text, txtSex.Text, txtBreed.Text, 0, 0, 0, 0, filenames);
             animals.Add(animal);
             this.Close();
         }
@@ -54,29 +48,42 @@ namespace Protectora
         private void addImages_Click(object sender, RoutedEventArgs e)
         {
             var openDialog = new OpenFileDialog();
-            openDialog.Multiselect = true;
             openDialog.Filter = "Images|*.jpg;*.gif;*.bmp;*.png";
-            openDialog.ShowDialog();
-            /*
-        if (openDialog.ShowDialog() == true)
-        {
-            for (int i = 0; i < openDialog.FileNames.Length; i++) { 
-                System.Diagnostics.Debug.WriteLine(openDialog.FileNames[i]);
-            }
 
-            try
+            if (openDialog.ShowDialog() == true)
             {
-                var bitmap = new BitmapImage(new Uri(abrirDialog.FileName, UriKind.Absolute));
-                imgCaratula.Source = bitmap;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al cargar la imagen " + ex.Message);
-            }
-            
-        }*/
+                try
+                {
+                    filenames.Add(openDialog.FileName);
+                    var brush = new ImageBrush();
+                    brush.ImageSource = new BitmapImage(new Uri(openDialog.FileName, UriKind.RelativeOrAbsolute));
 
-            filenames = openDialog.FileNames;
+                    if (addImages1.IsFocused)
+                    {
+                        addImages1.Background = brush;
+                    } 
+                    else if (addImages2.IsFocused) {
+                        addImages2.Background = brush;
+                    }
+                    else if (addImages3.IsFocused)
+                    {
+                        addImages3.Background = brush;
+                    }
+                    else if (addImages3.IsFocused)
+                    {
+                        addImages3.Background = brush;
+                    }
+                    else if (addImages4.IsFocused)
+                    {
+                        addImages4.Background = brush;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al cargar la imagen " + ex.Message);
+                }
+
+            }
         }
     }
 }

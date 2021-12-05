@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:Protectora"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary x:Name="StylesResources" Source="Styles.xaml" />
     </Application.Resources>
 </Application>
