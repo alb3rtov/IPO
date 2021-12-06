@@ -6,14 +6,21 @@
         xmlns:local="clr-namespace:Protectora"
         mc:Ignorable="d"
         Closing="Window_Closing"
-        Title="VideoWindow" Height="450" Width="696" WindowStartupLocation="CenterScreen">
+        Title="VideoWindow" Height="450" Width="542" WindowStartupLocation="CenterScreen">
     <Grid>
-        <StackPanel Margin="10,10,10,20">
-            <Label x:Name="lblName"  FontSize="20" Height="57" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
-            <MediaElement x:Name="meVideo" Source="{Binding Video}" LoadedBehavior="Play" UnloadedBehavior="Play" Visibility="Visible" Height="289" Width="501" />
-            <StackPanel Orientation="Horizontal" Width="200" HorizontalAlignment="Center" Height="32">
-                <Button x:Name="btbPlay" Content="Play" Width="100" Click="btbPlay_Click"  ></Button>
-                <Button x:Name="btbStop" Content="Stop" Width="100" Click="btbStop_Click" ></Button>
+        <StackPanel Margin="10,10,10,10">
+            <Label x:Name="lblName"  FontSize="20" Height="57" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="502" />
+            <MediaElement x:Name="meVideo" Source="{Binding Video}" Height="289" Width="501" Loaded="meVideo_Loaded" />
+            <StackPanel Orientation="Horizontal" Width="118" Height="45">
+                <Button x:Name="btbBack" Click="btbBack_Click" Background="{x:Null}" BorderBrush="{x:Null}">
+                    <Image x:Name="imgBackward" Source="Images/backward.png" Width="35" />
+                </Button>
+                <Button x:Name="btbPlayStop" Width="40" Click="btbPlayStop_Click"  Background="{x:Null}" BorderBrush="{x:Null}" >
+                    <Image x:Name="imgPlayStop" Source="Images/pause.png" Width="35" />
+                </Button>
+                <Button x:Name="btbForward" Click="btbForward_Click" Background="{x:Null}" BorderBrush="{x:Null}">
+                    <Image x:Name="imgForward" Source="Images/forward.png" Width="35" />
+                </Button>
             </StackPanel>
         </StackPanel>
 

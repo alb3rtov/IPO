@@ -21,6 +21,7 @@ namespace Protectora
     public partial class VideoWindow : Window
     {
         private Window parent;
+        private bool paused = false;
         public VideoWindow(Window window, Animal animal)
         {
             InitializeComponent();
@@ -37,18 +38,37 @@ namespace Protectora
             parent.IsEnabled = true;
         }
 
-        private void btbPlay_Click(object sender, RoutedEventArgs e)
+        private void btbPlayStop_Click(object sender, RoutedEventArgs e)
+        {
+            if (paused)
+            {
+                meVideo.Play();
+                imgPlayStop.Source = new BitmapImage(new Uri("pack://application:,,,/Images/pause.png"));
+                paused = false;
+            }
+            else
+            {
+                meVideo.Pause();
+                imgPlayStop.Source = new BitmapImage(new Uri("pack://application:,,,/Images/play.png"));
+                paused = true;
+            }
+        }
+
+        private void meVideo_Loaded(object sender, RoutedEventArgs e)
         {
             meVideo.LoadedBehavior = MediaState.Manual;
             meVideo.UnloadedBehavior = MediaState.Manual;
             meVideo.Play();
         }
 
-        private void btbStop_Click(object sender, RoutedEventArgs e)
+        private void btbForward_Click(object sender, RoutedEventArgs e)
         {
-            meVideo.LoadedBehavior = MediaState.Manual;
-            meVideo.UnloadedBehavior = MediaState.Manual;
-            meVideo.Pause();
+            meVideo.Position += TimeSpan.FromMilliseconds(500);
+        }
+
+        private void btbBack_Click(object sender, RoutedEventArgs e)
+        {
+            meVideo.Position -= TimeSpan.FromMilliseconds(500);
         }
     }
 }
