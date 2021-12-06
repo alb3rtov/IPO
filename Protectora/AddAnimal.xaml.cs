@@ -38,6 +38,10 @@ namespace Protectora
             parent = window;
             animals = animalList;
             DataContext = animals;
+            rdSterelizedSi.IsChecked = true;
+            rdPPPSi.IsChecked = true;
+            rdChildrenSi.IsChecked = true;
+            rdDogsSi.IsChecked = true;
         }
 
         private void Window_Closing(object sender, CancelEventArgs e)
@@ -45,18 +49,26 @@ namespace Protectora
             parent.IsEnabled = true;
         }
 
+        private string getRadioButton(RadioButton rdYes) {
+            return (rdYes.IsChecked == true) ? "Si" : "No";
+        }
+
         private void btbAdd_Click(object sender, RoutedEventArgs e)
         {
             if (checkName && checkBreed && checkSize && checkWeight && checkAge && checkChip && checkImages)
             {
-                Animal animal = new Animal(txtName.Text, cbSex.Text, txtBreed.Text, int.Parse(txtSize.Text), int.Parse(txtWeight.Text), int.Parse(txtAge.Text), int.Parse(txtChip.Text), filenames, null, null);
+                string sterelized = getRadioButton(rdSterelizedSi);
+                string ppp = getRadioButton(rdPPPSi);
+                string dogs = getRadioButton(rdDogsSi);
+                string childen = getRadioButton(rdChildrenSi);
+
+                Animal animal = new Animal(txtName.Text, cbSex.Text, txtBreed.Text, int.Parse(txtSize.Text), int.Parse(txtWeight.Text), int.Parse(txtAge.Text), int.Parse(txtChip.Text), filenames, null, null, sterelized, childen, dogs, ppp);
                 animals.Add(animal);
                 this.Close();
             }
             else {
                 MessageBox.Show("Debe de introducir datos correctos en el formulario", "Error en el formulario", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            
         }
 
         private void addImages_Click(object sender, RoutedEventArgs e)

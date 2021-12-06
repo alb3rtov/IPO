@@ -18,8 +18,13 @@ namespace Protectora
         public List<string> Pictures { set; get; }
         public Sponsor Sponsor { set; get; }
         public Uri Video { set; get; }
+        public string Sterilized { set; get; }
+        public string SociableChildren { set; get; }
+        public string SociableDogs { set; get; }
+        public string Ppp { set; get; }
 
-        public Animal(string name, string sex, string breed, int size, int weight, int age, int chip, List<string> pictures, Sponsor sponsor, Uri video) 
+        public Animal(string name, string sex, string breed, int size, int weight, int age, int chip, List<string> pictures, 
+                    Sponsor sponsor, Uri video, string sterilized, string sociableChildren, string sociableDogs, string ppp) 
         {
             Name = name;
             Sex = sex;
@@ -31,6 +36,10 @@ namespace Protectora
             Pictures = pictures;
             Sponsor = sponsor;
             Video = video;
+            Sterilized = sterilized;
+            SociableChildren = sociableChildren;
+            SociableDogs = sociableDogs;
+            Ppp = ppp;
         }
     }
 }

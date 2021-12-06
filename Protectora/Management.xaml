@@ -91,6 +91,11 @@
                                 <Label x:Name="lblBreed" Content="{Binding SelectedItem.Breed, ElementName=lstListaAnimales}"/>
                                 <Label FontWeight="Bold" Content="Tamaño:"/>
                                 <Label x:Name="lblSize" Content="{Binding SelectedItem.Size, ElementName=lstListaAnimales}"/>
+                                <Label FontWeight="Bold" Content="Esterilizado:"/>
+                                <Label x:Name="lblSterilized" Content="{Binding SelectedItem.Sterilized, ElementName=lstListaAnimales}"/>
+                                <Label FontWeight="Bold" Content="Social niños:"/>
+                                <Label x:Name="lblSociableChildren" Content="{Binding SelectedItem.SociableChildren, ElementName=lstListaAnimales}"/>
+                                
                             </StackPanel>
                             <StackPanel x:Name="spDetallesAnimal2" Orientation="Vertical"  Margin="111,36,356,0">
 
@@ -100,7 +105,10 @@
                                 <Label x:Name="lblAge" Content="{Binding ElementName=lstListaAnimales, Path=SelectedItem.Age}"/>
                                 <Label FontWeight="Bold">Chip:</Label>
                                 <Label x:Name="lblChip" Content="{Binding ElementName=lstListaAnimales, Path=SelectedItem.Chip}"/>
-
+                                <Label FontWeight="Bold" Content="PPP:"/>
+                                <Label x:Name="lblPpp" Content="{Binding SelectedItem.Ppp, ElementName=lstListaAnimales}"/>
+                                <Label FontWeight="Bold" Content="Social perros:"/>
+                                <Label x:Name="lblSociableDogs" Content="{Binding SelectedItem.SociableDogs, ElementName=lstListaAnimales}"/>
                             </StackPanel>
 
                             <StackPanel x:Name="spImage"  HorizontalAlignment="Left" Orientation="Horizontal" Width="338" Margin="207,36,0,161">

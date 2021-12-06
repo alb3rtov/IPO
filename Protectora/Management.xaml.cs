@@ -93,7 +93,7 @@ namespace Protectora
             foreach (XmlNode node in doc.DocumentElement.ChildNodes)
             {
                 List<string> pictures = new List<string>();
-                var newAnimal = new Animal("", "", "", 0, 0, 0, 0, pictures, null, null);
+                var newAnimal = new Animal("", "", "", 0, 0, 0, 0, pictures, null, null, "", "", "", "");
                 newAnimal.Name = node.Attributes["Name"].Value;
                 newAnimal.Sex = node.Attributes["Sex"].Value;
                 newAnimal.Breed = node.Attributes["Breed"].Value;
@@ -106,7 +106,11 @@ namespace Protectora
                 newAnimal.Pictures.Add(node.Attributes["Picture3"].Value);
                 newAnimal.Pictures.Add(node.Attributes["Picture4"].Value);
                 newAnimal.Video = new Uri(node.Attributes["Video"].Value, UriKind.RelativeOrAbsolute);
-                
+                newAnimal.SociableChildren = node.Attributes["SociableChildren"].Value;
+                newAnimal.SociableDogs = node.Attributes["SociableDogs"].Value;
+                newAnimal.Sterilized = node.Attributes["Sterilized"].Value;
+                newAnimal.Ppp = node.Attributes["PPP"].Value;
+
                 list.Add(newAnimal);
             }
 

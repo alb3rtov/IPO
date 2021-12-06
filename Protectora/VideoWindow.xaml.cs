@@ -63,12 +63,12 @@ namespace Protectora
 
         private void btbForward_Click(object sender, RoutedEventArgs e)
         {
-            meVideo.Position += TimeSpan.FromMilliseconds(500);
+            meVideo.Position += TimeSpan.FromMilliseconds(5000);
         }
 
         private void btbBack_Click(object sender, RoutedEventArgs e)
         {
-            meVideo.Position -= TimeSpan.FromMilliseconds(500);
+            meVideo.Position -= TimeSpan.FromMilliseconds(5000);
         }
     }
 }
