@@ -77,8 +77,14 @@
                     <GridSplitter HorizontalAlignment="Stretch" Margin="2,0,2,0" Grid.Column="1" />
                     <ScrollViewer Grid.Column="2" Margin="3,0,0,0">
                         <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
                             <Label x:Name="lblName" FontWeight="Bold" FontSize="20" Content="{Binding ElementName=lstListaAnimales,Path=SelectedItem.Name}" Margin="3,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="36" Width="184"/>
-                            <StackPanel x:Name="spDetallesAnimal1" Orientation="Vertical" Margin="3,36,448,0">
+                            <StackPanel x:Name="spDetallesAnimal1" Orientation="Vertical" Margin="3,36,451,0">
                                 <Label FontWeight="Bold" Content="Sexo:"/>
                                 <Label x:Name="lblSex" Content="{Binding SelectedItem.Sex, ElementName=lstListaAnimales}"/>
                                 <Label FontWeight="Bold" Content="Raza:"/>
@@ -86,7 +92,7 @@
                                 <Label FontWeight="Bold" Content="Tamaño:"/>
                                 <Label x:Name="lblSize" Content="{Binding SelectedItem.Size, ElementName=lstListaAnimales}"/>
                             </StackPanel>
-                            <StackPanel x:Name="spDetallesAnimal2" Orientation="Vertical"  Margin="111,36,353,0">
+                            <StackPanel x:Name="spDetallesAnimal2" Orientation="Vertical"  Margin="111,36,356,0">
 
                                 <Label FontWeight="Bold">Peso:</Label>
                                 <Label x:Name="lblWeight" Content="{Binding ElementName=lstListaAnimales, Path=SelectedItem.Weight}"/>
@@ -96,8 +102,11 @@
                                 <Label x:Name="lblChip" Content="{Binding ElementName=lstListaAnimales, Path=SelectedItem.Chip}"/>
 
                             </StackPanel>
-
-                            <StackPanel x:Name="spImage"  HorizontalAlignment="Right" Orientation="Horizontal" Width="338" Margin="0,36,15,103">
+                            <StackPanel Margin="290,257,97,55">
+                                <Button x:Name="btbSponsor" Style="{StaticResource RoundedButtonStyle}" Background="#FF556080" Foreground="White" Content="Datos padrino/madrina" Click="btbSponsor_Click" Height="35"/>
+                            </StackPanel>
+                            
+                            <StackPanel x:Name="spImage"  HorizontalAlignment="Left" Orientation="Horizontal" Width="338" Margin="207,36,0,101">
                                 <Button  x:Name="btbPreviousImage" Width="24" Click="btbPreviousImage_Click" Height="24" Background="{x:Null}" BorderBrush="{x:Null}">
                                     <Image Source="Images/previous_b.png" />
                                 </Button>
@@ -130,7 +139,7 @@
                 <Grid>
                 </Grid>
             </TabItem>
-            
+
         </TabControl>
 
     </Grid>

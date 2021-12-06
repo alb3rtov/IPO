@@ -24,12 +24,13 @@ namespace Protectora
     /// </summary>
     public partial class Management : Window
     {
-        //public List<Animal> animalList;
         public ObservableCollection<Animal> animalList;
+        public List<Sponsor> sponsorList;
         private int imgIndex = 0;
         bool first = true;
         private Window exitWindow;
         private Window newWindow;
+        private Window sponsorWindow;
 
         public Management(String user)
         {
@@ -37,14 +38,47 @@ namespace Protectora
             lblUser.Content = user;
             lblLastDate.Content = File.ReadAllText("datetime.txt");
 
-            animalList = LoadContentXML();
+            animalList = LoadContentAnimalsXML();
+            sponsorList = LoadContentSponsorXML();
+            addSponsor();
 
             DataContext = animalList;
-
-            btnAdd.ToolTip = "Añadir animal";
         }
 
-        private ObservableCollection<Animal> LoadContentXML()
+        private void addSponsor() {
+            for (int i = 0; i < animalList.Count; i++) {
+                animalList[i].Sponsor = sponsorList[i];
+            }
+        }
+
+        private List<Sponsor> LoadContentSponsorXML() 
+        {
+            List<Sponsor> list = new List<Sponsor>();
+
+            XmlDocument doc = new XmlDocument();
+            var fichero = Application.GetResourceStream(new Uri("Data/sponsors.xml", UriKind.Relative));
+            doc.Load(fichero.Stream);
+
+            foreach (XmlNode node in doc.DocumentElement.ChildNodes)
+            {
+                DateTime time = DateTime.Now;
+                var sponsor = new Sponsor(0, "", "", 0, "", "", 0, time, "");
+                sponsor.Dni = Convert.ToInt32(node.Attributes["Dni"].Value);
+                sponsor.Firstname = node.Attributes["Firstname"].Value;
+                sponsor.Lastname = node.Attributes["Lastname"].Value;
+                sponsor.PhoneNumber = Convert.ToInt32(node.Attributes["PhoneNumber"].Value);
+                sponsor.PaymentMethod = node.Attributes["PaymentMethod"].Value;
+                sponsor.BankAccountNumber = node.Attributes["BankAccountNumber"].Value;
+                sponsor.MonthlyContribution = Convert.ToInt32(node.Attributes["MonthlyContribution"].Value);
+                sponsor.StartSponsorship = Convert.ToDateTime(node.Attributes["StartSponsorship"].Value);
+                sponsor.Picture = node.Attributes["Picture"].Value;
+                list.Add(sponsor);
+            }
+
+            return list;
+        }
+
+        private ObservableCollection<Animal> LoadContentAnimalsXML()
         {
             ObservableCollection<Animal> list = new ObservableCollection<Animal>();
             // Cargar contenido de prueba
@@ -54,7 +88,7 @@ namespace Protectora
             foreach (XmlNode node in doc.DocumentElement.ChildNodes)
             {
                 List<string> pictures = new List<string>();
-                var newAnimal = new Animal("", "", "", 0, 0, 0, 0, pictures);
+                var newAnimal = new Animal("", "", "", 0, 0, 0, 0, pictures, null);
                 newAnimal.Name = node.Attributes["Name"].Value;
                 newAnimal.Sex = node.Attributes["Sex"].Value;
                 newAnimal.Breed = node.Attributes["Breed"].Value;
@@ -69,7 +103,7 @@ namespace Protectora
                 
                 list.Add(newAnimal);
             }
-            
+
             return list;
         }
 
@@ -127,24 +161,32 @@ namespace Protectora
 
         private void btnEliminar_Click(object sender, RoutedEventArgs e)
         {
-            int index = getCurrentIndex();
-            
-            if (MessageBox.Show("¿Desea eliminar el animal " + animalList[index].Name + "?", "Eliminar animal", MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.Yes)
-            {
-                animalList.RemoveAt(index);
-                int size = lstListaAnimales.Items.Count;
 
-                if (size != 0)
+            if (animalList.Count == 0)
+            {
+                MessageBox.Show("No existen animales en la lista", "Error al eliminar animal", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else {
+                int index = getCurrentIndex();
+
+                if (MessageBox.Show("¿Desea eliminar el animal " + animalList[index].Name + "?", "Eliminar animal", MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.Yes)
                 {
-                    imgPicture.Visibility = Visibility.Visible;
-                    lstListaAnimales.SelectedItem = lstListaAnimales.Items[size - 1];
-                    lstListaAnimales.ScrollIntoView(lstListaAnimales.Items[size - 1]);
-                    fixImageDisplay();
+                    animalList.RemoveAt(index);
+                    int size = lstListaAnimales.Items.Count;
+
+                    if (size != 0)
+                    {
+                        imgPicture.Visibility = Visibility.Visible;
+                        lstListaAnimales.SelectedItem = lstListaAnimales.Items[size - 1];
+                        lstListaAnimales.ScrollIntoView(lstListaAnimales.Items[size - 1]);
+                        fixImageDisplay();
+                    }
+                    else
+                    {
+                        imgPicture.Visibility = Visibility.Hidden;
+                    }
                 }
-                else {
-                    imgPicture.Visibility = Visibility.Hidden;
-                }
-            }  
+            }            
         }
 
         private void btnAniadir_Click(object sender, RoutedEventArgs e)
@@ -232,6 +274,17 @@ namespace Protectora
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
+
+        }
+
+        private void btbSponsor_Click(object sender, RoutedEventArgs e)
+        {
+            int index = getCurrentIndex();
+            Sponsor aux = animalList[index].Sponsor;
+
+            this.IsEnabled = false;
+            sponsorWindow = new SponsorDetails(this, aux);
+            sponsorWindow.Show();
 
         }
     }

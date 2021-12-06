@@ -13,6 +13,7 @@
     <None Remove="background.jpg" />
     <None Remove="bg.jpg" />
     <None Remove="Data\animals.xml" />
+    <None Remove="Data\sponsors.xml" />
     <None Remove="default_animal.png" />
     <None Remove="default_imagel.png" />
     <None Remove="Images\add_c.png" />
@@ -38,6 +39,11 @@
     <None Remove="Images\next.png" />
     <None Remove="Images\next_b.png" />
     <None Remove="Images\next_button.png" />
+    <None Remove="Images\photo1.jpg" />
+    <None Remove="Images\photo2.jpg" />
+    <None Remove="Images\photo3.jpg" />
+    <None Remove="Images\photo4.jpg" />
+    <None Remove="Images\photo5.jpg" />
     <None Remove="Images\play_c.png" />
     <None Remove="Images\previous.png" />
     <None Remove="Images\previous_b.png" />
@@ -75,6 +81,7 @@
     <Resource Include="background.jpg" />
     <Resource Include="bg.jpg" />
     <Resource Include="Data\animals.xml" />
+    <Resource Include="Data\sponsors.xml" />
     <Resource Include="default_animal.png" />
     <Resource Include="default_imagel.png" />
     <Resource Include="Images\add_c.png" />
@@ -102,6 +109,11 @@
     <Resource Include="Images\next.png" />
     <Resource Include="Images\next_b.png" />
     <Resource Include="Images\next_button.png" />
+    <Resource Include="Images\photo1.jpg" />
+    <Resource Include="Images\photo2.jpg" />
+    <Resource Include="Images\photo3.jpg" />
+    <Resource Include="Images\photo4.jpg" />
+    <Resource Include="Images\photo5.jpg" />
     <Resource Include="Images\play_c.png" />
     <Resource Include="Images\previous.png" />
     <Resource Include="Images\previous_b.png" />
