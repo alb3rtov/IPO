@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Cerrar sesion" Height="202" Width="270" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" MouseLeftButtonDown="Window_MouseLeftButtonDown">
     <Window.Background>
-        <ImageBrush ImageSource="/window.png"/>
+        <ImageBrush ImageSource="Images/window.png"/>
     </Window.Background>
     <Grid>
         <Label Content="¿Desea salir?" Margin="92,99,86,76"/>

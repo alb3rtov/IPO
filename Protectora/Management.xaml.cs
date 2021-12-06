@@ -28,9 +28,12 @@ namespace Protectora
         public List<Sponsor> sponsorList;
         private int imgIndex = 0;
         bool first = true;
+        bool addAction = false;
+        int sizeList = 0;
         private Window exitWindow;
         private Window newWindow;
         private Window sponsorWindow;
+        private Window videoWindow;
 
         public Management(String user)
         {
@@ -41,6 +44,8 @@ namespace Protectora
             animalList = LoadContentAnimalsXML();
             sponsorList = LoadContentSponsorXML();
             addSponsor();
+
+
 
             DataContext = animalList;
         }
@@ -88,7 +93,7 @@ namespace Protectora
             foreach (XmlNode node in doc.DocumentElement.ChildNodes)
             {
                 List<string> pictures = new List<string>();
-                var newAnimal = new Animal("", "", "", 0, 0, 0, 0, pictures, null);
+                var newAnimal = new Animal("", "", "", 0, 0, 0, 0, pictures, null, null);
                 newAnimal.Name = node.Attributes["Name"].Value;
                 newAnimal.Sex = node.Attributes["Sex"].Value;
                 newAnimal.Breed = node.Attributes["Breed"].Value;
@@ -100,6 +105,7 @@ namespace Protectora
                 newAnimal.Pictures.Add(node.Attributes["Picture2"].Value);
                 newAnimal.Pictures.Add(node.Attributes["Picture3"].Value);
                 newAnimal.Pictures.Add(node.Attributes["Picture4"].Value);
+                newAnimal.Video = new Uri(node.Attributes["Video"].Value, UriKind.RelativeOrAbsolute);
                 
                 list.Add(newAnimal);
             }
@@ -195,6 +201,8 @@ namespace Protectora
             {
                 case "Animales":
                     this.IsEnabled = false;
+                    addAction = true;
+                    sizeList = animalList.Count;
                     newWindow = new AddAnimal(this, animalList);
                     newWindow.Show();
                     break;
@@ -222,12 +230,12 @@ namespace Protectora
                         break;
                     case "Socios":
                         btnAdd.ToolTip = "Añadir socio";
-                        btnEdit.ToolTip = "Editar animal";
+                        btnEdit.ToolTip = "Editar socio";
                         btnDelete.ToolTip = "Eliminar socio";
                         break;
                     case "Voluntarios":
                         btnAdd.ToolTip = "Añadir voluntario";
-                        btnEdit.ToolTip = "Editar animal";
+                        btnEdit.ToolTip = "Editar voluntario";
                         btnDelete.ToolTip = "Eliminar voluntario";
                         break;
                     case "Ayuda":
@@ -253,6 +261,16 @@ namespace Protectora
             var bitmap = new BitmapImage(new Uri(animalList[index].Pictures[0], UriKind.RelativeOrAbsolute));
             imgPicture.Source = bitmap;
             imgPicture.Visibility = Visibility.Visible;
+
+            if (animalList[index].Sponsor == null)
+            {
+                btbSponsor.IsEnabled = false;
+                btbVideo.IsEnabled = false;
+            }
+            else {
+                btbSponsor.IsEnabled = true;
+                btbVideo.IsEnabled = true;
+            }
         }
 
         private void lstListaAnimales_KeyUp(object sender, KeyEventArgs e)
@@ -264,11 +282,16 @@ namespace Protectora
 
         private void Window_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            if (this.IsEnabled) {
-                int size = lstListaAnimales.Items.Count;
-                lstListaAnimales.SelectedItem = lstListaAnimales.Items[size-1];
-                lstListaAnimales.ScrollIntoView(lstListaAnimales.Items[size-1]);
-                fixImageDisplay();
+            if (this.IsEnabled && addAction) {
+                if (sizeList != animalList.Count)
+                {
+                    sizeList = animalList.Count;
+                    addAction = false;
+                    int size = lstListaAnimales.Items.Count;
+                    lstListaAnimales.SelectedItem = lstListaAnimales.Items[size - 1];
+                    lstListaAnimales.ScrollIntoView(lstListaAnimales.Items[size - 1]);
+                    fixImageDisplay();
+                }
             }
         }
 
@@ -286,6 +309,16 @@ namespace Protectora
             sponsorWindow = new SponsorDetails(this, aux);
             sponsorWindow.Show();
 
+        }
+
+        private void btbVideo_Click(object sender, RoutedEventArgs e)
+        {
+            int index = getCurrentIndex();
+            Animal selectedAnimal = animalList[index];
+
+            this.IsEnabled = false;
+            videoWindow = new VideoWindow(this, selectedAnimal);
+            videoWindow.Show();
         }
     }
 }

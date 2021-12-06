@@ -6,28 +6,39 @@
         xmlns:local="clr-namespace:Protectora"
         mc:Ignorable="d"
         Closing="Window_Closing"
-        Title="Detalles padrino/madrina" Height="401" Width="382">
+        Title="Detalles padrino/madrina" WindowStartupLocation="CenterScreen" Height="401" Width="447">
     <Grid>
-        <StackPanel Margin="26,0,182,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="16*"/>
+            <RowDefinition Height="56*"/>
+            <RowDefinition Height="313*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="26*"/>
+            <ColumnDefinition Width="178*"/>
+            <ColumnDefinition Width="217*"/>
+            <ColumnDefinition Width="26*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Horizontal" Margin="0,16,0,0" Grid.ColumnSpan="2" Grid.Column="1" Grid.RowSpan="2">
+            <Label FontSize="20" Content="{Binding Firstname}"/>
+            <Label FontSize="20" Content="{Binding Lastname}"/>
+        </StackPanel>
+        <StackPanel Margin="0,56,0,22" Grid.Column="2" Grid.RowSpan="2" Grid.Row="1">
             <Label FontWeight="Bold" Content="Dni:"/>
             <Label Content="{Binding Dni}"/>
-            <Label FontWeight="Bold" Content="Nombre:"/>
-            <Label Content="{Binding Firstname}"/>
-            <Label FontWeight="Bold" Content="Apellido:"/>
-            <Label Content="{Binding Lastname}"/>
             <Label FontWeight="Bold" Content="Teléfono:"/>
             <Label Content="{Binding PhoneNumber}"/>
             <Label FontWeight="Bold" Content="Método de pago:"/>
             <Label Content="{Binding PaymentMethod}"/>
             <Label FontWeight="Bold" Content="Cuenta del banco:"/>
             <Label Content="{Binding BankAccountNumber}"/>
-            <Label FontWeight="Bold" Content="Contribución mensual:"/>
+        </StackPanel>
+        <StackPanel Margin="0,56,0,22" Grid.RowSpan="2" Grid.Row="1" Grid.Column="1">
+            <Image Stretch="Fill" Width="128" Height="114" Source="{Binding Picture}" HorizontalAlignment="Left"/>
+            <Label FontWeight="Bold" Content="Contribución mensual (€):"/>
             <Label Content="{Binding MonthlyContribution}"/>
             <Label FontWeight="Bold" Content="Fecha de apadrinamiento:"/>
             <Label Content="{Binding StartSponsorship}"/>
-        </StackPanel>
-        <StackPanel Margin="205,0,9,28">
-            <Image Width="151" Height="149" Source="{Binding Picture}"/>
         </StackPanel>
 
 

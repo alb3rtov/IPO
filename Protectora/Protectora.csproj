@@ -78,12 +78,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="background.jpg" />
-    <Resource Include="bg.jpg" />
     <Resource Include="Data\animals.xml" />
     <Resource Include="Data\sponsors.xml" />
-    <Resource Include="default_animal.png" />
-    <Resource Include="default_imagel.png" />
     <Resource Include="Images\add_c.png" />
     <Resource Include="Images\add_c2.png" />
     <Resource Include="Images\background.jpg" />
@@ -137,8 +133,15 @@
     <Resource Include="Images\login.png" />
     <Resource Include="Images\user_icon_small.png" />
     <Resource Include="Images\window.png" />
-    <Resource Include="logout.png" />
-    <Resource Include="window.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Images\Video1.mp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\Video2.wmv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

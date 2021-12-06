@@ -8,7 +8,7 @@
         Closing="Window_Closing"
         Title="Gestion de protectora" Height="450" Width="800" WindowStartupLocation="CenterScreen" IsEnabledChanged="Window_IsEnabledChanged">
     <Window.Background>
-        <ImageBrush ImageSource="/background.jpg"/>
+        <ImageBrush ImageSource="Images/background.jpg"/>
     </Window.Background>
     <Grid>
         <Grid.RowDefinitions>
@@ -102,11 +102,8 @@
                                 <Label x:Name="lblChip" Content="{Binding ElementName=lstListaAnimales, Path=SelectedItem.Chip}"/>
 
                             </StackPanel>
-                            <StackPanel Margin="290,257,97,55">
-                                <Button x:Name="btbSponsor" Style="{StaticResource RoundedButtonStyle}" Background="#FF556080" Foreground="White" Content="Datos padrino/madrina" Click="btbSponsor_Click" Height="35"/>
-                            </StackPanel>
-                            
-                            <StackPanel x:Name="spImage"  HorizontalAlignment="Left" Orientation="Horizontal" Width="338" Margin="207,36,0,101">
+
+                            <StackPanel x:Name="spImage"  HorizontalAlignment="Left" Orientation="Horizontal" Width="338" Margin="207,36,0,161">
                                 <Button  x:Name="btbPreviousImage" Width="24" Click="btbPreviousImage_Click" Height="24" Background="{x:Null}" BorderBrush="{x:Null}">
                                     <Image Source="Images/previous_b.png" />
                                 </Button>
@@ -114,6 +111,11 @@
                                 <Button x:Name="btbNextImage" HorizontalAlignment="Right" Width="24" Height="24" Click="btbNextImage_Click" Background="{x:Null}" BorderBrush="{x:Null}">
                                     <Image Source="Images/next_b.png" />
                                 </Button>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" Margin="241,220,47,92">
+                                <Button x:Name="btbSponsor" Style="{StaticResource RoundedButtonStyle}" Background="#FF556080" Foreground="White" Content="Datos padrino/madrina" Click="btbSponsor_Click" Height="36" Width="149" Margin="0,0,5,0"/>
+                                <Button x:Name="btbVideo" Style="{StaticResource RoundedButtonStyle}" Background="#FF556080" Foreground="White" Content="Mostrar video" Height="36" Width="110" Margin="6,0,0,0" Click="btbVideo_Click"/>
                             </StackPanel>
                         </Grid>
                     </ScrollViewer>

@@ -49,7 +49,7 @@ namespace Protectora
         {
             if (checkName && checkBreed && checkSize && checkWeight && checkAge && checkChip && checkImages)
             {
-                Animal animal = new Animal(txtName.Text, cbSex.Text, txtBreed.Text, int.Parse(txtSize.Text), int.Parse(txtWeight.Text), int.Parse(txtAge.Text), int.Parse(txtChip.Text), filenames, null);
+                Animal animal = new Animal(txtName.Text, cbSex.Text, txtBreed.Text, int.Parse(txtSize.Text), int.Parse(txtWeight.Text), int.Parse(txtAge.Text), int.Parse(txtChip.Text), filenames, null, null);
                 animals.Add(animal);
                 this.Close();
             }

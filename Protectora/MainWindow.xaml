@@ -9,7 +9,7 @@
     
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/Images/background.jpg"/>
+            <ImageBrush ImageSource="Images/background.jpg"/>
         </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="115*"/>

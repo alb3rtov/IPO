@@ -17,8 +17,9 @@ namespace Protectora
         public int Chip { set; get; }
         public List<string> Pictures { set; get; }
         public Sponsor Sponsor { set; get; }
+        public Uri Video { set; get; }
 
-        public Animal(string name, string sex, string breed, int size, int weight, int age, int chip, List<string> pictures, Sponsor sponsor) 
+        public Animal(string name, string sex, string breed, int size, int weight, int age, int chip, List<string> pictures, Sponsor sponsor, Uri video) 
         {
             Name = name;
             Sex = sex;
@@ -29,6 +30,7 @@ namespace Protectora
             Chip = chip;
             Pictures = pictures;
             Sponsor = sponsor;
+            Video = video;
         }
     }
 }

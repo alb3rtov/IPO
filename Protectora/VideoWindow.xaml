@@ -1,0 +1,21 @@
+﻿<Window x:Class="Protectora.VideoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Protectora"
+        mc:Ignorable="d"
+        Closing="Window_Closing"
+        Title="VideoWindow" Height="450" Width="696" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <StackPanel Margin="10,10,10,20">
+            <Label x:Name="lblName"  FontSize="20" Height="57" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+            <MediaElement x:Name="meVideo" Source="{Binding Video}" LoadedBehavior="Play" UnloadedBehavior="Play" Visibility="Visible" Height="289" Width="501" />
+            <StackPanel Orientation="Horizontal" Width="200" HorizontalAlignment="Center" Height="32">
+                <Button x:Name="btbPlay" Content="Play" Width="100" Click="btbPlay_Click"  ></Button>
+                <Button x:Name="btbStop" Content="Stop" Width="100" Click="btbStop_Click" ></Button>
+            </StackPanel>
+        </StackPanel>
+
+    </Grid>
+</Window>
