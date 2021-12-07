@@ -1,13 +1,12 @@
-﻿<Window x:Class="Protectora.AddAnimal"
+﻿<Window x:Class="Protectora.EditAnimal"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Protectora"
-        mc:Ignorable="d"
         Closing="Window_Closing"
-        Title="Añadir animal" Height="678" Width="363" WindowStartupLocation="CenterScreen">
-
+        mc:Ignorable="d"
+        Title="Editar animal" Height="678" Width="363" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="9*"/>
@@ -38,7 +37,7 @@
             <ColumnDefinition Width="22*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBox x:Name="txtName" Text="" VerticalContentAlignment="Center" TextWrapping="Wrap" Margin="0,10,0,0" Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="2" Grid.RowSpan="2" LostFocus="txtName_LostFocus" KeyUp="txtName_KeyUp">
+        <TextBox x:Name="txtName" Text="{Binding Name}" VerticalContentAlignment="Center" TextWrapping="Wrap" Margin="0,10,0,0" Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="2" Grid.RowSpan="2" LostFocus="txtName_LostFocus" KeyUp="txtName_KeyUp">
             <TextBox.Style>
                 <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
                     <Style.Resources>
@@ -68,7 +67,7 @@
             <ComboBoxItem Content="Hembra"/>
         </ComboBox>
 
-        <TextBox x:Name="txtBreed" VerticalContentAlignment="Center" TextWrapping="Wrap" Margin="18,20,0,0" Grid.Column="2" Grid.Row="4" Grid.RowSpan="2" LostFocus="txtBreed_LostFocus" KeyUp="txtBreed_KeyUp" Grid.ColumnSpan="2">
+        <TextBox x:Name="txtBreed" Text="{Binding Breed}" VerticalContentAlignment="Center" TextWrapping="Wrap" Margin="18,20,0,0" Grid.Column="2" Grid.Row="4" Grid.RowSpan="2" LostFocus="txtBreed_LostFocus" KeyUp="txtBreed_KeyUp" Grid.ColumnSpan="2">
 
             <TextBox.Style>
                 <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
@@ -94,7 +93,7 @@
             </TextBox.Style>
         </TextBox>
 
-        <TextBox x:Name="txtSize" VerticalContentAlignment="Center" TextWrapping="Wrap" Margin="0,20,18,1" Grid.Column="1" Grid.Row="6" LostFocus="txtSize_LostFocus" KeyUp="txtSize_KeyUp" Grid.RowSpan="2" Grid.ColumnSpan="2">
+        <TextBox x:Name="txtSize" Text="{Binding Size}" VerticalContentAlignment="Center" TextWrapping="Wrap" Margin="0,20,18,1" Grid.Column="1" Grid.Row="6" LostFocus="txtSize_LostFocus" KeyUp="txtSize_KeyUp" Grid.RowSpan="2" Grid.ColumnSpan="2">
             <TextBox.Style>
                 <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
                     <Style.Resources>
@@ -121,7 +120,7 @@
 
         </TextBox>
 
-        <TextBox x:Name="txtWeight" VerticalContentAlignment="Center" TextWrapping="Wrap" Margin="18,20,0,1" Grid.Column="2" Grid.Row="6" LostFocus="txtWeight_LostFocus" KeyUp="txtWeight_KeyUp" Grid.RowSpan="2" Grid.ColumnSpan="2">
+        <TextBox x:Name="txtWeight" Text="{Binding Weight}" VerticalContentAlignment="Center" TextWrapping="Wrap" Margin="18,20,0,1" Grid.Column="2" Grid.Row="6" LostFocus="txtWeight_LostFocus" KeyUp="txtWeight_KeyUp" Grid.RowSpan="2" Grid.ColumnSpan="2">
 
             <TextBox.Style>
                 <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
@@ -147,7 +146,7 @@
             </TextBox.Style>
         </TextBox>
 
-        <TextBox x:Name="txtAge" Text="" TextWrapping="Wrap" VerticalContentAlignment="Center" Margin="0,20,18,0" Grid.Column="1" Grid.Row="8" Grid.RowSpan="2" LostFocus="txtAge_LostFocus" KeyUp="txtAge_KeyUp" Grid.ColumnSpan="2">
+        <TextBox x:Name="txtAge" Text="{Binding Age}" TextWrapping="Wrap" VerticalContentAlignment="Center" Margin="0,20,18,0" Grid.Column="1" Grid.Row="8" Grid.RowSpan="2" LostFocus="txtAge_LostFocus" KeyUp="txtAge_KeyUp" Grid.ColumnSpan="2">
             <TextBox.Style>
                 <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
                     <Style.Resources>
@@ -172,7 +171,7 @@
             </TextBox.Style>
         </TextBox>
 
-        <TextBox x:Name="txtChip" Text="" TextWrapping="Wrap" VerticalContentAlignment="Center" Margin="18,20,0,0" Grid.Column="2" Grid.Row="8" Grid.RowSpan="2" LostFocus="txtChip_LostFocus" KeyUp="txtChip_KeyUp" Grid.ColumnSpan="2">
+        <TextBox x:Name="txtChip" Text="{Binding Chip}" TextWrapping="Wrap" VerticalContentAlignment="Center" Margin="18,20,0,0" Grid.Column="2" Grid.Row="8" Grid.RowSpan="2" LostFocus="txtChip_LostFocus" KeyUp="txtChip_KeyUp" Grid.ColumnSpan="2">
             <TextBox.Style>
                 <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
                     <Style.Resources>
@@ -216,28 +215,28 @@
             <RadioButton x:Name="rdChildrenSi" Content="Si" Width="70" GroupName="gnCats" FontSize="14" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
             <RadioButton x:Name="rdChildrenNo" Content="No" Width="70"  GroupName="gnCats" FontSize="14" VerticalContentAlignment="Center"/>
         </StackPanel>
-        <Button x:Name="addImages3" Margin="0,15,18,0" Click="addImages_Click" Grid.Column="1" Grid.Row="14" BorderBrush="Black" Grid.RowSpan="2" Grid.ColumnSpan="2">
+        <Button x:Name="addImages3" Margin="0,15,18,0" Click="addImages_Click" Grid.Column="1" Grid.Row="14" BorderBrush="Black" Grid.RowSpan="2" Grid.ColumnSpan="2" GotFocus="addImages3_GotFocus">
             <Button.Background>
-                <ImageBrush ImageSource="Images/default_animal3.png" Stretch="Uniform"/>
+                <ImageBrush ImageSource="{Binding Pictures[2]}" Stretch="Fill"/>
             </Button.Background>
         </Button>
-        <Button x:Name="addImages2" Click="addImages_Click" Grid.Column="2" Grid.Row="12" BorderBrush="Black" Margin="18,15,0,0" Grid.ColumnSpan="2" Grid.RowSpan="2">
+        <Button x:Name="addImages2" Click="addImages_Click" Grid.Column="2" Grid.Row="12" BorderBrush="Black" Margin="18,15,0,0" Grid.ColumnSpan="2" Grid.RowSpan="2" GotFocus="addImages2_GotFocus">
             <Button.Background>
-                <ImageBrush ImageSource="Images/default_animal3.png" Stretch="Uniform"/>
+                <ImageBrush ImageSource="{Binding Pictures[1]}" Stretch="Fill"/>
             </Button.Background>
         </Button>
-        <Button x:Name="addImages1" Click="addImages_Click" Grid.Column="1" Grid.Row="12" BorderBrush="Black" Margin="0,15,18,0" Grid.ColumnSpan="2" Grid.RowSpan="2">
+        <Button x:Name="addImages1" Click="addImages_Click" Grid.Column="1" Grid.Row="12" BorderBrush="Black" Margin="0,15,18,0" Grid.ColumnSpan="2" Grid.RowSpan="2" GotFocus="addImages1_GotFocus" >
             <Button.Background>
-                <ImageBrush ImageSource="Images/default_animal3.png" Stretch="Uniform"/>
+                <ImageBrush ImageSource="{Binding Pictures[0]}" Stretch="Fill"/>
             </Button.Background>
         </Button>
-        <Button x:Name="addImages4" Margin="18,15,0,0" Click="addImages_Click" Grid.Column="2" Grid.Row="14" BorderBrush="Black" Grid.RowSpan="2" Grid.ColumnSpan="2">
+        <Button x:Name="addImages4" Margin="18,15,0,0" Click="addImages_Click" Grid.Column="2" Grid.Row="14" BorderBrush="Black" Grid.RowSpan="2" Grid.ColumnSpan="2" GotFocus="addImages4_GotFocus">
             <Button.Background>
-                <ImageBrush ImageSource="Images/default_animal3.png" Stretch="Uniform"/>
+                <ImageBrush ImageSource="{Binding Pictures[3]}" Stretch="Fill"/>
             </Button.Background>
         </Button>
-        <Button Style="{StaticResource RoundedButtonStyle}" Background="#FF556080" Foreground="White" x:Name="btbAdd" Content="Añadir" Click="btbAdd_Click" Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="16" Margin="0,20,0,0" Grid.RowSpan="2"/>
-        <Label Content="Añadir animal" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Height="32" Grid.ColumnSpan="3" HorizontalContentAlignment="Center" FontSize="16"/>
+        <Button Style="{StaticResource RoundedButtonStyle}" Background="#FF556080" Foreground="White" x:Name="btbEdit" Content="Editar" Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="16" Margin="0,20,0,0" Grid.RowSpan="2" Click="btbEdit_Click"/>
+        <Label Content="Editar animal" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Height="32" Grid.ColumnSpan="3" HorizontalContentAlignment="Center" FontSize="16"/>
 
 
 

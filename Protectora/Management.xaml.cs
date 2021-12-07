@@ -31,7 +31,8 @@ namespace Protectora
         bool addAction = false;
         int sizeList = 0;
         private Window exitWindow;
-        private Window newWindow;
+        private Window addWindow;
+        private Window editWindow;
         private Window sponsorWindow;
         private Window videoWindow;
 
@@ -207,8 +208,8 @@ namespace Protectora
                     this.IsEnabled = false;
                     addAction = true;
                     sizeList = animalList.Count;
-                    newWindow = new AddAnimal(this, animalList);
-                    newWindow.Show();
+                    addWindow = new AddAnimal(this, animalList);
+                    addWindow.Show();
                     break;
                 case "Socios":
                     break;
@@ -219,7 +220,6 @@ namespace Protectora
                     break;
             }
         }
-
 
         private void tcPestanas_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -294,14 +294,32 @@ namespace Protectora
                     int size = lstListaAnimales.Items.Count;
                     lstListaAnimales.SelectedItem = lstListaAnimales.Items[size - 1];
                     lstListaAnimales.ScrollIntoView(lstListaAnimales.Items[size - 1]);
-                    fixImageDisplay();
+                    
                 }
+                fixImageDisplay();
             }
         }
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
-
+            switch (((TabItem)tcPestanas.SelectedItem).Header.ToString())
+            {
+                case "Animales":
+                    this.IsEnabled = false;
+                    addAction = true;
+                    sizeList = animalList.Count;
+                    int index = getCurrentIndex();
+                    editWindow = new EditAnimal(this, animalList[index]);
+                    editWindow.Show();
+                    break;
+                case "Socios":
+                    break;
+                case "Voluntarios":
+                    break;
+                case "Ayuda":
+                    /*DISABLE BUTTONS*/
+                    break;
+            }
         }
 
         private void btbSponsor_Click(object sender, RoutedEventArgs e)
