@@ -97,10 +97,6 @@ namespace Protectora
                     {
                         addImages3.Background = brush;
                     }
-                    else if (addImages3.IsFocused)
-                    {
-                        addImages3.Background = brush;
-                    }
                     else if (addImages4.IsFocused)
                     {
                         addImages4.Background = brush;

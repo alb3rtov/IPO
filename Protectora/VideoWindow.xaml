@@ -10,7 +10,7 @@
     <Grid>
         <StackPanel Margin="10,10,10,10">
             <Label x:Name="lblName"  FontSize="20" Height="57" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="502" />
-            <MediaElement x:Name="meVideo" Source="{Binding Video}" Height="289" Width="501" Loaded="meVideo_Loaded" />
+            <MediaElement x:Name="meVideo" Source="{Binding Video}" Height="289" Width="501" ScrubbingEnabled="True" Loaded="meVideo_Loaded" MediaEnded="meVideo_MediaEnded" />
             <StackPanel Orientation="Horizontal" Width="118" Height="45">
                 <Button x:Name="btbBack" Click="btbBack_Click" Background="{x:Null}" BorderBrush="{x:Null}">
                     <Image x:Name="imgBackward" Source="Images/backward.png" Width="35" />

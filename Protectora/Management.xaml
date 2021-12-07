@@ -137,17 +137,20 @@
 
                 </Grid>
             </TabItem>
-            <TabItem Header="Socios">
-                <Grid>
-                </Grid>
-            </TabItem>
             <TabItem Header="Voluntarios">
                 <Grid>
                 </Grid>
             </TabItem>
-            <TabItem Header="Ayuda">
+            <TabItem Header="Socios">
                 <Grid>
                 </Grid>
+            </TabItem>
+            <TabItem Header="Ayuda">
+                <ScrollViewer>
+                    <Grid>
+                        
+                    </Grid>
+                </ScrollViewer>
             </TabItem>
 
         </TabControl>

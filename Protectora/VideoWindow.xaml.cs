@@ -22,6 +22,7 @@ namespace Protectora
     {
         private Window parent;
         private bool paused = false;
+
         public VideoWindow(Window window, Animal animal)
         {
             InitializeComponent();
@@ -64,11 +65,28 @@ namespace Protectora
         private void btbForward_Click(object sender, RoutedEventArgs e)
         {
             meVideo.Position += TimeSpan.FromMilliseconds(5000);
+
+            if (paused)
+            {
+                meVideo.Play();
+                meVideo.Pause();
+            }
         }
 
         private void btbBack_Click(object sender, RoutedEventArgs e)
         {
             meVideo.Position -= TimeSpan.FromMilliseconds(5000);
+
+            if (paused)
+            {
+                meVideo.Play();
+                meVideo.Pause();
+            }
+        }
+
+        private void meVideo_MediaEnded(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

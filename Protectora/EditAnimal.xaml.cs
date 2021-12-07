@@ -34,6 +34,7 @@ namespace Protectora
         private bool checkaddImages2 = false;
         private bool checkaddImages3 = false;
         private bool checkaddImages4 = false;
+
         public EditAnimal(Window window, Animal a)
         {
             InitializeComponent();
@@ -45,6 +46,34 @@ namespace Protectora
             setRd(animal.Sterilized.ToString(), rdSterelizedSi, rdSterelizedNo);
             setRd(animal.SociableDogs.ToString(), rdDogsSi, rdDogsNo);
             setRd(animal.Ppp.ToString(), rdPPPSi, rdPPPNo);
+
+            if (animal.Pictures.Count >= 1) {
+                setImage(addImages1, animal.Pictures[0]);
+            }
+            if (animal.Pictures.Count >= 2) {
+                setImage(addImages2, animal.Pictures[1]);
+            }
+            if (animal.Pictures.Count >= 3) {
+                setImage(addImages3, animal.Pictures[2]);
+            }
+            if (animal.Pictures.Count >= 4) {
+                setImage(addImages4, animal.Pictures[3]);
+            }   
+        }
+
+        private void setImage(Button addImages, string image)
+        {
+            var brush = new ImageBrush();
+            
+            if (image.Substring(0, 1) == "I")
+            {
+                brush.ImageSource = new BitmapImage(new Uri("pack://application:,,,/" + image, UriKind.RelativeOrAbsolute));
+            }
+            else {
+                brush.ImageSource = new BitmapImage(new Uri(image, UriKind.RelativeOrAbsolute));
+            }
+
+            addImages.Background = brush;
         }
 
         private int getButtonPressed() {
@@ -99,35 +128,37 @@ namespace Protectora
             {
                 try
                 {
+                    if (animal.Pictures.Count > index)
+                    {
+                        animal.Pictures.RemoveAt(index);
+                        animal.Pictures.Insert(index, openDialog.FileName);
+                    }
+                    else {
+                        animal.Pictures.Add(openDialog.FileName);
+                    }
 
-                    //filenames.Add(openDialog.FileName);
-                    System.Diagnostics.Debug.WriteLine(animal.Pictures.Count);
-                    animal.Pictures.RemoveAt(index);
-                    System.Diagnostics.Debug.WriteLine(animal.Pictures.Count);
-                    animal.Pictures.Insert(index, openDialog.FileName);
-                    System.Diagnostics.Debug.WriteLine(animal.Pictures.Count);
                     var brush = new ImageBrush();
                     brush.ImageSource = new BitmapImage(new Uri(openDialog.FileName, UriKind.RelativeOrAbsolute));
 
                     if (addImages1.IsFocused)
                     {
                         addImages1.Background = brush;
+                        checkaddImages1 = false;
                     }
                     else if (addImages2.IsFocused)
                     {
                         addImages2.Background = brush;
+                        checkaddImages2 = false;
                     }
                     else if (addImages3.IsFocused)
                     {
                         addImages3.Background = brush;
-                    }
-                    else if (addImages3.IsFocused)
-                    {
-                        addImages3.Background = brush;
+                        checkaddImages3 = false;
                     }
                     else if (addImages4.IsFocused)
                     {
                         addImages4.Background = brush;
+                        checkaddImages4 = false;
                     }
                 }
                 catch (Exception ex)
