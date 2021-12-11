@@ -30,11 +30,11 @@
             <RowDefinition Height="15*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="22*"/>
-            <ColumnDefinition Width="151*"/>
-            <ColumnDefinition Width="19*"/>
-            <ColumnDefinition Width="150*"/>
-            <ColumnDefinition Width="22*"/>
+            <ColumnDefinition Width="11*"/>
+            <ColumnDefinition Width="76*"/>
+            <ColumnDefinition Width="8*"/>
+            <ColumnDefinition Width="75*"/>
+            <ColumnDefinition Width="11*"/>
         </Grid.ColumnDefinitions>
 
         <TextBox x:Name="txtName" Text="{Binding Name}" VerticalContentAlignment="Center" TextWrapping="Wrap" Margin="0,10,0,0" Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="2" Grid.RowSpan="2" LostFocus="txtName_LostFocus" KeyUp="txtName_KeyUp">
@@ -62,12 +62,18 @@
             </TextBox.Style>
         </TextBox>
 
-        <ComboBox SelectedIndex="0" x:Name="cbSex" Grid.Column="1" Margin="0,20,18,0" Grid.Row="4" Grid.RowSpan="2" VerticalContentAlignment="Center" Grid.ColumnSpan="2">
+        <Image x:Name="imgNameError"  Visibility="Hidden" Source="Images/info_error.png" Grid.Column="3" Margin="121,0,0,0" Grid.Row="3" HorizontalAlignment="Left" Width="15" VerticalAlignment="Center" Height="16">
+            <Image.ToolTip>
+                <ToolTip Background="LightCoral" Foreground="White" Content="El nombre debe de contener entre 2 y 12 carácteres"/>
+            </Image.ToolTip>
+        </Image>
+
+        <ComboBox SelectedIndex="0" x:Name="cbSex" Margin="22,20,0,0" Grid.Row="4" Grid.RowSpan="2" VerticalContentAlignment="Center" Grid.ColumnSpan="2">
             <ComboBoxItem Content="Macho"/>
             <ComboBoxItem Content="Hembra"/>
         </ComboBox>
 
-        <TextBox x:Name="txtBreed" Text="{Binding Breed}" VerticalContentAlignment="Center" TextWrapping="Wrap" Margin="18,20,0,0" Grid.Column="2" Grid.Row="4" Grid.RowSpan="2" LostFocus="txtBreed_LostFocus" KeyUp="txtBreed_KeyUp" Grid.ColumnSpan="2">
+        <TextBox x:Name="txtBreed" Text="{Binding Breed}" VerticalContentAlignment="Center" TextWrapping="Wrap" Margin="0,20,22,0" Grid.Column="3" Grid.Row="4" Grid.RowSpan="2" LostFocus="txtBreed_LostFocus" KeyUp="txtBreed_KeyUp" Grid.ColumnSpan="2">
 
             <TextBox.Style>
                 <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
@@ -93,7 +99,13 @@
             </TextBox.Style>
         </TextBox>
 
-        <TextBox x:Name="txtSize" Text="{Binding Size}" VerticalContentAlignment="Center" TextWrapping="Wrap" Margin="0,20,18,1" Grid.Column="1" Grid.Row="6" LostFocus="txtSize_LostFocus" KeyUp="txtSize_KeyUp" Grid.RowSpan="2" Grid.ColumnSpan="2">
+        <Image x:Name="imgBreedError"  Visibility="Hidden" Source="Images/info_error.png" Grid.Column="3" Margin="121,0,0,0" Grid.Row="5" HorizontalAlignment="Left" Width="15" VerticalAlignment="Center" Height="16">
+            <Image.ToolTip>
+                <ToolTip Background="LightCoral" Foreground="White" Content="La raza debe de contener entre 3 y 20 carácteres"/>
+            </Image.ToolTip>
+        </Image>
+
+        <TextBox x:Name="txtSize" Text="{Binding Size}" VerticalContentAlignment="Center" TextWrapping="Wrap" Margin="22,20,0,1" Grid.Row="6" LostFocus="txtSize_LostFocus" KeyUp="txtSize_KeyUp" Grid.RowSpan="2" Grid.ColumnSpan="2">
             <TextBox.Style>
                 <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
                     <Style.Resources>
@@ -120,7 +132,14 @@
 
         </TextBox>
 
-        <TextBox x:Name="txtWeight" Text="{Binding Weight}" VerticalContentAlignment="Center" TextWrapping="Wrap" Margin="18,20,0,1" Grid.Column="2" Grid.Row="6" LostFocus="txtWeight_LostFocus" KeyUp="txtWeight_KeyUp" Grid.RowSpan="2" Grid.ColumnSpan="2">
+
+        <Image x:Name="imgSizeError" Visibility="Hidden" Source="Images/info_error.png" Grid.Column="1" Margin="122,0,0,0" Grid.Row="7" HorizontalAlignment="Left" Width="15" VerticalAlignment="Center" Height="16">
+            <Image.ToolTip>
+                <ToolTip Background="LightCoral" Foreground="White" Content="El tamaño debe de estar entre 15 y 110 cm"/>
+            </Image.ToolTip>
+        </Image>
+
+        <TextBox x:Name="txtWeight" Text="{Binding Weight}" VerticalContentAlignment="Center" TextWrapping="Wrap" Margin="0,20,22,1" Grid.Column="3" Grid.Row="6" LostFocus="txtWeight_LostFocus" KeyUp="txtWeight_KeyUp" Grid.RowSpan="2" Grid.ColumnSpan="2">
 
             <TextBox.Style>
                 <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
@@ -146,7 +165,13 @@
             </TextBox.Style>
         </TextBox>
 
-        <TextBox x:Name="txtAge" Text="{Binding Age}" TextWrapping="Wrap" VerticalContentAlignment="Center" Margin="0,20,18,0" Grid.Column="1" Grid.Row="8" Grid.RowSpan="2" LostFocus="txtAge_LostFocus" KeyUp="txtAge_KeyUp" Grid.ColumnSpan="2">
+        <Image x:Name="imgWeightError" Visibility="Hidden" Source="Images/info_error.png" Grid.Column="3" Margin="121,0,0,0" Grid.Row="7" HorizontalAlignment="Left" Width="15" VerticalAlignment="Center" Height="16">
+            <Image.ToolTip>
+                <ToolTip Background="LightCoral" Foreground="White" Content="El peso debe de estar entre 5 y 99 kg"/>
+            </Image.ToolTip>
+        </Image>
+
+        <TextBox x:Name="txtAge" Text="{Binding Age}" TextWrapping="Wrap" VerticalContentAlignment="Center" Margin="22,20,0,0" Grid.Row="8" Grid.RowSpan="2" LostFocus="txtAge_LostFocus" KeyUp="txtAge_KeyUp" Grid.ColumnSpan="2">
             <TextBox.Style>
                 <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
                     <Style.Resources>
@@ -171,7 +196,13 @@
             </TextBox.Style>
         </TextBox>
 
-        <TextBox x:Name="txtChip" Text="{Binding Chip}" TextWrapping="Wrap" VerticalContentAlignment="Center" Margin="18,20,0,0" Grid.Column="2" Grid.Row="8" Grid.RowSpan="2" LostFocus="txtChip_LostFocus" KeyUp="txtChip_KeyUp" Grid.ColumnSpan="2">
+        <Image x:Name="imgAgeError" Visibility="Hidden" Source="Images/info_error.png" Grid.Column="1" Margin="122,0,0,0" Grid.Row="9" HorizontalAlignment="Left" Width="15" VerticalAlignment="Center" Height="16">
+            <Image.ToolTip>
+                <ToolTip Background="LightCoral" Foreground="White" Content="La edad debe de estar entre 0 y 25 años"/>
+            </Image.ToolTip>
+        </Image>
+
+        <TextBox x:Name="txtChip" Text="{Binding Chip}" TextWrapping="Wrap" VerticalContentAlignment="Center" Margin="0,20,22,0" Grid.Column="3" Grid.Row="8" Grid.RowSpan="2" LostFocus="txtChip_LostFocus" KeyUp="txtChip_KeyUp" Grid.ColumnSpan="2">
             <TextBox.Style>
                 <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
                     <Style.Resources>
@@ -195,17 +226,25 @@
                 </Style>
             </TextBox.Style>
         </TextBox>
+
+
+        <Image x:Name="imgChipError" Visibility="Hidden" Source="Images/info_error.png" Grid.Column="3" Margin="121,0,0,0" Grid.Row="9" HorizontalAlignment="Left" Width="15" VerticalAlignment="Center" Height="16">
+            <Image.ToolTip>
+                <ToolTip Background="LightCoral" Foreground="White" Content="El chip debe ser un número de 6 dígitos"/>
+            </Image.ToolTip>
+        </Image>
+
         <StackPanel Grid.Column="1" Grid.Row="11" HorizontalAlignment="Left" VerticalAlignment="Center" Width="72" Height="68">
             <Label Content="PPP" FontSize="14" Height="27" HorizontalContentAlignment="Left" VerticalContentAlignment="Top"/>
             <RadioButton x:Name="rdPPPSi" Content="Si" Width="71" GroupName="gnPPP" FontSize="14" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
             <RadioButton x:Name="rdPPPNo" Content="No" Width="71" GroupName="gnPPP" FontSize="14" VerticalContentAlignment="Center"/>
         </StackPanel>
-        <StackPanel Grid.Column="1" Grid.Row="11" HorizontalAlignment="Left" VerticalAlignment="Center" Width="79" Height="68" Grid.ColumnSpan="2" Margin="72,0,0,0">
+        <StackPanel Grid.Column="1" Grid.Row="11" HorizontalAlignment="Left" VerticalAlignment="Center" Width="79" Height="68" Margin="72,0,0,0">
             <Label Content="Esterilizado" FontSize="14" Height="27" HorizontalAlignment="Stretch"/>
             <RadioButton x:Name="rdSterelizedSi" Content="Si" Width="78"  GroupName="gnSterelized" FontSize="14" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
             <RadioButton x:Name="rdSterelizedNo" Content="No" Width="78"  GroupName="gnSterelized" FontSize="14" VerticalContentAlignment="Center"/>
         </StackPanel>
-        <StackPanel Grid.Column="2" Grid.Row="11" HorizontalAlignment="Left" VerticalAlignment="Center" Width="79" Height="68" Grid.ColumnSpan="2" Margin="18,0,0,0">
+        <StackPanel Grid.Column="3" Grid.Row="11" HorizontalAlignment="Left" VerticalAlignment="Center" Width="79" Height="68" Margin="1,0,0,0">
             <Label Content="Soc perros" FontSize="14" Height="27"/>
             <RadioButton x:Name="rdDogsSi" Content="Si" Width="79" GroupName="gnDogs" FontSize="14" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
             <RadioButton x:Name="rdDogsNo" Content="No" Width="79" GroupName="gnDogs"  FontSize="14" VerticalContentAlignment="Center"/>
@@ -215,22 +254,22 @@
             <RadioButton x:Name="rdChildrenSi" Content="Si" Width="70" GroupName="gnCats" FontSize="14" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
             <RadioButton x:Name="rdChildrenNo" Content="No" Width="70"  GroupName="gnCats" FontSize="14" VerticalContentAlignment="Center"/>
         </StackPanel>
-        <Button x:Name="addImages3" Margin="0,15,18,0" Click="addImages_Click" Grid.Column="1" Grid.Row="14" BorderBrush="Black" Grid.RowSpan="2" Grid.ColumnSpan="2" GotFocus="addImages3_GotFocus">
+        <Button x:Name="addImages3" Margin="22,15,0,0" Click="addImages_Click" Grid.Row="14" BorderBrush="Black" Grid.RowSpan="2" GotFocus="addImages3_GotFocus" Grid.ColumnSpan="2">
             <Button.Background>
                 <ImageBrush ImageSource="Images/default_animal3.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Button x:Name="addImages2" Click="addImages_Click" Grid.Column="2" Grid.Row="12" BorderBrush="Black" Margin="18,15,0,0" Grid.ColumnSpan="2" Grid.RowSpan="2" GotFocus="addImages2_GotFocus">
+        <Button x:Name="addImages2" Click="addImages_Click" Grid.Column="3" Grid.Row="12" BorderBrush="Black" Margin="0,15,22,0" Grid.RowSpan="2" GotFocus="addImages2_GotFocus" Grid.ColumnSpan="2">
             <Button.Background>
                 <ImageBrush ImageSource="Images/default_animal3.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Button x:Name="addImages1" Click="addImages_Click" Grid.Column="1" Grid.Row="12" BorderBrush="Black" Margin="0,15,18,0" Grid.ColumnSpan="2" Grid.RowSpan="2" GotFocus="addImages1_GotFocus" >
+        <Button x:Name="addImages1" Click="addImages_Click" Grid.Row="12" BorderBrush="Black" Margin="22,15,0,0" Grid.RowSpan="2" GotFocus="addImages1_GotFocus" Grid.ColumnSpan="2" >
             <Button.Background>
                 <ImageBrush ImageSource="Images/default_animal3.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Button x:Name="addImages4" Margin="18,15,0,0" Click="addImages_Click" Grid.Column="2" Grid.Row="14" BorderBrush="Black" Grid.RowSpan="2" Grid.ColumnSpan="2" GotFocus="addImages4_GotFocus">
+        <Button x:Name="addImages4" Margin="0,15,22,0" Click="addImages_Click" Grid.Column="3" Grid.Row="14" BorderBrush="Black" Grid.RowSpan="2" GotFocus="addImages4_GotFocus" Grid.ColumnSpan="2">
             <Button.Background>
                 <ImageBrush ImageSource="Images/default_animal3.png" Stretch="Uniform"/>
             </Button.Background>

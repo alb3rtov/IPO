@@ -176,6 +176,7 @@ namespace Protectora
                 txtName.BorderThickness = new Thickness(2);
                 txtName.BorderBrush = Brushes.Red;
                 txtName.Background = Brushes.LightCoral;
+                imgNameError.Visibility = Visibility.Visible;
                 checkName = false;
             }
             else
@@ -183,6 +184,7 @@ namespace Protectora
                 txtName.BorderThickness = new Thickness(1);
                 txtName.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFABADB3");
                 txtName.Background = Brushes.White;
+                imgNameError.Visibility = Visibility.Hidden;
                 checkName = true;
             }
         }
@@ -194,6 +196,7 @@ namespace Protectora
                 txtName.BorderThickness = new Thickness(1);
                 txtName.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFABADB3");
                 txtName.Background = Brushes.White;
+                imgNameError.Visibility = Visibility.Hidden;
                 checkName = true;
             }
         }
@@ -205,6 +208,7 @@ namespace Protectora
                 txtBreed.BorderThickness = new Thickness(2);
                 txtBreed.BorderBrush = Brushes.Red;
                 txtBreed.Background = Brushes.LightCoral;
+                imgBreedError.Visibility = Visibility.Visible;
                 checkBreed = false;
             }
             else
@@ -212,6 +216,7 @@ namespace Protectora
                 txtBreed.BorderThickness = new Thickness(1);
                 txtBreed.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFABADB3");
                 txtBreed.Background = Brushes.White;
+                imgBreedError.Visibility = Visibility.Hidden;
                 checkBreed = true;
             }
         }
@@ -223,6 +228,7 @@ namespace Protectora
                 txtBreed.BorderThickness = new Thickness(1);
                 txtBreed.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFABADB3");
                 txtBreed.Background = Brushes.White;
+                imgBreedError.Visibility = Visibility.Hidden;
                 checkBreed = true;
             }
         }
@@ -234,11 +240,12 @@ namespace Protectora
 
             if (isNumber)
             {
-                if (value < 0 || value > 99)
+                if (value < 15 || value > 110)
                 {
                     txtSize.BorderThickness = new Thickness(2);
                     txtSize.BorderBrush = Brushes.Red;
                     txtSize.Background = Brushes.LightCoral;
+                    imgSizeError.Visibility = Visibility.Visible;
                     checkSize = false;
                 }
                 else
@@ -246,6 +253,7 @@ namespace Protectora
                     txtSize.BorderThickness = new Thickness(1);
                     txtSize.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFABADB3");
                     txtSize.Background = Brushes.White;
+                    imgSizeError.Visibility = Visibility.Hidden;
                     checkSize = true;
                 }
             }
@@ -254,6 +262,7 @@ namespace Protectora
                 txtSize.BorderThickness = new Thickness(2);
                 txtSize.BorderBrush = Brushes.Red;
                 txtSize.Background = Brushes.LightCoral;
+                imgSizeError.Visibility = Visibility.Visible;
                 checkSize = false;
             }
         }
@@ -265,11 +274,12 @@ namespace Protectora
 
             if (isNumber)
             {
-                if (value >= 0 || value <= 99)
+                if (value >= 15 || value <= 110)
                 {
                     txtSize.BorderThickness = new Thickness(1);
                     txtSize.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFABADB3");
                     txtSize.Background = Brushes.White;
+                    imgSizeError.Visibility = Visibility.Hidden;
                     checkSize = true;
                 }
             }
@@ -282,11 +292,12 @@ namespace Protectora
 
             if (isNumber)
             {
-                if (value < 0 || value > 99)
+                if (value < 5 || value > 99)
                 {
                     txtWeight.BorderThickness = new Thickness(2);
                     txtWeight.BorderBrush = Brushes.Red;
                     txtWeight.Background = Brushes.LightCoral;
+                    imgWeightError.Visibility = Visibility.Visible;
                     checkWeight = false;
                 }
                 else
@@ -294,6 +305,7 @@ namespace Protectora
                     txtWeight.BorderThickness = new Thickness(1);
                     txtWeight.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFABADB3");
                     txtWeight.Background = Brushes.White;
+                    imgWeightError.Visibility = Visibility.Hidden;
                     checkWeight = true;
                 }
             }
@@ -302,6 +314,7 @@ namespace Protectora
                 txtWeight.BorderThickness = new Thickness(2);
                 txtWeight.BorderBrush = Brushes.Red;
                 txtWeight.Background = Brushes.LightCoral;
+                imgWeightError.Visibility = Visibility.Visible;
                 checkWeight = false;
             }
         }
@@ -313,11 +326,12 @@ namespace Protectora
 
             if (isNumber)
             {
-                if (value >= 0 || value <= 99)
+                if (value >= 5 || value <= 99)
                 {
                     txtWeight.BorderThickness = new Thickness(1);
                     txtWeight.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFABADB3");
                     txtWeight.Background = Brushes.White;
+                    imgWeightError.Visibility = Visibility.Hidden;
                     checkWeight = true;
                 }
             }
@@ -335,6 +349,7 @@ namespace Protectora
                     txtAge.BorderThickness = new Thickness(2);
                     txtAge.BorderBrush = Brushes.Red;
                     txtAge.Background = Brushes.LightCoral;
+                    imgAgeError.Visibility = Visibility.Visible;
                     checkAge = false;
                 }
                 else
@@ -342,6 +357,7 @@ namespace Protectora
                     txtAge.BorderThickness = new Thickness(1);
                     txtAge.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFABADB3");
                     txtAge.Background = Brushes.White;
+                    imgAgeError.Visibility = Visibility.Hidden;
                     checkAge = true;
                 }
             }
@@ -350,6 +366,7 @@ namespace Protectora
                 txtAge.BorderThickness = new Thickness(2);
                 txtAge.BorderBrush = Brushes.Red;
                 txtAge.Background = Brushes.LightCoral;
+                imgAgeError.Visibility = Visibility.Visible;
                 checkAge = false;
             }
         }
@@ -366,6 +383,7 @@ namespace Protectora
                     txtAge.BorderThickness = new Thickness(1);
                     txtAge.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFABADB3");
                     txtAge.Background = Brushes.White;
+                    imgAgeError.Visibility = Visibility.Hidden;
                     checkAge = true;
                 }
             }
@@ -383,6 +401,7 @@ namespace Protectora
                     txtChip.BorderThickness = new Thickness(2);
                     txtChip.BorderBrush = Brushes.Red;
                     txtChip.Background = Brushes.LightCoral;
+                    imgChipError.Visibility = Visibility.Visible;
                     checkChip = false;
                 }
                 else
@@ -390,6 +409,7 @@ namespace Protectora
                     txtChip.BorderThickness = new Thickness(1);
                     txtChip.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFABADB3");
                     txtChip.Background = Brushes.White;
+                    imgChipError.Visibility = Visibility.Hidden;
                     checkChip = true;
                 }
             }
@@ -398,6 +418,7 @@ namespace Protectora
                 txtChip.BorderThickness = new Thickness(2);
                 txtChip.BorderBrush = Brushes.Red;
                 txtChip.Background = Brushes.LightCoral;
+                imgChipError.Visibility = Visibility.Visible;
                 checkChip = false;
             }
         }
@@ -414,9 +435,14 @@ namespace Protectora
                     txtChip.BorderThickness = new Thickness(1);
                     txtChip.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFABADB3");
                     txtChip.Background = Brushes.White;
+                    imgChipError.Visibility = Visibility.Hidden;
                     checkChip = true;
                 }
             }
+        }
+        private string getRadioButton(RadioButton rdYes)
+        {
+            return (rdYes.IsChecked == true) ? "Si" : "No";
         }
 
         private void btbEdit_Click(object sender, RoutedEventArgs e)
@@ -432,18 +458,11 @@ namespace Protectora
 
             if (checkName && checkBreed && checkSize && checkWeight && checkAge && checkChip)
                 {
-                /*               
-                animal.Age = Convert.ToInt32(txtAge.Text);
-                animal.Breed = txtBreed.Text;
-                animal.Name = txtName.Text;
-                animal.Chip = Convert.ToInt32(txtChip.Text);
-                //animal.Pictures = 
-                animal.Ppp = getRadioButton(rdPPPSi);
-                animal.Size = Convert.ToInt32(txtSize.Text);
-                animal.Weight = Convert.ToInt32(txtWeight.Text);
-                animal.SociableChildren = getRadioButton(rdChildrenSi);
+                animal.Sex = cbSex.Text;
+                animal.Ppp = getRadioButton(rdPPPSi); 
+                animal.Sterilized = getRadioButton(rdSterelizedSi);
                 animal.SociableDogs = getRadioButton(rdDogsSi);
-                animal.Sterilized = getRadioButton(rdSterelizedSi);*/
+                animal.SociableChildren = getRadioButton(rdChildrenSi);
                 animal.Video = animal.Video;
                 animal.Sponsor = animal.Sponsor;
                 this.Close();

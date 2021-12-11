@@ -10,12 +10,12 @@
         <ImageBrush ImageSource="Images/window.png"/>
     </Window.Background>
     <Grid>
-        <Label Content="¿Desea salir?" Margin="92,99,86,76"/>
-        <Button x:Name="btbYes" Margin="147,131,62,33" Content="Si" Click="btbYes_Click">
-            
+        <Label Content="¿Desea salir?"  Margin="0,96,0,0" Foreground="White" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <Button  Style="{StaticResource RoundedButtonStyle}" Background="#FF556080" Foreground="White" x:Name="btbYes" Margin="144,137,65,33" Content="Si" Click="btbYes_Click">
+
         </Button>
 
-        <Button x:Name="btbNo" Margin="62,131,147,33" Content="No" Click="btbNo_Click" >
+        <Button  Style="{StaticResource RoundedButtonStyle}" Background="#FF556080" Foreground="White" x:Name="btbNo" Margin="66,137,143,33" Content="No" Click="btbNo_Click" >
 
         </Button>
     </Grid>

@@ -283,19 +283,35 @@ namespace Protectora
                 fixImageDisplay();
             }
         }
+        private void updateAnimalsDetails() {
+
+            if (animalList.Count != 0)
+            {
+                int index = getCurrentIndex();
+                Debug.WriteLine("Hola");
+                Animal aux = animalList[index];
+                lblSex.Content = aux.Sex;
+                lblPpp.Content = aux.Ppp;
+                lblSociableChildren.Content = aux.SociableChildren;
+                lblSociableDogs.Content = aux.SociableDogs;
+                lblSterilized.Content = aux.Sterilized;
+            }
+        }
 
         private void Window_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             if (this.IsEnabled && addAction) {
+               
                 if (sizeList != animalList.Count)
                 {
+                    Debug.WriteLine("dksajdsa");
                     sizeList = animalList.Count;
                     addAction = false;
                     int size = lstListaAnimales.Items.Count;
                     lstListaAnimales.SelectedItem = lstListaAnimales.Items[size - 1];
                     lstListaAnimales.ScrollIntoView(lstListaAnimales.Items[size - 1]);
-                    
                 }
+                updateAnimalsDetails();
                 fixImageDisplay();
             }
         }

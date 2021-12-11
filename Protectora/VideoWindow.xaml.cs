@@ -86,7 +86,8 @@ namespace Protectora
 
         private void meVideo_MediaEnded(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            meVideo.Stop();
+            meVideo.Play();
         }
     }
 }

@@ -6,10 +6,7 @@
         xmlns:local="clr-namespace:Protectora"
         mc:Ignorable="d"
         Closing="Window_Closing"
-        Title="Gestion de protectora" Height="450" Width="800" WindowStartupLocation="CenterScreen" IsEnabledChanged="Window_IsEnabledChanged">
-    <Window.Background>
-        <ImageBrush ImageSource="Images/background.jpg"/>
-    </Window.Background>
+        Title="Gestion de protectora" Height="450" Width="800" WindowStartupLocation="CenterScreen" IsEnabledChanged="Window_IsEnabledChanged" Background="#FFD8ECFF">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="7*"/>
@@ -95,7 +92,7 @@
                                 <Label x:Name="lblSterilized" Content="{Binding SelectedItem.Sterilized, ElementName=lstListaAnimales}"/>
                                 <Label FontWeight="Bold" Content="Social niños:"/>
                                 <Label x:Name="lblSociableChildren" Content="{Binding SelectedItem.SociableChildren, ElementName=lstListaAnimales}"/>
-                                
+
                             </StackPanel>
                             <StackPanel x:Name="spDetallesAnimal2" Orientation="Vertical"  Margin="111,36,356,0">
 
@@ -127,14 +124,6 @@
                             </StackPanel>
                         </Grid>
                     </ScrollViewer>
-
-
-
-
-
-
-
-
                 </Grid>
             </TabItem>
             <TabItem Header="Voluntarios">
@@ -148,7 +137,17 @@
             <TabItem Header="Ayuda">
                 <ScrollViewer>
                     <Grid>
-                        
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Gestión de animales" FontSize="17" FontWeight="Bold"/>
+                            </StackPanel>
+                            <StackPanel>
+                                <Label Content="Gestión de voluntarios" FontSize="17" FontWeight="Bold"/>
+                            </StackPanel>
+                            <StackPanel>
+                                <Label Content="Gestión de socios" FontSize="17" FontWeight="Bold"/>
+                            </StackPanel>
+                        </StackPanel>
                     </Grid>
                 </ScrollViewer>
             </TabItem>
