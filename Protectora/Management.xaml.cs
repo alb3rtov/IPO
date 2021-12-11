@@ -288,7 +288,6 @@ namespace Protectora
             if (animalList.Count != 0)
             {
                 int index = getCurrentIndex();
-                Debug.WriteLine("Hola");
                 Animal aux = animalList[index];
                 lblSex.Content = aux.Sex;
                 lblPpp.Content = aux.Ppp;
@@ -304,7 +303,6 @@ namespace Protectora
                
                 if (sizeList != animalList.Count)
                 {
-                    Debug.WriteLine("dksajdsa");
                     sizeList = animalList.Count;
                     addAction = false;
                     int size = lstListaAnimales.Items.Count;

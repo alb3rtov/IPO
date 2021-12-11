@@ -1,6 +1,6 @@
 <Sponsors>
 	<Sponsor Dni="11111111" Firstname="Antonio" Lastname="Lopez" PhoneNumber="666666666" PaymentMethod="Transferencia" BankAccountNumber="ES11 1111 1111 11 11 1111 1111" MonthlyContribution="120" StartSponsorship="10-12-2016" Picture="Images/photo1.jpg"/>
-	<Sponsor Dni="22222222" Firstname="Fernando" Lastname="Martinez" PhoneNumber="677777777" PaymentMethod="Transferencia"  BankAccountNumber="ES22 2222 2222 22 22 2222 2222" MonthlyContribution="170" StartSponsorship="12-07-2015" Picture="Images/photo2.jpg"/>
+	<Sponsor Dni="22222222" Firstname="Fernanda" Lastname="Martinez" PhoneNumber="677777777" PaymentMethod="Transferencia"  BankAccountNumber="ES22 2222 2222 22 22 2222 2222" MonthlyContribution="170" StartSponsorship="12-07-2015" Picture="Images/photo2.jpg"/>
 	<Sponsor Dni="33333333" Firstname="Luis" Lastname="Rodriguez" PhoneNumber="688888888" PaymentMethod="Transferencia"  BankAccountNumber="ES33 3333 3333 33 33 3333 3333" MonthlyContribution="200" StartSponsorship="23-10-2010" Picture="Images/photo3.jpg"/>
 	<Sponsor Dni="44444444" Firstname="Emilio" Lastname="Ramos" PhoneNumber="699999999" PaymentMethod="Transferencia" BankAccountNumber="ES44 4444 4444 44 44 4444 4444" MonthlyContribution="230" StartSponsorship="31-7-2018" Picture="Images/photo4.jpg"/>
 	<Sponsor Dni="55555555" Firstname="Pedro" Lastname="Perez" PhoneNumber="611111111" PaymentMethod="Transferencia"  BankAccountNumber="ES55 5555 5555 55 55 5555 5555" MonthlyContribution="200" StartSponsorship="23-07-2017" Picture="Images/photo5.jpg"/>

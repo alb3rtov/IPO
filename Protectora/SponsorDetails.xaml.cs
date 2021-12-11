@@ -26,6 +26,8 @@ namespace Protectora
             InitializeComponent();
             parent = window;
             DataContext = sponsor;
+
+            txtName.Text = " " + sponsor.Firstname + " " + sponsor.Lastname + " ";
         }
 
         private void Window_Closing(object sender, CancelEventArgs e)

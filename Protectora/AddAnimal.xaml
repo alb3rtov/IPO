@@ -65,7 +65,7 @@
 
         <Image x:Name="imgNameError"  Visibility="Hidden" Source="Images/info_error.png" Grid.Column="3" Margin="121,0,0,0" Grid.Row="3" HorizontalAlignment="Left" Width="15" VerticalAlignment="Center" Height="16">
             <Image.ToolTip>
-                <ToolTip Background="LightCoral" Foreground="White" Content="El nombre debe de contener entre 2 y 12 carácteres"/>
+                <ToolTip Background="LightCoral" Foreground="White" Content="El nombre debe de contener entre 2 y 12 caracteres"/>
             </Image.ToolTip>
         </Image>
 
@@ -102,7 +102,7 @@
 
         <Image x:Name="imgBreedError"  Visibility="Hidden" Source="Images/info_error.png" Grid.Column="3" Margin="121,0,0,0" Grid.Row="5" HorizontalAlignment="Left" Width="15" VerticalAlignment="Center" Height="16">
             <Image.ToolTip>
-                <ToolTip Background="LightCoral" Foreground="White" Content="La raza debe de contener entre 3 y 20 carácteres"/>
+                <ToolTip Background="LightCoral" Foreground="White" Content="La raza debe de contener entre 3 y 20 caracteres"/>
             </Image.ToolTip>
         </Image>
 
