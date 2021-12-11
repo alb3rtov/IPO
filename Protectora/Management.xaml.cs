@@ -25,6 +25,7 @@ namespace Protectora
     public partial class Management : Window
     {
         public ObservableCollection<Animal> animalList;
+        public ObservableCollection<Volunteer> volunteerList;
         public List<Sponsor> sponsorList;
         private int imgIndex = 0;
         bool first = true;
@@ -44,9 +45,9 @@ namespace Protectora
 
             animalList = LoadContentAnimalsXML();
             sponsorList = LoadContentSponsorXML();
+            volunteerList = LoadContentVolunteerXML();
+
             addSponsor();
-
-
 
             DataContext = animalList;
         }
@@ -56,6 +57,34 @@ namespace Protectora
                 animalList[i].Sponsor = sponsorList[i];
             }
         }
+
+        private ObservableCollection<Volunteer> LoadContentVolunteerXML()
+        {
+            ObservableCollection<Volunteer> list = new ObservableCollection<Volunteer>();
+            // Cargar contenido de prueba
+            XmlDocument doc = new XmlDocument();
+            var fichero = Application.GetResourceStream(new Uri("Data/volunteers.xml", UriKind.Relative));
+            doc.Load(fichero.Stream);
+            foreach (XmlNode node in doc.DocumentElement.ChildNodes)
+            {
+                var newVolunteer = new Volunteer("","",0,"",0,null, "", "","");
+
+                newVolunteer.Firstname = node.Attributes["Firstname"].Value;
+                newVolunteer.Lastname = node.Attributes["Lastname"].Value;
+                newVolunteer.Dni = Convert.ToInt32(node.Attributes["Dni"].Value);
+                newVolunteer.Email = node.Attributes["Email"].Value;
+                newVolunteer.PhoneNumber = Convert.ToInt32(node.Attributes["PhoneNumber"].Value);
+                newVolunteer.Studies = node.Attributes["Studies"].Value;
+                newVolunteer.TimeAvailability = node.Attributes["TimeAvailability"].Value;
+                newVolunteer.ZoneAvailability = node.Attributes["ZoneAvailability"].Value;
+                newVolunteer.Photo = new Uri(node.Attributes["Photo"].Value, UriKind.RelativeOrAbsolute);
+     
+                list.Add(newVolunteer);
+            }
+
+            return list;
+        }
+
 
         private List<Sponsor> LoadContentSponsorXML() 
         {
@@ -170,14 +199,13 @@ namespace Protectora
             fixImageDisplay();
         }
 
-        private void btnEliminar_Click(object sender, RoutedEventArgs e)
-        {
-
+        private void deleteAnimal() {
             if (animalList.Count == 0)
             {
                 MessageBox.Show("No existen animales en la lista", "Error al eliminar animal", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            else {
+            else
+            {
                 int index = getCurrentIndex();
 
                 if (MessageBox.Show("¿Desea eliminar el animal " + animalList[index].Name + "?", "Eliminar animal", MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.Yes)
@@ -197,7 +225,25 @@ namespace Protectora
                         imgPicture.Visibility = Visibility.Hidden;
                     }
                 }
-            }            
+            }
+        }
+
+        private void btnEliminar_Click(object sender, RoutedEventArgs e)
+        {
+
+            switch (((TabItem)tcPestanas.SelectedItem).Header.ToString())
+            {
+                case "Animales":
+                    deleteAnimal();
+                    break;
+                case "Socios":
+                    break;
+                case "Voluntarios":
+                    break;
+
+            }
+
+                       
         }
 
         private void btnAniadir_Click(object sender, RoutedEventArgs e)
@@ -215,9 +261,6 @@ namespace Protectora
                     break;
                 case "Voluntarios":
                     break;
-                case "Ayuda":
-                    /*DISABLE BUTTONS*/
-                    break;
             }
         }
 
@@ -228,22 +271,37 @@ namespace Protectora
                 switch (((TabItem)tcPestanas.SelectedItem).Header.ToString())
                 {
                     case "Animales":
+                        btnAdd.IsEnabled = true;
+                        btnEdit.IsEnabled = true;
+                        btnDelete.IsEnabled = true;
                         btnAdd.ToolTip = "Añadir animal";
                         btnEdit.ToolTip = "Editar animal";
                         btnDelete.ToolTip = "Eliminar animal";
+                        DataContext = animalList;
+                        lstListaAnimales.SelectedItem = lstListaAnimales.Items[0];
+                        lstListaAnimales.ScrollIntoView(lstListaAnimales.Items[0]);
+                        break;
+                    case "Voluntarios":
+                        btnAdd.IsEnabled = true;
+                        btnEdit.IsEnabled = true;
+                        btnDelete.IsEnabled = true;
+                        btnAdd.ToolTip = "Añadir voluntario";
+                        btnEdit.ToolTip = "Editar voluntario";
+                        btnDelete.ToolTip = "Eliminar voluntario";
+                        DataContext = volunteerList;
                         break;
                     case "Socios":
+                        btnAdd.IsEnabled = true;
+                        btnEdit.IsEnabled = true;
+                        btnDelete.IsEnabled = true;
                         btnAdd.ToolTip = "Añadir socio";
                         btnEdit.ToolTip = "Editar socio";
                         btnDelete.ToolTip = "Eliminar socio";
                         break;
-                    case "Voluntarios":
-                        btnAdd.ToolTip = "Añadir voluntario";
-                        btnEdit.ToolTip = "Editar voluntario";
-                        btnDelete.ToolTip = "Eliminar voluntario";
-                        break;
                     case "Ayuda":
-                        /*DISABLE BUTTONS*/
+                        btnAdd.IsEnabled = false;
+                        btnEdit.IsEnabled = false;
+                        btnDelete.IsEnabled = false;
                         break;
                 }
             }
@@ -329,9 +387,6 @@ namespace Protectora
                 case "Socios":
                     break;
                 case "Voluntarios":
-                    break;
-                case "Ayuda":
-                    /*DISABLE BUTTONS*/
                     break;
             }
         }

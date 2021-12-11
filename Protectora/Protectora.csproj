@@ -14,10 +14,12 @@
     <None Remove="bg.jpg" />
     <None Remove="Data\animals.xml" />
     <None Remove="Data\sponsors.xml" />
+    <None Remove="Data\volunteers.xml" />
     <None Remove="default_animal.png" />
     <None Remove="default_imagel.png" />
     <None Remove="Images\add_c.png" />
     <None Remove="Images\add_c2.png" />
+    <None Remove="Images\animal.png" />
     <None Remove="Images\backward.png" />
     <None Remove="Images\Coco1.jpg" />
     <None Remove="Images\Coco2.jpg" />
@@ -30,12 +32,17 @@
     <None Remove="Images\edit_c2.png" />
     <None Remove="Images\error_info.png" />
     <None Remove="Images\forward.png" />
+    <None Remove="Images\gear.png" />
     <None Remove="Images\info_error.png" />
+    <None Remove="Images\laura.jpg" />
     <None Remove="Images\lock_icon_small.png" />
     <None Remove="Images\login_small.png" />
     <None Remove="Images\logout.png" />
     <None Remove="Images\log_out.png" />
     <None Remove="Images\log_out2.png" />
+    <None Remove="Images\manuel.jpg" />
+    <None Remove="Images\marcelo.jpg" />
+    <None Remove="Images\maria.jpg" />
     <None Remove="Images\Max1.jpg" />
     <None Remove="Images\Max2.jpg" />
     <None Remove="Images\Max3.jpg" />
@@ -43,6 +50,7 @@
     <None Remove="Images\next.png" />
     <None Remove="Images\next_b.png" />
     <None Remove="Images\next_button.png" />
+    <None Remove="Images\partner.png" />
     <None Remove="Images\pause.png" />
     <None Remove="Images\photo1.jpg" />
     <None Remove="Images\photo2.jpg" />
@@ -56,6 +64,7 @@
     <None Remove="Images\previous_button.png" />
     <None Remove="Images\remove_c.png" />
     <None Remove="Images\remove_c2.png" />
+    <None Remove="Images\roberto.jpg" />
     <None Remove="Images\Rocky1.jpg" />
     <None Remove="Images\Rocky2.jpg" />
     <None Remove="Images\Rocky3.jpg" />
@@ -71,12 +80,12 @@
     <None Remove="Images\Toby4.jpg" />
     <None Remove="Images\user.png" />
     <None Remove="Images\user_icon_small.png" />
+    <None Remove="Images\volunteer.png" />
     <None Remove="Images\window.png" />
     <None Remove="lock2.png" />
     <None Remove="lock_icon.png" />
     <None Remove="login.png" />
     <None Remove="logout.png" />
-    <None Remove="play_c.png" />
     <None Remove="reallock.png" />
     <None Remove="realuser.png" />
     <None Remove="user.png" />
@@ -87,8 +96,10 @@
   <ItemGroup>
     <Resource Include="Data\animals.xml" />
     <Resource Include="Data\sponsors.xml" />
+    <Resource Include="Data\volunteers.xml" />
     <Resource Include="Images\add_c.png" />
     <Resource Include="Images\add_c2.png" />
+    <Resource Include="Images\animal.png" />
     <Resource Include="Images\background.jpg" />
     <Resource Include="Images\backward.png" />
     <Resource Include="Images\bg.jpg" />
@@ -102,13 +113,18 @@
     <Resource Include="Images\edit_c2.png" />
     <Resource Include="Images\error_info.png" />
     <Resource Include="Images\forward.png" />
+    <Resource Include="Images\gear.png" />
     <Resource Include="Images\info_error.png" />
+    <Resource Include="Images\laura.jpg" />
     <Resource Include="Images\lock_icon.png" />
     <Resource Include="Images\lock_icon_small.png" />
     <Resource Include="Images\login_small.png" />
     <Resource Include="Images\logout.png" />
     <Resource Include="Images\log_out.png" />
     <Resource Include="Images\log_out2.png" />
+    <Resource Include="Images\manuel.jpg" />
+    <Resource Include="Images\marcelo.jpg" />
+    <Resource Include="Images\maria.jpg" />
     <Resource Include="Images\Max1.jpg" />
     <Resource Include="Images\Max2.jpg" />
     <Resource Include="Images\Max3.jpg" />
@@ -116,6 +132,7 @@
     <Resource Include="Images\next.png" />
     <Resource Include="Images\next_b.png" />
     <Resource Include="Images\next_button.png" />
+    <Resource Include="Images\partner.png" />
     <Resource Include="Images\pause.png" />
     <Resource Include="Images\photo1.jpg" />
     <Resource Include="Images\photo2.jpg" />
@@ -129,6 +146,7 @@
     <Resource Include="Images\previous_button.png" />
     <Resource Include="Images\remove_c.png" />
     <Resource Include="Images\remove_c2.png" />
+    <Resource Include="Images\roberto.jpg" />
     <Resource Include="Images\Rocky1.jpg" />
     <Resource Include="Images\Rocky2.jpg" />
     <Resource Include="Images\Rocky3.jpg" />
@@ -145,8 +163,8 @@
     <Resource Include="Images\user_icon.png" />
     <Resource Include="Images\login.png" />
     <Resource Include="Images\user_icon_small.png" />
+    <Resource Include="Images\volunteer.png" />
     <Resource Include="Images\window.png" />
-    <Resource Include="play_c.png" />
   </ItemGroup>
 
   <ItemGroup>

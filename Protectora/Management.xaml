@@ -128,6 +128,42 @@
             </TabItem>
             <TabItem Header="Voluntarios">
                 <Grid>
+                    <DataGrid x:Name="dgVolunteers" Margin="5" ItemsSource="{Binding}" AutoGenerateColumns="False">
+
+                        <DataGrid.Columns>
+                            
+                            <DataGridTextColumn Header="Dni" Binding="{Binding Dni}" />
+                            <DataGridTextColumn Header="Nombre" Binding="{Binding Firstname}" />
+                            <DataGridTextColumn Header="Apellido" Binding="{Binding Lastname}" />
+                            
+                           
+                            <DataGridTemplateColumn Header="Fotografia">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Image Width="60" Height="60" Source="{Binding Photo}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTextColumn Header="Teléfono" Binding="{Binding PhoneNumber}" />
+                            <DataGridTextColumn Header="Email" Binding="{Binding Email}" />
+                            <DataGridTextColumn Header="Disp. horaria" Binding="{Binding TimeAvailability}" />
+                            <DataGridTextColumn Header="Zona" Binding="{Binding ZoneAvailability}" />
+                            <DataGridTextColumn Header="Estudios" Binding="{Binding Studies}" />
+                            
+                            <!--
+                            <DataGridTemplateColumn Header="Alta en la videoteca">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <DatePicker SelectedDate="{Binding AltaEnVideoteca}" BorderBrush="Transparent" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn> -->
+                        </DataGrid.Columns>
+
+
+
+                    </DataGrid>
                 </Grid>
             </TabItem>
             <TabItem Header="Socios">
@@ -137,16 +173,65 @@
             <TabItem Header="Ayuda">
                 <ScrollViewer>
                     <Grid>
-                        <StackPanel>
-                            <StackPanel Orientation="Horizontal">
+                        <StackPanel Margin="10,10,0,0">
+                            <StackPanel Orientation="Horizontal"  >
+                                <Image Source="Images/animal.png" Height="22" Width="22"/>
                                 <Label Content="Gestión de animales" FontSize="17" FontWeight="Bold"/>
                             </StackPanel>
-                            <StackPanel>
+                            <StackPanel Orientation="Vertical" Width="694">
+                                <TextBlock x:Name="subHeaderText1" 
+                                            FontSize="14" 
+                                           TextWrapping="Wrap" 
+                                           Foreground="Black"
+                                           Text="En el menú de gestión de animales podrás ver, añadir, editar y eliminar animales. Para mostrar las características de una animal simplemente selecciona un animal y en la parte derecha del panel se mostrarán las características del animal seleccionado." />
+                                <TextBlock x:Name="subHeaderText2" 
+                                            FontSize="14" 
+                                           TextWrapping="Wrap" 
+                                           Foreground="Black"
+                                           Text="Dentro del panel derecho, podrás mostrar información, en el caso de este apadriano, sobre la persona que tiene apadriano el animal. Tambien podrás visualizar un vídeo del animal." Margin="0,5,0,0" />
+                            </StackPanel>
+                           
+                            
+                            <StackPanel Orientation="Horizontal"  >
+                                <Image Source="Images/volunteer.png" Height="22" Width="22"/>
                                 <Label Content="Gestión de voluntarios" FontSize="17" FontWeight="Bold"/>
                             </StackPanel>
-                            <StackPanel>
+                            <StackPanel Orientation="Vertical" Width="694">
+                                <TextBlock x:Name="subHeaderText3" 
+                                            FontSize="14" 
+                                           TextWrapping="Wrap" 
+                                           Foreground="Black"
+                                           Text="En el menú de gestión de animales podrás ver, añadir, editar y eliminar animales. Para mostrar las características de una animal simplemente selecciona un animal y en la parte derecha del panel se mostrarán las características del animal seleccionado." />
+                                <TextBlock x:Name="subHeaderText4" 
+                                            FontSize="14" 
+                                           TextWrapping="Wrap" 
+                                           Foreground="Black"
+                                           Text="Dentro del panel derecho, podrás mostrar información, en el caso de este apadriano, sobre la persona que tiene apadriano el animal. Tambien podrás visualizar un vídeo del animal." Margin="0,5,0,0" />
+                            </StackPanel>
+
+                            <StackPanel  Orientation="Horizontal" >
+                                <Image Source="Images/partner.png" Height="22" Width="22"/>
                                 <Label Content="Gestión de socios" FontSize="17" FontWeight="Bold"/>
                             </StackPanel>
+
+                            <StackPanel Orientation="Vertical" Width="694">
+                                <TextBlock x:Name="subHeaderText5" 
+                                            FontSize="14" 
+                                           TextWrapping="Wrap" 
+                                           Foreground="Black"
+                                           Text="En el menú de gestión de animales podrás ver, añadir, editar y eliminar animales. Para mostrar las características de una animal simplemente selecciona un animal y en la parte derecha del panel se mostrarán las características del animal seleccionado." />
+                                <TextBlock x:Name="subHeaderText6" 
+                                            FontSize="14" 
+                                           TextWrapping="Wrap" 
+                                           Foreground="Black"
+                                           Text="Dentro del panel derecho, podrás mostrar información, en el caso de este apadriano, sobre la persona que tiene apadriano el animal. Tambien podrás visualizar un vídeo del animal." Margin="0,5,0,0" />
+                            </StackPanel>
+
+                            <StackPanel  Orientation="Horizontal" >
+                                <Image Source="Images/gear.png" Height="22" Width="22"/>
+                                <Label Content="Botones dinámicos" FontSize="17" FontWeight="Bold"/>
+                            </StackPanel>
+
                         </StackPanel>
                     </Grid>
                 </ScrollViewer>
