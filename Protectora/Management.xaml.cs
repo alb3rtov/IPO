@@ -159,7 +159,6 @@ namespace Protectora
         }
         private int getCurrentIndex() {
             int index = 0;
-            Debug.WriteLine(animalList.Count);
 
             if (lblName.Content == null)
             {
@@ -178,8 +177,6 @@ namespace Protectora
                 }
             }
 
-            
-            //Debug.WriteLine(index);
             return index;
         }
         private void btbPreviousImage_Click(object sender, RoutedEventArgs e)
@@ -229,7 +226,6 @@ namespace Protectora
 
                 if (MessageBox.Show("¿Desea eliminar el animal " + animalList[index].Name + "?", "Eliminar animal", MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.Yes)
                 {
-                    Debug.WriteLine("IINDICDE: " + index);
                     animalList.RemoveAt(index);
                    
                     int size = lstListaAnimales.Items.Count;
@@ -334,6 +330,10 @@ namespace Protectora
                                 enableAnimalsButtons();
                                 lstListaAnimales.SelectedItem = lstListaAnimales.Items[0];
                                 lstListaAnimales.ScrollIntoView(lstListaAnimales.Items[0]);
+                                if (animalList[0].Video == null) {
+                                        btbSponsor.IsEnabled = false;
+                                        btbVideo.IsEnabled = false;
+                                }
                             }
                             else {
                                 disableAnimalsButtons();
@@ -436,6 +436,8 @@ namespace Protectora
                 lblSociableDogs.Content = aux.SociableDogs;
                 lblSterilized.Content = aux.Sterilized;
             }
+
+            
         }
 
         private void Window_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
@@ -451,7 +453,7 @@ namespace Protectora
                             addAction = false;
                             int size = lstListaAnimales.Items.Count;
                             lstListaAnimales.SelectedItem = lstListaAnimales.Items[size - 1];
-                            lstListaAnimales.ScrollIntoView(lstListaAnimales.Items[size - 1])
+                            lstListaAnimales.ScrollIntoView(lstListaAnimales.Items[size - 1]);
                         }
                         updateAnimalsDetails(getCurrentIndex());
                         fixImageDisplay(getCurrentIndex());
@@ -471,12 +473,19 @@ namespace Protectora
             switch (((TabItem)tcPestanas.SelectedItem).Header.ToString())
             {
                 case "Animales":
-                    this.IsEnabled = false;
-                    addAction = true;
-                    sizeList = animalList.Count;
-                    int index = getCurrentIndex();
-                    editWindow = new EditAnimal(this, animalList[index]);
-                    editWindow.Show();
+                    if (animalList.Count == 0)
+                    {
+                        MessageBox.Show("No existen animales en la lista", "Error al editar animal", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                    else
+                    {
+                        this.IsEnabled = false;
+                        addAction = true;
+                        sizeList = animalList.Count;
+                        int index = getCurrentIndex();
+                        editWindow = new EditAnimal(this, animalList[index]);
+                        editWindow.Show();
+                    }
                     break;
                 case "Voluntarios":
                     break;
