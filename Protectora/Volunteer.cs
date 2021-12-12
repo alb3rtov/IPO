@@ -17,8 +17,9 @@ namespace Protectora
         public string TimeAvailability { get; set; }
         public string ZoneAvailability { get; set; }
         public string Studies { get; set; }
+        public int Age { get; set; }
 
-        public Volunteer(string firstname, string lastname, int dni, string email, int phoneNumber, Uri photo, string timeAvailability, string zoneAvailability, string studies)
+        public Volunteer(string firstname, string lastname, int dni, string email, int phoneNumber, Uri photo, string timeAvailability, string zoneAvailability, string studies, int age)
         {
             Firstname = firstname;
             Lastname = lastname;
@@ -29,6 +30,7 @@ namespace Protectora
             TimeAvailability = timeAvailability;
             ZoneAvailability = zoneAvailability;
             Studies = studies;
+            Age = age;
         }
     }
 }

@@ -30,12 +30,16 @@ namespace Protectora
         private int imgIndex = 0;
         bool first = true;
         bool addAction = false;
+        bool deleteAction = false;
         int sizeList = 0;
         private Window exitWindow;
         private Window addWindow;
         private Window editWindow;
         private Window sponsorWindow;
         private Window videoWindow;
+        bool animalTab = false;
+        bool volunteerTab = false;
+        bool partnerTab = false;
 
         public Management(String user)
         {
@@ -67,7 +71,7 @@ namespace Protectora
             doc.Load(fichero.Stream);
             foreach (XmlNode node in doc.DocumentElement.ChildNodes)
             {
-                var newVolunteer = new Volunteer("","",0,"",0,null, "", "","");
+                var newVolunteer = new Volunteer("","",0,"",0,null, "", "","", 0);
 
                 newVolunteer.Firstname = node.Attributes["Firstname"].Value;
                 newVolunteer.Lastname = node.Attributes["Lastname"].Value;
@@ -78,7 +82,8 @@ namespace Protectora
                 newVolunteer.TimeAvailability = node.Attributes["TimeAvailability"].Value;
                 newVolunteer.ZoneAvailability = node.Attributes["ZoneAvailability"].Value;
                 newVolunteer.Photo = new Uri(node.Attributes["Photo"].Value, UriKind.RelativeOrAbsolute);
-     
+                newVolunteer.Age = Convert.ToInt32(node.Attributes["Age"].Value);
+
                 list.Add(newVolunteer);
             }
 
@@ -154,14 +159,27 @@ namespace Protectora
         }
         private int getCurrentIndex() {
             int index = 0;
-            for (int i = 0; i < animalList.Count; i++)
+            Debug.WriteLine(animalList.Count);
+
+            if (lblName.Content == null)
             {
-                if (lblName.Content.ToString() == animalList[i].Name)
+                index = 0;
+            }
+            else {
+                for (int i = 0; i < animalList.Count; i++)
                 {
-                    index = i;
-                    break;
+
+                    if (lblName.Content.ToString() == animalList[i].Name)
+                    {
+                        index = i;
+                        break;
+                    }
+
                 }
             }
+
+            
+            //Debug.WriteLine(index);
             return index;
         }
         private void btbPreviousImage_Click(object sender, RoutedEventArgs e)
@@ -196,7 +214,7 @@ namespace Protectora
 
         private void lstListaAnimales_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            fixImageDisplay();
+            fixImageDisplay(getCurrentIndex());
         }
 
         private void deleteAnimal() {
@@ -206,26 +224,34 @@ namespace Protectora
             }
             else
             {
+                deleteAction = true;
                 int index = getCurrentIndex();
 
                 if (MessageBox.Show("¿Desea eliminar el animal " + animalList[index].Name + "?", "Eliminar animal", MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.Yes)
                 {
+                    Debug.WriteLine("IINDICDE: " + index);
                     animalList.RemoveAt(index);
+                   
                     int size = lstListaAnimales.Items.Count;
-
+                    
                     if (size != 0)
                     {
                         imgPicture.Visibility = Visibility.Visible;
                         lstListaAnimales.SelectedItem = lstListaAnimales.Items[size - 1];
                         lstListaAnimales.ScrollIntoView(lstListaAnimales.Items[size - 1]);
-                        fixImageDisplay();
+                        fixImageDisplay(getCurrentIndex());
                     }
                     else
                     {
                         imgPicture.Visibility = Visibility.Hidden;
                     }
                 }
+
+                if (animalList.Count == 0) {
+                    disableAnimalsButtons();
+                }
             }
+            deleteAction = false;
         }
 
         private void btnEliminar_Click(object sender, RoutedEventArgs e)
@@ -241,9 +267,7 @@ namespace Protectora
                 case "Voluntarios":
                     break;
 
-            }
-
-                       
+            }              
         }
 
         private void btnAniadir_Click(object sender, RoutedEventArgs e)
@@ -257,11 +281,35 @@ namespace Protectora
                     addWindow = new AddAnimal(this, animalList);
                     addWindow.Show();
                     break;
+                case "Voluntarios":
+                    this.IsEnabled = false;
+                    addAction = true;
+                    addWindow = new AddVolunteer(this, volunteerList);
+                    addWindow.Show();
+                    break;
                 case "Socios":
                     break;
-                case "Voluntarios":
-                    break;
             }
+        }
+
+        private void disableAnimalsButtons() {
+            btbNextImage.IsEnabled = false;
+            btbPreviousImage.IsEnabled = false;
+            btbSponsor.IsEnabled = false;
+            btbVideo.IsEnabled = false;
+            lblSex.Content = "";
+            lblSociableChildren.Content = "";
+            lblPpp.Content = "";
+            lblSociableDogs.Content = "";
+            lblSterilized.Content = "";
+        }
+
+        private void enableAnimalsButtons()
+        {
+            btbNextImage.IsEnabled = true;
+            btbPreviousImage.IsEnabled = true;
+            btbSponsor.IsEnabled = true;
+            btbVideo.IsEnabled = true;
         }
 
         private void tcPestanas_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -271,37 +319,72 @@ namespace Protectora
                 switch (((TabItem)tcPestanas.SelectedItem).Header.ToString())
                 {
                     case "Animales":
-                        btnAdd.IsEnabled = true;
-                        btnEdit.IsEnabled = true;
-                        btnDelete.IsEnabled = true;
-                        btnAdd.ToolTip = "Añadir animal";
-                        btnEdit.ToolTip = "Editar animal";
-                        btnDelete.ToolTip = "Eliminar animal";
-                        DataContext = animalList;
-                        lstListaAnimales.SelectedItem = lstListaAnimales.Items[0];
-                        lstListaAnimales.ScrollIntoView(lstListaAnimales.Items[0]);
+                        if (!animalTab)
+                        {
+                            
+                            btnAdd.IsEnabled = true;
+                            btnEdit.IsEnabled = true;
+                            btnDelete.IsEnabled = true;
+                            btnAdd.ToolTip = "Añadir animal";
+                            btnEdit.ToolTip = "Editar animal";
+                            btnDelete.ToolTip = "Eliminar animal";
+                            DataContext = animalList;
+                            if (animalList.Count != 0)
+                            {
+                                enableAnimalsButtons();
+                                lstListaAnimales.SelectedItem = lstListaAnimales.Items[0];
+                                lstListaAnimales.ScrollIntoView(lstListaAnimales.Items[0]);
+                            }
+                            else {
+                                disableAnimalsButtons();
+                            }
+                            
+                            animalTab = true;
+                            volunteerTab = false;
+                            partnerTab = false;
+                        }
+                        
                         break;
                     case "Voluntarios":
-                        btnAdd.IsEnabled = true;
-                        btnEdit.IsEnabled = true;
-                        btnDelete.IsEnabled = true;
-                        btnAdd.ToolTip = "Añadir voluntario";
-                        btnEdit.ToolTip = "Editar voluntario";
-                        btnDelete.ToolTip = "Eliminar voluntario";
-                        DataContext = volunteerList;
+                        if (!volunteerTab) 
+                        {
+                            
+                            btnAdd.IsEnabled = true;
+                            btnEdit.IsEnabled = true;
+                            btnDelete.IsEnabled = true;
+                            btnAdd.ToolTip = "Añadir voluntario";
+                            btnEdit.ToolTip = "Editar voluntario";
+                            btnDelete.ToolTip = "Eliminar voluntario";
+                            DataContext = volunteerList;
+                            animalTab = false;
+                            volunteerTab = true;
+                            partnerTab = false;
+                        }
                         break;
+
                     case "Socios":
-                        btnAdd.IsEnabled = true;
-                        btnEdit.IsEnabled = true;
-                        btnDelete.IsEnabled = true;
-                        btnAdd.ToolTip = "Añadir socio";
-                        btnEdit.ToolTip = "Editar socio";
-                        btnDelete.ToolTip = "Eliminar socio";
+                        if (!partnerTab) 
+                        {
+                           
+                            btnAdd.IsEnabled = true;
+                            btnEdit.IsEnabled = true;
+                            btnDelete.IsEnabled = true;
+                            btnAdd.ToolTip = "Añadir socio";
+                            btnEdit.ToolTip = "Editar socio";
+                            btnDelete.ToolTip = "Eliminar socio";
+                            animalTab = false;
+                            volunteerTab = false;
+                            partnerTab = true;
+                        }
+                        
                         break;
                     case "Ayuda":
                         btnAdd.IsEnabled = false;
                         btnEdit.IsEnabled = false;
                         btnDelete.IsEnabled = false;
+                        animalTab = false;
+                        volunteerTab = false;
+                        partnerTab = false;
                         break;
                 }
             }
@@ -317,9 +400,8 @@ namespace Protectora
             Application.Current.Shutdown();
         }
 
-        private void fixImageDisplay()
+        private void fixImageDisplay(int index)
         {
-            int index = getCurrentIndex();
             var bitmap = new BitmapImage(new Uri(animalList[index].Pictures[0], UriKind.RelativeOrAbsolute));
             imgPicture.Source = bitmap;
             imgPicture.Visibility = Visibility.Visible;
@@ -338,14 +420,15 @@ namespace Protectora
         private void lstListaAnimales_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Down || e.Key == Key.Up) {
-                fixImageDisplay();
+                fixImageDisplay(getCurrentIndex());
             }
         }
-        private void updateAnimalsDetails() {
+
+        private void updateAnimalsDetails(int index)
+        {
 
             if (animalList.Count != 0)
             {
-                int index = getCurrentIndex();
                 Animal aux = animalList[index];
                 lblSex.Content = aux.Sex;
                 lblPpp.Content = aux.Ppp;
@@ -358,17 +441,28 @@ namespace Protectora
         private void Window_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             if (this.IsEnabled && addAction) {
-               
-                if (sizeList != animalList.Count)
+
+                switch (((TabItem)tcPestanas.SelectedItem).Header.ToString())
                 {
-                    sizeList = animalList.Count;
-                    addAction = false;
-                    int size = lstListaAnimales.Items.Count;
-                    lstListaAnimales.SelectedItem = lstListaAnimales.Items[size - 1];
-                    lstListaAnimales.ScrollIntoView(lstListaAnimales.Items[size - 1]);
+                    case "Animales":
+                        if (sizeList != animalList.Count)
+                        {
+                            sizeList = animalList.Count;
+                            addAction = false;
+                            int size = lstListaAnimales.Items.Count;
+                            lstListaAnimales.SelectedItem = lstListaAnimales.Items[size - 1];
+                            lstListaAnimales.ScrollIntoView(lstListaAnimales.Items[size - 1])
+                        }
+                        updateAnimalsDetails(getCurrentIndex());
+                        fixImageDisplay(getCurrentIndex());
+                        break;
+                    case "Voluntarios":
+                        break;
+                    case "Socios":
+                        break;
+
                 }
-                updateAnimalsDetails();
-                fixImageDisplay();
+
             }
         }
 
@@ -384,9 +478,9 @@ namespace Protectora
                     editWindow = new EditAnimal(this, animalList[index]);
                     editWindow.Show();
                     break;
-                case "Socios":
-                    break;
                 case "Voluntarios":
+                    break;
+                case "Socios":
                     break;
             }
         }
@@ -411,5 +505,22 @@ namespace Protectora
             videoWindow = new VideoWindow(this, selectedAnimal);
             videoWindow.Show();
         }
+
+        private void lstListaAnimales_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (((TabItem)tcPestanas.SelectedItem).Header.ToString() == "Animales" && !deleteAction) {
+                if (animalTab)
+                {
+                    updateAnimalsDetails(getCurrentIndex());
+                    fixImageDisplay(getCurrentIndex());
+                }
+                else
+                {
+                    updateAnimalsDetails(0);
+                    fixImageDisplay(0);
+                }
+            }
+            
+        }   
     }
 }

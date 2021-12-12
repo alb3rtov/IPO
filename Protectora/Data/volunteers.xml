@@ -1,7 +1,7 @@
 <Sponsors>
-	<Sponsor Dni="11111111" Firstname="Marcelo" Lastname="Lopez" PhoneNumber="654876321" Email="mlopez@mail.com" Photo="Images/marcelo.jpg" TimeAvailability="8:00 a 14:00" ZoneAvailability="Valdepeñas" Studies="Grado en Veterinaria"/>
-	<Sponsor Dni="22222222" Firstname="Maria" Lastname="Jimenez" PhoneNumber="683632323" Email="mjimenez@mail.com" Photo="Images/maria.jpg" TimeAvailability="16:00 a 20:00" ZoneAvailability="Ciudad Real" Studies="Grado en Veterinaria"/>
-	<Sponsor Dni="33333333" Firstname="Roberto" Lastname="Alarcon" PhoneNumber="670342745" Email="ralarcon@mail.com" Photo="Images/roberto.jpg" TimeAvailability="8:00 a 14:00" ZoneAvailability="Almagro" Studies="Formación auxiliar veterinario" />
-	<Sponsor Dni="44444444" Firstname="Manuel" Lastname="Cantero" PhoneNumber="645321323" Email="mcantero@mail.com" Photo="Images/manuel.jpg" TimeAvailability="8:00 a 14:00" ZoneAvailability="Daimiel" Studies="Grado en Veterinaria"/>
-	<Sponsor Dni="55555555" Firstname="Laura" Lastname="Cabellos" PhoneNumber="693313343" Email="lcabellos@mail.com" Photo="Images/laura.jpg" TimeAvailability="16:00 a 20:00" ZoneAvailability="Ciudad Real" Studies="Formación auxiliar veterinario"/>
+	<Sponsor Dni="11111111" Firstname="Marcelo" Lastname="Lopez" PhoneNumber="654876321" Age="68" Email="mlopez@mail.com" Photo="Images/marcelo.jpg" TimeAvailability="8:00-14:00" ZoneAvailability="Valdepeñas" Studies="Grado en veterinaria"/>
+	<Sponsor Dni="22222222" Firstname="Maria" Lastname="Jimenez" PhoneNumber="683632323" Age="34" Email="mjimenez@mail.com" Photo="Images/maria.jpg" TimeAvailability="16:00-20:00" ZoneAvailability="Ciudad Real" Studies="Grado en veterinaria"/>
+	<Sponsor Dni="33333333" Firstname="Roberto" Lastname="Alarcon" PhoneNumber="670342745" Age="43" Email="ralarcon@mail.com" Photo="Images/roberto.jpg" TimeAvailability="8:00-14:00" ZoneAvailability="Almagro" Studies="Auxiliar veterinario" />
+	<Sponsor Dni="44444444" Firstname="Manuel" Lastname="Cantero" PhoneNumber="645321323" Age="28" Email="mcantero@mail.com" Photo="Images/manuel.jpg" TimeAvailability="8:00-14:00" ZoneAvailability="Daimiel" Studies="Grado en veterinaria"/>
+	<Sponsor Dni="55555555" Firstname="Laura" Lastname="Cabellos" PhoneNumber="693313343" Age="38" Email="lcabellos@mail.com" Photo="Images/laura.jpg" TimeAvailability="16:00-20:00" ZoneAvailability="Ciudad Real" Studies="Auxiliar veterinario"/>
 </Sponsors>
