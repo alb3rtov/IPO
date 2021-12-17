@@ -24,12 +24,13 @@ namespace Protectora
     {
         private Window parent;
         private ObservableCollection<Volunteer> volunteers;
-        private bool checkName = false;
-        private bool checkBreed = false;
-        private bool checkSize = false;
-        private bool checkWeight = false;
+        private bool checkFirstName = false;
+        private bool checkLastName = false;
+        private bool checkDni = false;
+        private bool checkPhoneNumber = false;
+        private bool checkEmail = false;
         private bool checkAge = false;
-        private bool checkChip = false;
+        private bool checkZone = false;
         private bool checkImages = false;
         private string filename;
 
@@ -50,11 +51,11 @@ namespace Protectora
         /* Add volunteer checking that all fields are valid */
         private void btbAdd_Click(object sender, RoutedEventArgs e)
         {
-            if (checkName && checkBreed && checkSize && checkWeight && checkAge && checkChip && checkImages)
+            if (checkFirstName && checkLastName && checkDni && checkPhoneNumber && checkEmail && checkAge && checkZone && checkImages)
             {
                 string timeDisp = cbInitial.Text + "-" + cbEnd.Text;
 
-                Volunteer volunteer = new Volunteer(txtName.Text, txtLastName.Text, int.Parse(txtDni.Text), txtEmail.Text, int.Parse(txtPhoneNumber.Text), new Uri(filename), timeDisp, txtZone.Text, cbStudies.Text, int.Parse(txtAge.Text));
+                Volunteer volunteer = new Volunteer(txtFirstName.Text, txtLastName.Text, int.Parse(txtDni.Text), txtEmail.Text, int.Parse(txtPhoneNumber.Text), new Uri(filename), timeDisp, txtZone.Text, cbStudies.Text, int.Parse(txtAge.Text));
                 volunteers.Add(volunteer);
                 this.Close();
             }
@@ -88,67 +89,118 @@ namespace Protectora
         }
 
         /* Constraints for all fields */
-        private void txtName_LostFocus(object sender, RoutedEventArgs e)
+        private void txtFirstName_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (txtName.Text.Length <= 2 || txtName.Text.Length >= 12)
+            if (txtFirstName.Text.Length <= 3 || txtFirstName.Text.Length >= 15)
             {
-                txtName.BorderThickness = new Thickness(2);
-                txtName.BorderBrush = Brushes.Red;
-                txtName.Background = Brushes.LightCoral;
-                imgNameError.Visibility = Visibility.Visible;
-                checkName = false;
+                txtFirstName.BorderThickness = new Thickness(2);
+                txtFirstName.BorderBrush = Brushes.Red;
+                txtFirstName.Background = Brushes.LightCoral;
+                imgFirstNameError.Visibility = Visibility.Visible;
+                checkFirstName = false;
             }
             else
             {
-                txtName.BorderThickness = new Thickness(1);
-                txtName.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFABADB3");
-                txtName.Background = Brushes.White;
-                imgNameError.Visibility = Visibility.Hidden;
-                checkName = true;
+                txtFirstName.BorderThickness = new Thickness(1);
+                txtFirstName.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFABADB3");
+                txtFirstName.Background = Brushes.White;
+                imgFirstNameError.Visibility = Visibility.Hidden;
+                checkFirstName = true;
             }
         }
 
-        private void txtName_KeyUp(object sender, KeyEventArgs e)
+        private void txtFirstName_KeyUp(object sender, KeyEventArgs e)
         {
-            if (txtName.Text.Length > 2 && txtName.Text.Length < 12)
+            if (txtFirstName.Text.Length > 3 && txtFirstName.Text.Length < 15)
             {
-                txtName.BorderThickness = new Thickness(1);
-                txtName.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFABADB3");
-                txtName.Background = Brushes.White;
-                imgNameError.Visibility = Visibility.Hidden;
-                checkName = true;
+                txtFirstName.BorderThickness = new Thickness(1);
+                txtFirstName.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFABADB3");
+                txtFirstName.Background = Brushes.White;
+                imgFirstNameError.Visibility = Visibility.Hidden;
+                checkFirstName = true;
             }
         }
 
-        private void txtBreed_LostFocus(object sender, RoutedEventArgs e)
+        private void txtLastName_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (txtDni.Text.Length <= 3 || txtDni.Text.Length >= 20)
+            if (txtLastName.Text.Length <= 3 || txtLastName.Text.Length >= 15)
             {
+                txtLastName.BorderThickness = new Thickness(2);
+                txtLastName.BorderBrush = Brushes.Red;
+                txtLastName.Background = Brushes.LightCoral;
+                imgLastNameError.Visibility = Visibility.Visible;
+                checkLastName = false;
+            }
+            else
+            {
+                txtLastName.BorderThickness = new Thickness(1);
+                txtLastName.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFABADB3");
+                txtLastName.Background = Brushes.White;
+                imgLastNameError.Visibility = Visibility.Hidden;
+                checkLastName = true;
+            }
+        }
+
+        private void txtLastName_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (txtLastName.Text.Length > 3 && txtLastName.Text.Length < 15)
+            {
+                txtLastName.BorderThickness = new Thickness(1);
+                txtLastName.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFABADB3");
+                txtLastName.Background = Brushes.White;
+                imgLastNameError.Visibility = Visibility.Hidden;
+                checkLastName = true;
+            }
+        }
+
+        private void txtDni_LostFocus(object sender, RoutedEventArgs e)
+        {
+            int value;
+            bool isNumber = int.TryParse(txtDni.Text, out value);
+
+            if (isNumber)
+            {
+                if (txtDni.Text.Length != 8)
+                {
+                    txtDni.BorderThickness = new Thickness(2);
+                    txtDni.BorderBrush = Brushes.Red;
+                    txtDni.Background = Brushes.LightCoral;
+                    imgDniError.Visibility = Visibility.Visible;
+                    checkDni = false;
+                }
+                else
+                {
+                    txtDni.BorderThickness = new Thickness(1);
+                    txtDni.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFABADB3");
+                    txtDni.Background = Brushes.White;
+                    imgDniError.Visibility = Visibility.Hidden;
+                    checkDni = true;
+                }
+            }
+            else {
                 txtDni.BorderThickness = new Thickness(2);
                 txtDni.BorderBrush = Brushes.Red;
                 txtDni.Background = Brushes.LightCoral;
                 imgDniError.Visibility = Visibility.Visible;
-                checkBreed = false;
-            }
-            else
-            {
-                txtDni.BorderThickness = new Thickness(1);
-                txtDni.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFABADB3");
-                txtDni.Background = Brushes.White;
-                imgDniError.Visibility = Visibility.Hidden;
-                checkBreed = true;
+                checkDni = false;
             }
         }
 
-        private void txtBreed_KeyUp(object sender, KeyEventArgs e)
+        private void txtDni_KeyUp(object sender, KeyEventArgs e)
         {
-            if (txtDni.Text.Length > 3 && txtDni.Text.Length < 20)
+            int value;
+            bool isNumber = int.TryParse(txtDni.Text, out value);
+
+            if (isNumber)
             {
-                txtDni.BorderThickness = new Thickness(1);
-                txtDni.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFABADB3");
-                txtDni.Background = Brushes.White;
-                imgDniError.Visibility = Visibility.Hidden;
-                checkBreed = true;
+                if (txtDni.Text.Length == 8)
+                {
+                    txtDni.BorderThickness = new Thickness(1);
+                    txtDni.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFABADB3");
+                    txtDni.Background = Brushes.White;
+                    imgDniError.Visibility = Visibility.Hidden;
+                    checkDni = true;
+                }
             }
         }
 
@@ -159,13 +211,13 @@ namespace Protectora
 
             if (isNumber)
             {
-                if (value < 15 || value > 110)
+                if (txtPhoneNumber.Text.Length != 9)
                 {
                     txtPhoneNumber.BorderThickness = new Thickness(2);
                     txtPhoneNumber.BorderBrush = Brushes.Red;
                     txtPhoneNumber.Background = Brushes.LightCoral;
                     imgPhoneNumberError.Visibility = Visibility.Visible;
-                    checkSize = false;
+                    checkPhoneNumber = false;
                 }
                 else
                 {
@@ -173,7 +225,7 @@ namespace Protectora
                     txtPhoneNumber.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFABADB3");
                     txtPhoneNumber.Background = Brushes.White;
                     imgPhoneNumberError.Visibility = Visibility.Hidden;
-                    checkSize = true;
+                    checkPhoneNumber = true;
                 }
             }
             else
@@ -182,7 +234,7 @@ namespace Protectora
                 txtPhoneNumber.BorderBrush = Brushes.Red;
                 txtPhoneNumber.Background = Brushes.LightCoral;
                 imgPhoneNumberError.Visibility = Visibility.Visible;
-                checkSize = false;
+                checkPhoneNumber = false;
             }
         }
 
@@ -193,66 +245,46 @@ namespace Protectora
 
             if (isNumber)
             {
-                if (value >= 15 || value <= 110)
+                if (txtPhoneNumber.Text.Length == 9)
                 {
                     txtPhoneNumber.BorderThickness = new Thickness(1);
                     txtPhoneNumber.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFABADB3");
                     txtPhoneNumber.Background = Brushes.White;
                     imgPhoneNumberError.Visibility = Visibility.Hidden;
-                    checkSize = true;
+                    checkPhoneNumber = true;
                 }
             }
         }
 
         private void txtEmail_LostFocus(object sender, RoutedEventArgs e)
         {
-            int value;
-            bool isNumber = int.TryParse(txtEmail.Text, out value);
-
-            if (isNumber)
-            {
-                if (value < 5 || value > 99)
-                {
-                    txtEmail.BorderThickness = new Thickness(2);
-                    txtEmail.BorderBrush = Brushes.Red;
-                    txtEmail.Background = Brushes.LightCoral;
-                    imgEmailError.Visibility = Visibility.Visible;
-                    checkWeight = false;
-                }
-                else
-                {
-                    txtEmail.BorderThickness = new Thickness(1);
-                    txtEmail.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFABADB3");
-                    txtEmail.Background = Brushes.White;
-                    imgEmailError.Visibility = Visibility.Hidden;
-                    checkWeight = true;
-                }
-            }
-            else
+            if (txtEmail.Text.Length <= 7 || txtEmail.Text.Length >= 30)
             {
                 txtEmail.BorderThickness = new Thickness(2);
                 txtEmail.BorderBrush = Brushes.Red;
                 txtEmail.Background = Brushes.LightCoral;
                 imgEmailError.Visibility = Visibility.Visible;
-                checkWeight = false;
+                checkEmail = false;
+            }
+            else
+            {
+                txtEmail.BorderThickness = new Thickness(1);
+                txtEmail.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFABADB3");
+                txtEmail.Background = Brushes.White;
+                imgEmailError.Visibility = Visibility.Hidden;
+                checkEmail = true;
             }
         }
 
         private void txtEmail_KeyUp(object sender, KeyEventArgs e)
         {
-            int value;
-            bool isNumber = int.TryParse(txtEmail.Text, out value);
-
-            if (isNumber)
+            if (txtEmail.Text.Length >= 7 && txtEmail.Text.Length <= 30)
             {
-                if (value >= 5 || value <= 99)
-                {
-                    txtEmail.BorderThickness = new Thickness(1);
-                    txtEmail.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFABADB3");
-                    txtEmail.Background = Brushes.White;
-                    imgEmailError.Visibility = Visibility.Hidden;
-                    checkWeight = true;
-                }
+                txtEmail.BorderThickness = new Thickness(1);
+                txtEmail.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFABADB3");
+                txtEmail.Background = Brushes.White;
+                imgEmailError.Visibility = Visibility.Hidden;
+                checkEmail = true;
             }
         }
 
@@ -263,7 +295,7 @@ namespace Protectora
 
             if (isNumber)
             {
-                if (value < 0 || value > 25)
+                if (value < 18 || value > 110)
                 {
                     txtAge.BorderThickness = new Thickness(2);
                     txtAge.BorderBrush = Brushes.Red;
@@ -297,7 +329,7 @@ namespace Protectora
 
             if (isNumber)
             {
-                if (value >= 0 || value <= 25)
+                if (value >= 18 || value <= 110)
                 {
                     txtAge.BorderThickness = new Thickness(1);
                     txtAge.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFABADB3");
@@ -310,53 +342,33 @@ namespace Protectora
 
         private void txtZone_LostFocus(object sender, RoutedEventArgs e)
         {
-            int value;
-            bool isNumber = int.TryParse(txtZone.Text, out value);
-
-            if (isNumber)
-            {
-                if (txtZone.Text.Length != 6)
-                {
-                    txtZone.BorderThickness = new Thickness(2);
-                    txtZone.BorderBrush = Brushes.Red;
-                    txtZone.Background = Brushes.LightCoral;
-                    imgZoneError.Visibility = Visibility.Visible;
-                    checkChip = false;
-                }
-                else
-                {
-                    txtZone.BorderThickness = new Thickness(1);
-                    txtZone.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFABADB3");
-                    txtZone.Background = Brushes.White;
-                    imgZoneError.Visibility = Visibility.Hidden;
-                    checkChip = true;
-                }
-            }
-            else
+            if (txtZone.Text.Length <= 5 || txtZone.Text.Length >= 20)
             {
                 txtZone.BorderThickness = new Thickness(2);
                 txtZone.BorderBrush = Brushes.Red;
                 txtZone.Background = Brushes.LightCoral;
                 imgZoneError.Visibility = Visibility.Visible;
-                checkChip = false;
+                checkZone = false;
+            }
+            else
+            {
+                txtZone.BorderThickness = new Thickness(1);
+                txtZone.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFABADB3");
+                txtZone.Background = Brushes.White;
+                imgZoneError.Visibility = Visibility.Hidden;
+                checkZone = true;
             }
         }
 
         private void txtZone_KeyUp(object sender, KeyEventArgs e)
         {
-            int value;
-            bool isNumber = int.TryParse(txtZone.Text, out value);
-
-            if (isNumber)
+            if (txtZone.Text.Length >= 5 && txtZone.Text.Length <= 20)
             {
-                if (txtZone.Text.Length == 6)
-                {
-                    txtZone.BorderThickness = new Thickness(1);
-                    txtZone.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFABADB3");
-                    txtZone.Background = Brushes.White;
-                    imgZoneError.Visibility = Visibility.Hidden;
-                    checkChip = true;
-                }
+                txtZone.BorderThickness = new Thickness(1);
+                txtZone.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFABADB3");
+                txtZone.Background = Brushes.White;
+                imgZoneError.Visibility = Visibility.Hidden;
+                checkZone = true;
             }
         }
     }

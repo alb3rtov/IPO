@@ -40,7 +40,7 @@
             <ColumnDefinition Width="11*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBox x:Name="txtName" Text="" VerticalContentAlignment="Center" TextWrapping="Wrap" Margin="22,11,0,0" Grid.ColumnSpan="2" Grid.Row="2" LostFocus="txtName_LostFocus" KeyUp="txtName_KeyUp" Grid.RowSpan="2">
+        <TextBox x:Name="txtFirstName" Text="" VerticalContentAlignment="Center" TextWrapping="Wrap" Margin="22,11,0,0" Grid.ColumnSpan="2" Grid.Row="2" LostFocus="txtFirstName_LostFocus" KeyUp="txtFirstName_KeyUp" Grid.RowSpan="2">
             <TextBox.Style>
                 <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
                     <Style.Resources>
@@ -65,13 +65,13 @@
             </TextBox.Style>
         </TextBox>
 
-        <Image x:Name="imgNameError"  Visibility="Hidden" Source="Images/info_error.png" Grid.Column="1" Margin="122,0,0,0" Grid.Row="3" HorizontalAlignment="Left" Width="15" VerticalAlignment="Center" Height="16">
+        <Image x:Name="imgFirstNameError"  Visibility="Hidden" Source="Images/info_error.png" Grid.Column="1" Margin="122,0,0,0" Grid.Row="3" HorizontalAlignment="Left" Width="15" VerticalAlignment="Center" Height="16">
             <Image.ToolTip>
-                <ToolTip Background="LightCoral" Foreground="White" Content="El nombre debe de contener entre 2 y 12 caracteres"/>
+                <ToolTip Background="LightCoral" Foreground="White" Content="El nombre debe de contener entre 3 y 15 caracteres"/>
             </Image.ToolTip>
         </Image>
 
-        <TextBox x:Name="txtLastName" Text="" VerticalContentAlignment="Center" TextWrapping="Wrap" Margin="0,11,22,0" Grid.ColumnSpan="2" Grid.Row="2"  Grid.Column="3" Grid.RowSpan="2">
+        <TextBox x:Name="txtLastName" Text="" VerticalContentAlignment="Center" TextWrapping="Wrap" Margin="0,11,22,0" Grid.ColumnSpan="2" Grid.Row="2"  Grid.Column="3" Grid.RowSpan="2" LostFocus="txtLastName_LostFocus" KeyUp="txtLastName_KeyUp">
             <TextBox.Style>
                 <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
                     <Style.Resources>
@@ -98,7 +98,7 @@
 
         <Image x:Name="imgLastNameError"  Visibility="Hidden" Source="Images/info_error.png" Grid.Column="3" Margin="121,0,0,0" Grid.Row="3" HorizontalAlignment="Left" Width="15" VerticalAlignment="Center" Height="16">
             <Image.ToolTip>
-                <ToolTip Background="LightCoral" Foreground="White" Content="El nombre debe de contener entre 2 y 12 caracteres"/>
+                <ToolTip Background="LightCoral" Foreground="White" Content="El apellido debe de contener entre 3 y 15 caracteres"/>
             </Image.ToolTip>
         </Image>
 
@@ -109,7 +109,7 @@
             <ComboBoxItem Content="Otra"/>
         </ComboBox>
 
-        <TextBox x:Name="txtDni" VerticalContentAlignment="Center" TextWrapping="Wrap" Margin="0,18,22,17" Grid.Column="3" Grid.Row="4" LostFocus="txtBreed_LostFocus" KeyUp="txtBreed_KeyUp" Grid.ColumnSpan="2" Grid.RowSpan="3">
+        <TextBox x:Name="txtDni" VerticalContentAlignment="Center" TextWrapping="Wrap" Margin="0,18,22,17" Grid.Column="3" Grid.Row="4" LostFocus="txtDni_LostFocus" KeyUp="txtDni_KeyUp" Grid.ColumnSpan="2" Grid.RowSpan="3">
 
             <TextBox.Style>
                 <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
@@ -137,7 +137,7 @@
 
         <Image x:Name="imgDniError"  Visibility="Hidden" Source="Images/info_error.png" Grid.Column="3" Margin="121,0,0,0" Grid.Row="5" HorizontalAlignment="Left" Width="15" VerticalAlignment="Center" Height="16">
             <Image.ToolTip>
-                <ToolTip Background="LightCoral" Foreground="White" Content="La raza debe de contener entre 3 y 20 caracteres"/>
+                <ToolTip Background="LightCoral" Foreground="White" Content="El dni debe de ser de 8 dígitos"/>
             </Image.ToolTip>
         </Image>
 
@@ -170,7 +170,7 @@
 
         <Image x:Name="imgPhoneNumberError" Visibility="Hidden" Source="Images/info_error.png" Grid.Column="1" Margin="122,0,0,0" Grid.Row="7" HorizontalAlignment="Left" Width="15" VerticalAlignment="Center" Height="16">
             <Image.ToolTip>
-                <ToolTip Background="LightCoral" Foreground="White" Content="El tamaño debe de estar entre 15 y 110 cm"/>
+                <ToolTip Background="LightCoral" Foreground="White" Content="El número de teléfono debe ser de 9 dígitos"/>
             </Image.ToolTip>
         </Image>
 
@@ -202,7 +202,7 @@
 
         <Image x:Name="imgEmailError" Visibility="Hidden" Source="Images/info_error.png" Grid.Column="3" Margin="121,0,0,0" Grid.Row="7" HorizontalAlignment="Left" Width="15" VerticalAlignment="Center" Height="16">
             <Image.ToolTip>
-                <ToolTip Background="LightCoral" Foreground="White" Content="El peso debe de estar entre 5 y 99 kg"/>
+                <ToolTip Background="LightCoral" Foreground="White" Content="El email debe contener entre 7 y 30 carácteres"/>
             </Image.ToolTip>
         </Image>
 
@@ -234,7 +234,7 @@
 
         <Image x:Name="imgAgeError" Visibility="Hidden" Source="Images/info_error.png" Grid.Column="1" Margin="122,0,0,0" Grid.Row="9" HorizontalAlignment="Left" Width="15" VerticalAlignment="Center" Height="16">
             <Image.ToolTip>
-                <ToolTip Background="LightCoral" Foreground="White" Content="La edad debe de estar entre 0 y 25 años"/>
+                <ToolTip Background="LightCoral" Foreground="White" Content="La edad debe de estar entre 18 y 110 años"/>
             </Image.ToolTip>
         </Image>
 
@@ -265,7 +265,7 @@
 
         <Image x:Name="imgZoneError" Visibility="Hidden" Source="Images/info_error.png" Grid.Column="3" Margin="121,0,0,0" Grid.Row="9" HorizontalAlignment="Left" Width="15" VerticalAlignment="Center" Height="16">
             <Image.ToolTip>
-                <ToolTip Background="LightCoral" Foreground="White" Content="El chip debe ser un número de 6 dígitos"/>
+                <ToolTip Background="LightCoral" Foreground="White" Content="La zona debe estar entre 5 y 20 carácteres"/>
             </Image.ToolTip>
         </Image>
 
