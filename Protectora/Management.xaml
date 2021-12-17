@@ -131,7 +131,7 @@
                     <DataGrid x:Name="dgVolunteers" Margin="5" ItemsSource="{Binding}" AutoGenerateColumns="False">
 
                         <DataGrid.Columns>
-                            
+
                             <DataGridTextColumn Header="Dni" Binding="{Binding Dni}" />
                             <DataGridTextColumn Header="Nombre" Binding="{Binding Firstname}" />
                             <DataGridTextColumn Header="Apellido" Binding="{Binding Lastname}" />

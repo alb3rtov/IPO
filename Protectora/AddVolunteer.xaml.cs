@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -30,6 +31,7 @@ namespace Protectora
         private bool checkAge = false;
         private bool checkChip = false;
         private bool checkImages = false;
+        private string filename;
 
         public AddVolunteer(Window window, ObservableCollection<Volunteer> volunteerList)
         {
@@ -37,28 +39,24 @@ namespace Protectora
             parent = window;
             volunteers = volunteerList;
             DataContext = volunteers;
-            
-
         }
 
+        /* When close window enable parent window */
         private void Window_Closing(object sender, CancelEventArgs e)
         {
             parent.IsEnabled = true;
         }
 
+        /* Add volunteer checking that all fields are valid */
         private void btbAdd_Click(object sender, RoutedEventArgs e)
         {
             if (checkName && checkBreed && checkSize && checkWeight && checkAge && checkChip && checkImages)
-            {   
-                /*
-                string ppp = getRadioButton(rdPPPSi);
-                string sterelized = getRadioButton(rdSterelizedSi);
-                string dogs = getRadioButton(rdDogsSi);
-                string childen = getRadioButton(rdChildrenSi);
+            {
+                string timeDisp = cbInitial.Text + "-" + cbEnd.Text;
 
-                Animal animal = new Animal(txtName.Text, cbSex.Text, txtBreed.Text, int.Parse(txtSize.Text), int.Parse(txtWeight.Text), int.Parse(txtAge.Text), int.Parse(txtChip.Text), filenames, null, null, sterelized, childen, dogs, ppp);
-                animals.Add(animal);
-                this.Close();*/
+                Volunteer volunteer = new Volunteer(txtName.Text, txtLastName.Text, int.Parse(txtDni.Text), txtEmail.Text, int.Parse(txtPhoneNumber.Text), new Uri(filename), timeDisp, txtZone.Text, cbStudies.Text, int.Parse(txtAge.Text));
+                volunteers.Add(volunteer);
+                this.Close();
             }
             else
             {
@@ -66,7 +64,30 @@ namespace Protectora
             }
         }
 
+        /* Add image and show in the correct button image */
+        private void addImages1_Click(object sender, RoutedEventArgs e)
+        {
+            var openDialog = new OpenFileDialog();
+            openDialog.Filter = "Images|*.jpg;*.gif;*.bmp;*.png";
 
+            if (openDialog.ShowDialog() == true)
+            {
+                try
+                {
+                    filename = openDialog.FileName;
+                    var brush = new ImageBrush();
+                    brush.ImageSource = new BitmapImage(new Uri(openDialog.FileName, UriKind.RelativeOrAbsolute));
+                    checkImages = true;
+                    addImages1.Background = brush;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al cargar la imagen " + ex.Message);
+                }
+            }
+        }
+
+        /* Constraints for all fields */
         private void txtName_LostFocus(object sender, RoutedEventArgs e)
         {
             if (txtName.Text.Length <= 2 || txtName.Text.Length >= 12)

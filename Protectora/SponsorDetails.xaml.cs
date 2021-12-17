@@ -30,6 +30,7 @@ namespace Protectora
             txtName.Text = " " + sponsor.Firstname + " " + sponsor.Lastname + " ";
         }
 
+        /* When close window enable parent window */
         private void Window_Closing(object sender, CancelEventArgs e)
         {
             parent.IsEnabled = true;

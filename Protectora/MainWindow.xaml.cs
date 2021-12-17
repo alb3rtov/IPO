@@ -30,6 +30,7 @@ namespace Protectora
             txtUser.Focus();
         }
 
+        /* Check if input user credentials are valid */
         private void checkCredentials() {
             if (txtUser.Text == user && txtPassword.Password == password)
             {
@@ -58,22 +59,31 @@ namespace Protectora
             }
         }
 
+        /* Event when click login button */
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             checkCredentials();
         }
 
+        /* Call hide password hint */
+        private void hidePasswordHint() {
+            lblPassword.Visibility = Visibility.Hidden;
+        }
+
+        /* Call hide password hint and focus password */
         private void WrapPanel_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            lblPassword.Visibility = Visibility.Hidden;
+            hidePasswordHint();
             txtPassword.Focus();
         }
 
+        /* Hide password hint */
         private void txtPassword_GotFocus(object sender, RoutedEventArgs e)
         {
-            lblPassword.Visibility = Visibility.Hidden;
+            hidePasswordHint();
         }
 
+        /* Show password hint */
         private void txtPassword_LostFocus(object sender, RoutedEventArgs e)
         {
             if (txtPassword.Password.Length == 0)
@@ -82,6 +92,7 @@ namespace Protectora
             }
         }
 
+        /* Check credentials from txtUser label */
         private void txtUser_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Return)
@@ -90,6 +101,7 @@ namespace Protectora
             }
         }
 
+        /* Check credentials from txtPassword label */
         private void txtPassword_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Return)

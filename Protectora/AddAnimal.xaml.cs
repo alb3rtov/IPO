@@ -32,6 +32,7 @@ namespace Protectora
         private bool checkAge = false;
         private bool checkChip = false;
         private bool checkImages = false;
+
         public AddAnimal(Window window, ObservableCollection<Animal> animalList)
         {
             InitializeComponent();
@@ -44,15 +45,18 @@ namespace Protectora
             rdDogsSi.IsChecked = true;
         }
 
+        /* When close window enable parent window */
         private void Window_Closing(object sender, CancelEventArgs e)
         {
             parent.IsEnabled = true;
         }
 
+        /* Returns if a given button is checked */
         private string getRadioButton(RadioButton rdYes) {
             return (rdYes.IsChecked == true) ? "Si" : "No";
         }
 
+        /* Event for add button checking that all fields are valid */
         private void btbAdd_Click(object sender, RoutedEventArgs e)
         {
             if (checkName && checkBreed && checkSize && checkWeight && checkAge && checkChip && checkImages)
@@ -71,6 +75,7 @@ namespace Protectora
             }
         }
 
+        /* Event for add images button */
         private void addImages_Click(object sender, RoutedEventArgs e)
         {
             var openDialog = new OpenFileDialog();
@@ -110,6 +115,7 @@ namespace Protectora
             }
         }
 
+        /* Constraints for all fields */
         private void txtName_LostFocus(object sender, RoutedEventArgs e)
         {
             if (txtName.Text.Length <= 2 || txtName.Text.Length >= 12)

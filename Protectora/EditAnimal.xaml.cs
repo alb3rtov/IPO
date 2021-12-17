@@ -41,12 +41,15 @@ namespace Protectora
             parent = window;
             animal = a;
             DataContext = animal;
+            
+            /* Set animals diferent details elements */
             setSex(animal.Sex);
             setRd(animal.SociableChildren.ToString(), rdChildrenSi, rdChildrenNo);
             setRd(animal.Sterilized.ToString(), rdSterelizedSi, rdSterelizedNo);
             setRd(animal.SociableDogs.ToString(), rdDogsSi, rdDogsNo);
             setRd(animal.Ppp.ToString(), rdPPPSi, rdPPPNo);
 
+            /* Set current images in buttons */
             if (animal.Pictures.Count >= 1) {
                 setImage(addImages1, animal.Pictures[0]);
             }
@@ -61,6 +64,13 @@ namespace Protectora
             }   
         }
 
+        /* When close window enable parent window */
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            parent.IsEnabled = true;
+        }
+
+        /* Set a given image in a given button */
         private void setImage(Button addImages, string image)
         {
             var brush = new ImageBrush();
@@ -76,6 +86,7 @@ namespace Protectora
             addImages.Background = brush;
         }
 
+        /* Get index of the button that is currently pressed */
         private int getButtonPressed() {
             int index = 0;
             
@@ -98,6 +109,7 @@ namespace Protectora
             return index;
         }   
 
+        /* Check radio button depeding on the given string */
         private void setRd(string rd, RadioButton yes, RadioButton no) {
             if (rd == "Si")
             {
@@ -109,15 +121,12 @@ namespace Protectora
             }
         }
 
+        /* Set animal sex in combobox */
         private void setSex(string sex) {
             cbSex.SelectedIndex = (sex == "Macho") ? 0 : 1;
         }
 
-        private void Window_Closing(object sender, CancelEventArgs e)
-        {
-            parent.IsEnabled = true;
-        }
-
+        /* Event for add images button */
         private void addImages_Click(object sender, RoutedEventArgs e)
         {
             var openDialog = new OpenFileDialog();
@@ -169,6 +178,42 @@ namespace Protectora
             }
         }
 
+        /* Get current selection in radio button */
+        private string getRadioButton(RadioButton rdYes)
+        {
+            return (rdYes.IsChecked == true) ? "Si" : "No";
+        }
+
+        /* Event for edit button checking that all fields are valid */
+        private void btbEdit_Click(object sender, RoutedEventArgs e)
+        {
+            object senders = null;
+            KeyEventArgs es = null;
+            txtChip_LostFocus(senders, es);
+            txtAge_LostFocus(senders, es);
+            txtWeight_LostFocus(senders, es);
+            txtSize_LostFocus(senders, es);
+            txtName_LostFocus(senders, es);
+            txtBreed_LostFocus(senders, es);
+
+            if (checkName && checkBreed && checkSize && checkWeight && checkAge && checkChip)
+            {
+                animal.Sex = cbSex.Text;
+                animal.Ppp = getRadioButton(rdPPPSi);
+                animal.Sterilized = getRadioButton(rdSterelizedSi);
+                animal.SociableDogs = getRadioButton(rdDogsSi);
+                animal.SociableChildren = getRadioButton(rdChildrenSi);
+                animal.Video = animal.Video;
+                animal.Sponsor = animal.Sponsor;
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Debe de introducir datos correctos en el formulario", "Error en el formulario", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        /* Constraints for all fields */
         private void txtName_LostFocus(object sender, RoutedEventArgs e)
         {
             if (txtName.Text.Length <= 2 || txtName.Text.Length >= 12)
@@ -438,38 +483,6 @@ namespace Protectora
                     imgChipError.Visibility = Visibility.Hidden;
                     checkChip = true;
                 }
-            }
-        }
-        private string getRadioButton(RadioButton rdYes)
-        {
-            return (rdYes.IsChecked == true) ? "Si" : "No";
-        }
-
-        private void btbEdit_Click(object sender, RoutedEventArgs e)
-        {
-            object senders = null;
-            KeyEventArgs es = null;
-            txtChip_LostFocus(senders, es);
-            txtAge_LostFocus(senders, es);
-            txtWeight_LostFocus(senders, es);
-            txtSize_LostFocus(senders, es);
-            txtName_LostFocus(senders, es);
-            txtBreed_LostFocus(senders, es);
-
-            if (checkName && checkBreed && checkSize && checkWeight && checkAge && checkChip)
-                {
-                animal.Sex = cbSex.Text;
-                animal.Ppp = getRadioButton(rdPPPSi); 
-                animal.Sterilized = getRadioButton(rdSterelizedSi);
-                animal.SociableDogs = getRadioButton(rdDogsSi);
-                animal.SociableChildren = getRadioButton(rdChildrenSi);
-                animal.Video = animal.Video;
-                animal.Sponsor = animal.Sponsor;
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show("Debe de introducir datos correctos en el formulario", "Error en el formulario", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

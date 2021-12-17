@@ -30,7 +30,8 @@ namespace Protectora
             DataContext = animal;
             lblName.Content = "Video sobre " + animal.Name;
         }
-
+        
+        /* When close window enable parent window */
         private void Window_Closing(object sender, CancelEventArgs e)
         {
             meVideo.LoadedBehavior = MediaState.Manual;
@@ -39,6 +40,7 @@ namespace Protectora
             parent.IsEnabled = true;
         }
 
+        /* Change button funcionality if video is paused or is not */
         private void btbPlayStop_Click(object sender, RoutedEventArgs e)
         {
             if (paused)
@@ -55,6 +57,7 @@ namespace Protectora
             }
         }
 
+        /* If video is loaded play automatically */
         private void meVideo_Loaded(object sender, RoutedEventArgs e)
         {
             meVideo.LoadedBehavior = MediaState.Manual;
@@ -62,6 +65,7 @@ namespace Protectora
             meVideo.Play();
         }
 
+        /* Forwards video 5 seconds */
         private void btbForward_Click(object sender, RoutedEventArgs e)
         {
             meVideo.Position += TimeSpan.FromMilliseconds(5000);
@@ -73,6 +77,7 @@ namespace Protectora
             }
         }
 
+        /* Backwards video 5 seconds */
         private void btbBack_Click(object sender, RoutedEventArgs e)
         {
             meVideo.Position -= TimeSpan.FromMilliseconds(5000);
@@ -84,6 +89,7 @@ namespace Protectora
             }
         }
 
+        /* If video ended play again */
         private void meVideo_MediaEnded(object sender, RoutedEventArgs e)
         {
             meVideo.Stop();

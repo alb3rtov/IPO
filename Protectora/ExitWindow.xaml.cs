@@ -25,16 +25,19 @@ namespace Protectora
             InitializeComponent();
         }
 
+        /* Event for shutdown the application */
         private void btbYes_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
         }
 
+        /* Close this window */
         private void btbNo_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
+        /* Event for enable drag move window */
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();
