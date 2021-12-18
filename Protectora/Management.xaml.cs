@@ -350,6 +350,17 @@ namespace Protectora
                     }
                     break;
                 case "Voluntarios":
+                    if (volunteerList.Count == 0) {
+                        MessageBox.Show("No existen voluntarios en la lista", "Error al editar voluntario", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                    else
+                    {
+                        this.IsEnabled = false;
+                        addAction = true;
+                        int index = getCurrentIndexVolunteers();
+                        editWindow = new EditVolunteer(this, volunteerList[index]);
+                        editWindow.Show();
+                    }
                     break;
                 case "Socios":
                     break;
@@ -555,6 +566,7 @@ namespace Protectora
                         fixAnimalImageDisplay(getCurrentIndexAnimals());
                         break;
                     case "Voluntarios":
+                        addAction = false;
                         break;
                     case "Socios":
                         break;

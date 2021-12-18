@@ -132,11 +132,11 @@
 
                         <DataGrid.Columns>
 
-                            <DataGridTextColumn Header="Dni" Binding="{Binding Dni}" />
-                            <DataGridTextColumn Header="Nombre" Binding="{Binding Firstname}" />
-                            <DataGridTextColumn Header="Apellido" Binding="{Binding Lastname}" />
-                            <DataGridTextColumn Header="Edad" Binding="{Binding Age}" />
-                           
+                            <DataGridTextColumn x:Name="tcDni" Header="Dni" Binding="{Binding Dni}" />
+                            <DataGridTextColumn x:Name="tcFirstname" Header="Nombre" Binding="{Binding Firstname}" />
+                            <DataGridTextColumn x:Name="tcLastname" Header="Apellido" Binding="{Binding Lastname}" />
+                            <DataGridTextColumn x:Name="tcAge" Header="Edad" Binding="{Binding Age}" />
+
                             <DataGridTemplateColumn Header="Fotografia">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
@@ -145,24 +145,13 @@
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
 
-                            <DataGridTextColumn Header="Teléfono" Binding="{Binding PhoneNumber}" />
-                            <DataGridTextColumn Header="Email" Binding="{Binding Email}" />
-                            <DataGridTextColumn Header="Disp. horaria" Binding="{Binding TimeAvailability}" />
-                            <DataGridTextColumn Header="Zona" Binding="{Binding ZoneAvailability}" />
-                            <DataGridTextColumn Header="Estudios" Binding="{Binding Studies}" />
-                            
-                            <!--
-                            <DataGridTemplateColumn Header="Alta en la videoteca">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <DatePicker SelectedDate="{Binding AltaEnVideoteca}" BorderBrush="Transparent" />
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn> -->
+                            <DataGridTextColumn x:Name="tcPhonenumber" Header="Teléfono" Binding="{Binding PhoneNumber}"/>
+                            <DataGridTextColumn x:Name="tcEmail" Header="Email" Binding="{Binding Email}" />
+                            <DataGridTextColumn x:Name="tcTime" Header="Disp. horaria" Binding="{Binding TimeAvailability}" />
+                            <DataGridTextColumn x:Name="tcZone" Header="Zona" Binding="{Binding ZoneAvailability}" />
+                            <DataGridTextColumn x:Name="tcStudies" Header="Estudios" Binding="{Binding Studies}" />
+
                         </DataGrid.Columns>
-
-
-
                     </DataGrid>
                 </Grid>
             </TabItem>
