@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -182,7 +183,7 @@ namespace Protectora
             {
                 txtFirstName.BorderThickness = new Thickness(2);
                 txtFirstName.BorderBrush = Brushes.Red;
-                txtFirstName.Background = Brushes.LightCoral;
+                //txtFirstName.Background = Brushes.LightCoral;
                 imgFirstNameError.Visibility = Visibility.Visible;
                 checkFirstName = false;
             }
@@ -214,7 +215,7 @@ namespace Protectora
             {
                 txtLastName.BorderThickness = new Thickness(2);
                 txtLastName.BorderBrush = Brushes.Red;
-                txtLastName.Background = Brushes.LightCoral;
+                //txtLastName.Background = Brushes.LightCoral;
                 imgLastNameError.Visibility = Visibility.Visible;
                 checkLastName = false;
             }
@@ -251,7 +252,7 @@ namespace Protectora
                 {
                     txtDni.BorderThickness = new Thickness(2);
                     txtDni.BorderBrush = Brushes.Red;
-                    txtDni.Background = Brushes.LightCoral;
+                    //txtDni.Background = Brushes.LightCoral;
                     imgDniError.Visibility = Visibility.Visible;
                     checkDni = false;
                 }
@@ -268,7 +269,7 @@ namespace Protectora
             {
                 txtDni.BorderThickness = new Thickness(2);
                 txtDni.BorderBrush = Brushes.Red;
-                txtDni.Background = Brushes.LightCoral;
+                //txtDni.Background = Brushes.LightCoral;
                 imgDniError.Visibility = Visibility.Visible;
                 checkDni = false;
             }
@@ -303,7 +304,7 @@ namespace Protectora
                 {
                     txtPhoneNumber.BorderThickness = new Thickness(2);
                     txtPhoneNumber.BorderBrush = Brushes.Red;
-                    txtPhoneNumber.Background = Brushes.LightCoral;
+                    //txtPhoneNumber.Background = Brushes.LightCoral;
                     imgPhoneNumberError.Visibility = Visibility.Visible;
                     checkPhoneNumber = false;
                 }
@@ -320,7 +321,7 @@ namespace Protectora
             {
                 txtPhoneNumber.BorderThickness = new Thickness(2);
                 txtPhoneNumber.BorderBrush = Brushes.Red;
-                txtPhoneNumber.Background = Brushes.LightCoral;
+                //txtPhoneNumber.Background = Brushes.LightCoral;
                 imgPhoneNumberError.Visibility = Visibility.Visible;
                 checkPhoneNumber = false;
             }
@@ -346,34 +347,37 @@ namespace Protectora
 
         private void txtEmail_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (txtEmail.Text.Length <= 7 || txtEmail.Text.Length >= 30)
+            try
             {
-                txtEmail.BorderThickness = new Thickness(2);
-                txtEmail.BorderBrush = Brushes.Red;
-                txtEmail.Background = Brushes.LightCoral;
-                imgEmailError.Visibility = Visibility.Visible;
-                checkEmail = false;
-            }
-            else
-            {
+                MailAddress m = new MailAddress(txtEmail.Text);
                 txtEmail.BorderThickness = new Thickness(1);
                 txtEmail.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFABADB3");
                 txtEmail.Background = Brushes.White;
                 imgEmailError.Visibility = Visibility.Hidden;
                 checkEmail = true;
+            }
+            catch (Exception)
+            {
+                txtEmail.BorderThickness = new Thickness(2);
+                txtEmail.BorderBrush = Brushes.Red;
+                //txtEmail.Background = Brushes.LightCoral;
+                imgEmailError.Visibility = Visibility.Visible;
+                checkEmail = false;
             }
         }
 
         private void txtEmail_KeyUp(object sender, KeyEventArgs e)
         {
-            if (txtEmail.Text.Length >= 7 && txtEmail.Text.Length <= 30)
+            try
             {
+                MailAddress m = new MailAddress(txtEmail.Text);
                 txtEmail.BorderThickness = new Thickness(1);
                 txtEmail.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFABADB3");
                 txtEmail.Background = Brushes.White;
                 imgEmailError.Visibility = Visibility.Hidden;
                 checkEmail = true;
             }
+            catch (Exception) { };
         }
 
         private void txtAge_LostFocus(object sender, RoutedEventArgs e)
@@ -387,7 +391,7 @@ namespace Protectora
                 {
                     txtAge.BorderThickness = new Thickness(2);
                     txtAge.BorderBrush = Brushes.Red;
-                    txtAge.Background = Brushes.LightCoral;
+                    //txtAge.Background = Brushes.LightCoral;
                     imgAgeError.Visibility = Visibility.Visible;
                     checkAge = false;
                 }
@@ -404,7 +408,7 @@ namespace Protectora
             {
                 txtAge.BorderThickness = new Thickness(2);
                 txtAge.BorderBrush = Brushes.Red;
-                txtAge.Background = Brushes.LightCoral;
+                //txtAge.Background = Brushes.LightCoral;
                 imgAgeError.Visibility = Visibility.Visible;
                 checkAge = false;
             }
@@ -434,7 +438,7 @@ namespace Protectora
             {
                 txtZone.BorderThickness = new Thickness(2);
                 txtZone.BorderBrush = Brushes.Red;
-                txtZone.Background = Brushes.LightCoral;
+                //txtZone.Background = Brushes.LightCoral;
                 imgZoneError.Visibility = Visibility.Visible;
                 checkZone = false;
             }

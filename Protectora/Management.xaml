@@ -157,6 +157,89 @@
             </TabItem>
             <TabItem Header="Socios">
                 <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="9"/>
+                        <ColumnDefinition Width="579"/>
+                    </Grid.ColumnDefinitions>
+                    <ListBox x:Name="lstListaSocios" Grid.Column="0" SelectedIndex="0" Margin="5,5,3,5" ItemsSource="{Binding}" MouseLeftButtonUp="lstListaAnimales_MouseLeftButtonUp" KeyUp="lstListaAnimales_KeyUp" SelectionChanged="lstListaAnimales_SelectionChanged">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Width="32" Height="37" Source="{Binding Photo}"/>
+                                    <TextBlock VerticalAlignment="Center" Margin="10,0,0,0" Text="{Binding Firstname}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="Margin" Value="2"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Foreground" Value="Black"/>
+                                        <Setter Property="FontWeight" Value="Bold"/>
+                                        <Setter Property="BorderBrush" Value="Black"/>
+                                        <Setter Property="BorderThickness" Value="2"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                    </ListBox>
+                    <GridSplitter HorizontalAlignment="Stretch" Margin="2,0,2,0" Grid.Column="1" />
+                    <ScrollViewer Grid.Column="2" Margin="3,0,0,0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,194,311">
+                                <Label x:Name="lblFirstnameP" FontWeight="Bold" FontSize="20" Content="{Binding ElementName=lstListaSocios,Path=SelectedItem.Firstname}" Margin="3,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                                <Label x:Name="lblLastnameP" FontWeight="Bold" FontSize="20" Content="{Binding ElementName=lstListaSocios,Path=SelectedItem.Lastname}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                            </StackPanel>
+
+                            <StackPanel x:Name="spDetallesSocios2" Orientation="Vertical" Margin="3,36,372,0">
+                                <Label FontWeight="Bold" Content="Dni:"/>
+                                <Label x:Name="lblDniP" Content="{Binding SelectedItem.Dni, ElementName=lstListaSocios}"/>
+                                <Label FontWeight="Bold" Content="Teléfono:"/>
+                                <Label x:Name="lblPhoneNumberP" Content="{Binding SelectedItem.PhoneNumber, ElementName=lstListaSocios}"/>
+                                <Label FontWeight="Bold" Content="Método de pago:"/>
+                                <Label x:Name="lblPaymentMethodP" Content="{Binding SelectedItem.PaymentMethod, ElementName=lstListaSocios}"/>
+                                <Label FontWeight="Bold" Content="Cuenta bancaria:"/>
+                                <Label x:Name="lblCuentaBancariaP" Content="{Binding SelectedItem.BankAccountNumber, ElementName=lstListaSocios}"/>
+                                <Label FontWeight="Bold" Content="Contribucción mensual:"/>
+                                <Label x:Name="lblContrMensualP" Content="{Binding SelectedItem.MonthlyContribution, ElementName=lstListaSocios}"/>
+
+                            </StackPanel>
+                            <!--
+                            <StackPanel x:Name="spDetallesSocios3" Orientation="Vertical"  Margin="111,36,356,0">
+
+                                <Label FontWeight="Bold">Peso:</Label>
+                                <Label x:Name="lblWeight1" Content="{Binding ElementName=lstListaAnimales, Path=SelectedItem.Weight}"/>
+                                <Label FontWeight="Bold">Edad:</Label>
+                                <Label x:Name="lblAge1" Content="{Binding ElementName=lstListaAnimales, Path=SelectedItem.Age}"/>
+                                <Label FontWeight="Bold">Chip:</Label>
+                                <Label x:Name="lblChip1" Content="{Binding ElementName=lstListaAnimales, Path=SelectedItem.Chip}"/>
+                                <Label FontWeight="Bold" Content="PPP:"/>
+                                <Label x:Name="lblPpp1" Content="{Binding SelectedItem.Ppp, ElementName=lstListaAnimales}"/>
+                                <Label FontWeight="Bold" Content="Social perros:"/>
+                                <Label x:Name="lblSociableDogs1" Content="{Binding SelectedItem.SociableDogs, ElementName=lstListaAnimales}"/>
+                            </StackPanel>
+                               -->
+
+                            <StackPanel x:Name="spImage1"  HorizontalAlignment="Left" Orientation="Horizontal" Width="290" Margin="207,36,0,161">
+                                <Image x:Name="imgPicture1" Height="179" Width="270" Source="{Binding SelectedItem.Photo, ElementName=lstListaSocios}" VerticalAlignment="Stretch" Margin="10,0,10,0"/>
+                            </StackPanel>
+
+                            <!--
+                            <StackPanel Orientation="Horizontal" Margin="241,220,47,92">
+                                <Button x:Name="btbSponsor1" Style="{StaticResource RoundedButtonStyle}" Background="#FF556080" Foreground="White" Content="Datos padrino/madrina" Click="btbSponsor_Click" Height="36" Width="149" Margin="0,0,5,0"/>
+                                <Button x:Name="btbVideo1" Style="{StaticResource RoundedButtonStyle}" Background="#FF556080" Foreground="White" Content="Mostrar video" Height="36" Width="110" Margin="6,0,0,0" Click="btbVideo_Click"/>
+                            </StackPanel>
+                            -->
+                        </Grid>
+                    </ScrollViewer>
                 </Grid>
             </TabItem>
             <TabItem Header="Ayuda">
@@ -167,7 +250,7 @@
                                 <Image Source="Images/animal.png" Height="22" Width="22"/>
                                 <Label Content="Gestión de animales" FontSize="17" FontWeight="Bold"/>
                             </StackPanel>
-                            <StackPanel Orientation="Vertical" Width="694">
+                            <StackPanel Orientation="Vertical" Width="684" Margin="0,0,0,10">
                                 <TextBlock x:Name="subHeaderText1" 
                                             FontSize="14" 
                                            TextWrapping="Wrap" 
@@ -179,23 +262,23 @@
                                            Foreground="Black"
                                            Text="Dentro del panel derecho, podrás mostrar información, en el caso de este apadriano, sobre la persona que tiene apadriano el animal. Tambien podrás visualizar un vídeo del animal." Margin="0,5,0,0" />
                             </StackPanel>
-                           
-                            
+
+
                             <StackPanel Orientation="Horizontal"  >
                                 <Image Source="Images/volunteer.png" Height="22" Width="22"/>
                                 <Label Content="Gestión de voluntarios" FontSize="17" FontWeight="Bold"/>
                             </StackPanel>
-                            <StackPanel Orientation="Vertical" Width="694">
+                            <StackPanel Orientation="Vertical" Width="684"  Margin="0,0,0,10">
                                 <TextBlock x:Name="subHeaderText3" 
                                             FontSize="14" 
                                            TextWrapping="Wrap" 
                                            Foreground="Black"
-                                           Text="En el menú de gestión de animales podrás ver, añadir, editar y eliminar animales. Para mostrar las características de una animal simplemente selecciona un animal y en la parte derecha del panel se mostrarán las características del animal seleccionado." />
+                                           Text="En el menú de gestión de voluntarios se podrán realizar las mismas funciones que en el menú de animales, simplemente cambia la forma en la que los datos se muestran, utilizando una lista de tablas." />
                                 <TextBlock x:Name="subHeaderText4" 
                                             FontSize="14" 
                                            TextWrapping="Wrap" 
                                            Foreground="Black"
-                                           Text="Dentro del panel derecho, podrás mostrar información, en el caso de este apadriano, sobre la persona que tiene apadriano el animal. Tambien podrás visualizar un vídeo del animal." Margin="0,5,0,0" />
+                                           Text="Toda la información aparece en las diferentes filas y columnas de la tabla. La particularidad que tiene este diseño es que hay dos manera de modificar un registro, bien sea utilizando el botón de editar o haciendo doble click en el campo correspondiente e introduciendo un nuevo valor." Margin="0,5,0,0" />
                             </StackPanel>
 
                             <StackPanel  Orientation="Horizontal" >
@@ -203,22 +286,25 @@
                                 <Label Content="Gestión de socios" FontSize="17" FontWeight="Bold"/>
                             </StackPanel>
 
-                            <StackPanel Orientation="Vertical" Width="694">
+                            <StackPanel Orientation="Vertical" Width="684"  Margin="0,0,0,10">
                                 <TextBlock x:Name="subHeaderText5" 
                                             FontSize="14" 
                                            TextWrapping="Wrap" 
                                            Foreground="Black"
-                                           Text="En el menú de gestión de animales podrás ver, añadir, editar y eliminar animales. Para mostrar las características de una animal simplemente selecciona un animal y en la parte derecha del panel se mostrarán las características del animal seleccionado." />
-                                <TextBlock x:Name="subHeaderText6" 
-                                            FontSize="14" 
-                                           TextWrapping="Wrap" 
-                                           Foreground="Black"
-                                           Text="Dentro del panel derecho, podrás mostrar información, en el caso de este apadriano, sobre la persona que tiene apadriano el animal. Tambien podrás visualizar un vídeo del animal." Margin="0,5,0,0" />
+                                           Text="Este panel es similar al de animales utilizando patrón master-detail para mostrar la información." />
                             </StackPanel>
 
                             <StackPanel  Orientation="Horizontal" >
                                 <Image Source="Images/gear.png" Height="22" Width="22"/>
                                 <Label Content="Botones dinámicos" FontSize="17" FontWeight="Bold"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Vertical" Width="684"  Margin="0,0,0,10">
+                                <TextBlock x:Name="subHeaderText6" 
+                                            FontSize="14" 
+                                           TextWrapping="Wrap" 
+                                           Foreground="Black"
+                                           Text="Los botones que se encuentran en la parte superior de la ventana siempre son visibles, por lo que son independientes a la pestaña seleccionada. Estos botones cambian de funcionalidad conforme cambias de pestaña, por eso son dinámicos." Margin="0,5,0,0" />
                             </StackPanel>
 
                         </StackPanel>

@@ -122,7 +122,7 @@ namespace Protectora
             {
                 txtName.BorderThickness = new Thickness(2);
                 txtName.BorderBrush = Brushes.Red;
-                txtName.Background = Brushes.LightCoral;
+                //txtName.Background = Brushes.LightCoral;
                 imgNameError.Visibility = Visibility.Visible;
                 checkName = false;
             }
@@ -154,7 +154,7 @@ namespace Protectora
             {
                 txtBreed.BorderThickness = new Thickness(2);
                 txtBreed.BorderBrush = Brushes.Red;
-                txtBreed.Background = Brushes.LightCoral;
+                //txtBreed.Background = Brushes.LightCoral;
                 imgBreedError.Visibility = Visibility.Visible;
                 checkBreed = false;
             }
@@ -191,7 +191,7 @@ namespace Protectora
                 {
                     txtSize.BorderThickness = new Thickness(2);
                     txtSize.BorderBrush = Brushes.Red;
-                    txtSize.Background = Brushes.LightCoral;
+                    //txtSize.Background = Brushes.LightCoral;
                     imgSizeError.Visibility = Visibility.Visible;
                     checkSize = false;
                 }
@@ -208,7 +208,7 @@ namespace Protectora
             {
                 txtSize.BorderThickness = new Thickness(2);
                 txtSize.BorderBrush = Brushes.Red;
-                txtSize.Background = Brushes.LightCoral;
+                //txtSize.Background = Brushes.LightCoral;
                 imgSizeError.Visibility = Visibility.Visible;
                 checkSize = false;
             }
@@ -243,7 +243,7 @@ namespace Protectora
                 {
                     txtWeight.BorderThickness = new Thickness(2);
                     txtWeight.BorderBrush = Brushes.Red;
-                    txtWeight.Background = Brushes.LightCoral;
+                    //txtWeight.Background = Brushes.LightCoral;
                     imgWeightError.Visibility = Visibility.Visible;
                     checkWeight = false;
                 }
@@ -260,7 +260,7 @@ namespace Protectora
             {
                 txtWeight.BorderThickness = new Thickness(2);
                 txtWeight.BorderBrush = Brushes.Red;
-                txtWeight.Background = Brushes.LightCoral;
+                //txtWeight.Background = Brushes.LightCoral;
                 imgWeightError.Visibility = Visibility.Visible;
                 checkWeight = false;
             }
@@ -295,7 +295,7 @@ namespace Protectora
                 {
                     txtAge.BorderThickness = new Thickness(2);
                     txtAge.BorderBrush = Brushes.Red;
-                    txtAge.Background = Brushes.LightCoral;
+                    //txtAge.Background = Brushes.LightCoral;
                     imgAgeError.Visibility = Visibility.Visible;
                     checkAge = false;
                 }
@@ -312,7 +312,7 @@ namespace Protectora
             {
                 txtAge.BorderThickness = new Thickness(2);
                 txtAge.BorderBrush = Brushes.Red;
-                txtAge.Background = Brushes.LightCoral;
+                //txtAge.Background = Brushes.LightCoral;
                 imgAgeError.Visibility = Visibility.Visible;
                 checkAge = false;
             }
@@ -347,7 +347,7 @@ namespace Protectora
                 {
                     txtChip.BorderThickness = new Thickness(2);
                     txtChip.BorderBrush = Brushes.Red;
-                    txtChip.Background = Brushes.LightCoral;
+                    //txtChip.Background = Brushes.LightCoral;
                     imgChipError.Visibility = Visibility.Visible;
                     checkChip = false;
                 }
@@ -364,7 +364,7 @@ namespace Protectora
             {
                 txtChip.BorderThickness = new Thickness(2);
                 txtChip.BorderBrush = Brushes.Red;
-                txtChip.Background = Brushes.LightCoral;
+                //txtChip.Background = Brushes.LightCoral;
                 imgChipError.Visibility = Visibility.Visible;
                 checkChip = false;
             }

@@ -16,6 +16,7 @@
     <None Remove="bg.jpg" />
     <None Remove="Data\animals.xml" />
     <None Remove="Data\datetime.txt" />
+    <None Remove="Data\partners.xml" />
     <None Remove="Data\sponsors.xml" />
     <None Remove="Data\volunteers.xml" />
     <None Remove="default_animal.png" />
@@ -57,10 +58,15 @@
     <None Remove="Images\partner.png" />
     <None Remove="Images\pause.png" />
     <None Remove="Images\photo1.jpg" />
+    <None Remove="Images\photo10.jpg" />
     <None Remove="Images\photo2.jpg" />
     <None Remove="Images\photo3.jpg" />
     <None Remove="Images\photo4.jpg" />
     <None Remove="Images\photo5.jpg" />
+    <None Remove="Images\photo6.jpg" />
+    <None Remove="Images\photo7.jpg" />
+    <None Remove="Images\photo8.jpg" />
+    <None Remove="Images\photo9.jpg" />
     <None Remove="Images\play.png" />
     <None Remove="Images\play_c.png" />
     <None Remove="Images\previous.png" />
@@ -98,11 +104,23 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\photo10.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\photo7.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Data\animals.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Data\datetime.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Data\partners.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Data\sponsors.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -237,6 +255,15 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\photo5.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\photo6.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\photo8.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\photo9.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\play.png">

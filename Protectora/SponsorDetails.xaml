@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Protectora"
         mc:Ignorable="d"
         Closing="Window_Closing"
+        ResizeMode="NoResize"
         Title="Detalles padrino/madrina" WindowStartupLocation="CenterScreen" Height="350" Width="497">
     <Grid>
         <Grid.ColumnDefinitions>

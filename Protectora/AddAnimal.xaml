@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Protectora"
         mc:Ignorable="d"
         Closing="Window_Closing"
+        ResizeMode="NoResize"
         Title="Añadir animal" Height="678" Width="363" WindowStartupLocation="CenterScreen">
 
     <Grid>
@@ -112,7 +113,7 @@
                     <Style.Resources>
                         <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
                             <VisualBrush.Visual>
-                                <Label Content="Tamaño" FontSize="16"  Width="184" Height="44" Background="White" VerticalContentAlignment="Center" Foreground="#FF9C9A9A" />
+                                <Label Content="Tamaño (cm)" FontSize="16"  Width="184" Height="44" Background="White" VerticalContentAlignment="Center" Foreground="#FF9C9A9A" />
                             </VisualBrush.Visual>
                         </VisualBrush>
                     </Style.Resources>
@@ -146,7 +147,7 @@
                     <Style.Resources>
                         <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
                             <VisualBrush.Visual>
-                                <Label Content="Peso" FontSize="16"  Width="184" Height="44" Background="White" VerticalContentAlignment="Center" Foreground="#FF9C9A9A" />
+                                <Label Content="Peso (kg)" FontSize="16"  Width="184" Height="44" Background="White" VerticalContentAlignment="Center" Foreground="#FF9C9A9A" />
                             </VisualBrush.Visual>
                         </VisualBrush>
                     </Style.Resources>
@@ -209,7 +210,7 @@
                     <Style.Resources>
                         <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
                             <VisualBrush.Visual>
-                                <Label Content="Chip" FontSize="16"  Width="184" Height="44" Background="White" VerticalContentAlignment="Center" Foreground="#FF9C9A9A" />
+                                <Label Content="Chip (ej. 123456)" FontSize="16"  Width="184" Height="44" Background="White" VerticalContentAlignment="Center" Foreground="#FF9C9A9A" />
                             </VisualBrush.Visual>
                         </VisualBrush>
                     </Style.Resources>

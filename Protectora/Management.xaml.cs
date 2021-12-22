@@ -26,6 +26,7 @@ namespace Protectora
     {
         public ObservableCollection<Animal> animalList;
         public ObservableCollection<Volunteer> volunteerList;
+        public ObservableCollection<Partner> partnerList;
         public List<Sponsor> sponsorList;
 
         private int imgIndex = 0;
@@ -35,8 +36,8 @@ namespace Protectora
         bool volunteerTab = false;
         bool partnerTab = false;
 
-        private bool first_selection = true;
-        private bool first_animallist = true;
+        private int loaded1 = 0;
+        private int loaded2 = 0;
         private bool addAction = false;
         private bool deleteAction = false;
         
@@ -56,10 +57,12 @@ namespace Protectora
             animalList = LoadContentAnimalsXML();
             sponsorList = LoadContentSponsorXML();
             volunteerList = LoadContentVolunteerXML();
+            partnerList = LoadContentPartnerXML();
 
             /* Data binding */
             lstListaAnimales.ItemsSource = animalList;
             dgVolunteers.ItemsSource = volunteerList;
+            lstListaSocios.ItemsSource = partnerList;
 
             addSponsor();
         }
@@ -71,6 +74,31 @@ namespace Protectora
             }
         }
 
+        /* Load partnts data */
+        private ObservableCollection<Partner> LoadContentPartnerXML()
+        {
+            ObservableCollection<Partner> list = new ObservableCollection<Partner>();
+
+            XmlDocument doc = new XmlDocument();
+            var fichero = Application.GetResourceStream(new Uri("Data/partners.xml", UriKind.Relative));
+            doc.Load(fichero.Stream);
+            foreach (XmlNode node in doc.DocumentElement.ChildNodes)
+            {
+                var newPartner = new Partner(0,"","",0,"",0,"","");
+
+                newPartner.Dni = Convert.ToInt32(node.Attributes["Dni"].Value);
+                newPartner.Firstname = node.Attributes["Firstname"].Value;
+                newPartner.Lastname = node.Attributes["Lastname"].Value;
+                newPartner.PhoneNumber = Convert.ToInt32(node.Attributes["PhoneNumber"].Value);
+                newPartner.Photo = node.Attributes["Photo"].Value;
+                newPartner.MonthlyContribution = Convert.ToInt32(node.Attributes["MonthlyContribution"].Value);
+                newPartner.PaymentMethod = node.Attributes["PaymentMethod"].Value;
+                newPartner.BankAccountNumber = node.Attributes["BankAccountNumber"].Value;
+
+                list.Add(newPartner);
+            }
+            return list;
+        }
         /* Load volunteers data */
         private ObservableCollection<Volunteer> LoadContentVolunteerXML()
         {
@@ -415,7 +443,7 @@ namespace Protectora
         /* Change tooltip and set elements depeding on the selected tab */
         private void tcPestanas_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (!first_selection)
+            if (loaded1 > 3)
             {
                 switch (((TabItem)tcPestanas.SelectedItem).Header.ToString())
                 {
@@ -494,7 +522,7 @@ namespace Protectora
                 }
             }
             else {
-                first_selection = false;
+                loaded1++;
             }
         }
 
@@ -600,7 +628,7 @@ namespace Protectora
         /* Fix element display when diffent animal is selected */
         private void lstListaAnimales_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (!first_animallist)
+            if (loaded2 > 3)
             {
                 if (((TabItem)tcPestanas.SelectedItem).Header.ToString() == "Animales" && !deleteAction)
                 {
@@ -617,7 +645,7 @@ namespace Protectora
                 }
             }
             else {
-                first_animallist = false;
+                loaded2++;
             }
         }   
     }

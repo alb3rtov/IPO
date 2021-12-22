@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Protectora"
         mc:Ignorable="d"
         Closing="Window_Closing"
+        ResizeMode="NoResize"
         Title="EditVolunteer" Height="480" Width="363" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
@@ -114,7 +115,7 @@
                     <Style.Resources>
                         <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
                             <VisualBrush.Visual>
-                                <Label Content="DNI" FontSize="16"  Width="184" Height="44" Background="White" VerticalContentAlignment="Center" Foreground="#FF9C9A9A" />
+                                <Label Content="DNI (ej. 11111111)" FontSize="16"  Width="184" Height="44" Background="White" VerticalContentAlignment="Center" Foreground="#FF9C9A9A" />
                             </VisualBrush.Visual>
                         </VisualBrush>
                     </Style.Resources>
@@ -200,7 +201,7 @@
 
         <Image x:Name="imgEmailError" Visibility="Hidden" Source="Images/info_error.png" Grid.Column="3" Margin="121,0,0,0" Grid.Row="7" HorizontalAlignment="Left" Width="15" VerticalAlignment="Center" Height="16">
             <Image.ToolTip>
-                <ToolTip Background="LightCoral" Foreground="White" Content="El email debe contener entre 7 y 30 carácteres"/>
+                <ToolTip Background="LightCoral" Foreground="White" Content="El email debe tener el formato de un email"/>
             </Image.ToolTip>
         </Image>
 

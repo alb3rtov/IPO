@@ -8,22 +8,24 @@ namespace Protectora
 {
     public class Partner
     {
-        private int Dni { set; get; }
-        private string Firstname { set; get; }
-        private string Lastname { set; get; }
-        private int PhoneNumber { set; get; }
-        private string BankAccountNumber { set; get; }
-        private int AmountAid { set; get; }
-        private string PaymentMethod { set; get; }
+        public int Dni { set; get; }
+        public string Firstname { set; get; }
+        public string Lastname { set; get; }
+        public int PhoneNumber { set; get; }
+        public string BankAccountNumber { set; get; }
+        public int MonthlyContribution { set; get; }
+        public string PaymentMethod { set; get; }
+        public string Photo { set; get; }
 
-        public Partner(int dni, string firstname, string lastname, int phoneNumber, string bankAccountNumber, int amountAid, string paymentMethod) {
+        public Partner(int dni, string firstname, string lastname, int phoneNumber, string bankAccountNumber, int monthlyContribution, string paymentMethod, string photo) {
             Dni = dni;
             Firstname = firstname;
             Lastname = lastname;
             PhoneNumber = phoneNumber;
             BankAccountNumber = bankAccountNumber;
-            AmountAid = amountAid;
+            MonthlyContribution = monthlyContribution;
             PaymentMethod = paymentMethod;
+            Photo = photo;
         }
     }
 }
