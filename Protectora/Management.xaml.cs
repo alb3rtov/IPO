@@ -84,12 +84,11 @@ namespace Protectora
             doc.Load(fichero.Stream);
             foreach (XmlNode node in doc.DocumentElement.ChildNodes)
             {
-                var newPartner = new Partner(0,"","",0,"",0,"","");
+                var newPartner = new Partner(0,"","","",0,"","");
 
                 newPartner.Dni = Convert.ToInt32(node.Attributes["Dni"].Value);
                 newPartner.Firstname = node.Attributes["Firstname"].Value;
                 newPartner.Lastname = node.Attributes["Lastname"].Value;
-                newPartner.PhoneNumber = Convert.ToInt32(node.Attributes["PhoneNumber"].Value);
                 newPartner.Photo = node.Attributes["Photo"].Value;
                 newPartner.MonthlyContribution = Convert.ToInt32(node.Attributes["MonthlyContribution"].Value);
                 newPartner.PaymentMethod = node.Attributes["PaymentMethod"].Value;
@@ -414,6 +413,10 @@ namespace Protectora
                     addWindow.Show();
                     break;
                 case "Socios":
+                    this.IsEnabled = false;
+                    addAction = true;
+                    addWindow = new AddPartner(this, partnerList);
+                    addWindow.Show();
                     break;
             }
         }

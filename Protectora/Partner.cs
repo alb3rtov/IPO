@@ -11,17 +11,15 @@ namespace Protectora
         public int Dni { set; get; }
         public string Firstname { set; get; }
         public string Lastname { set; get; }
-        public int PhoneNumber { set; get; }
         public string BankAccountNumber { set; get; }
         public int MonthlyContribution { set; get; }
         public string PaymentMethod { set; get; }
         public string Photo { set; get; }
 
-        public Partner(int dni, string firstname, string lastname, int phoneNumber, string bankAccountNumber, int monthlyContribution, string paymentMethod, string photo) {
+        public Partner(int dni, string firstname, string lastname, string bankAccountNumber, int monthlyContribution, string paymentMethod, string photo) {
             Dni = dni;
             Firstname = firstname;
             Lastname = lastname;
-            PhoneNumber = phoneNumber;
             BankAccountNumber = bankAccountNumber;
             MonthlyContribution = monthlyContribution;
             PaymentMethod = paymentMethod;
