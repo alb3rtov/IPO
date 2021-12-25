@@ -202,8 +202,6 @@
                             <StackPanel x:Name="spDetallesSocios2" Orientation="Vertical" Margin="3,36,372,0">
                                 <Label FontWeight="Bold" Content="Dni:"/>
                                 <Label x:Name="lblDniP" Content="{Binding SelectedItem.Dni, ElementName=lstListaSocios}"/>
-                                <Label FontWeight="Bold" Content="Teléfono:"/>
-                                <Label x:Name="lblPhoneNumberP" Content="{Binding SelectedItem.PhoneNumber, ElementName=lstListaSocios}"/>
                                 <Label FontWeight="Bold" Content="Método de pago:"/>
                                 <Label x:Name="lblPaymentMethodP" Content="{Binding SelectedItem.PaymentMethod, ElementName=lstListaSocios}"/>
                                 <Label FontWeight="Bold" Content="Cuenta bancaria:"/>
@@ -249,6 +247,7 @@
                             <StackPanel Orientation="Horizontal"  >
                                 <Image Source="Images/animal.png" Height="22" Width="22"/>
                                 <Label Content="Gestión de animales" FontSize="17" FontWeight="Bold"/>
+                                <Button Style="{StaticResource RoundedButtonStyle}" Background="#FF556080" FontSize="11" Foreground="White" Content="Acerca de la aplicación"  Width="131" Margin="400,0,0,0" VerticalAlignment="Center" Height="25" Click="Button_Click"/>
                             </StackPanel>
                             <StackPanel Orientation="Vertical" Width="684" Margin="0,0,0,10">
                                 <TextBlock x:Name="subHeaderText1" 
@@ -311,7 +310,6 @@
                     </Grid>
                 </ScrollViewer>
             </TabItem>
-
         </TabControl>
 
     </Grid>

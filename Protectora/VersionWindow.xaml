@@ -1,0 +1,37 @@
+﻿<Window x:Class="Protectora.VersionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Protectora"
+        mc:Ignorable="d"
+        Closing="Window_Closing"
+        ResizeMode="NoResize"
+        Title="Versión" Height="291" Width="291" WindowStartupLocation="CenterScreen">
+    <Window.Background>
+        <ImageBrush ImageSource="/Images/background.jpg"/>
+    </Window.Background>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="11*"/>
+            <RowDefinition Height="236*"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="16*"/>
+            <ColumnDefinition Width="153*"/>
+            <ColumnDefinition Width="16*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="1" Margin="0,11,0,0" Grid.RowSpan="2">
+            <Label Content="Versión del programa:" FontWeight="Bold" FontSize="20"/>
+            <Label Content="Beta v1.0.0" FontSize="16"/>
+            <Label Content="Autores:" FontWeight="Bold" FontSize="20"/>
+            <Label Content="Alberto Vázquez Martínez" FontSize="16"/>
+            <Label Content="Ángel Villafranca Iniesta" FontSize="16"/>
+            <Label Content="Fecha de realización:" FontWeight="Bold" FontSize="20"/>
+            <Label Content="25/12/2021" FontSize="16"/>
+        </StackPanel>
+
+    </Grid>
+</Window>

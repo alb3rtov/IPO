@@ -46,6 +46,7 @@ namespace Protectora
         private Window editWindow;
         private Window sponsorWindow;
         private Window videoWindow;
+        private Window helpWindow;
 
         public Management(String user)
         {
@@ -278,6 +279,62 @@ namespace Protectora
             fixAnimalImageDisplay(getCurrentIndexAnimals());
         }
 
+        /* Returns the index of the current partner selected on the list */
+        private int getCurrentIndexPartners() {
+            int index = 0;
+
+            if (lblFirstnameP.Content == null)
+            {
+                index = 0;
+            }
+            else
+            {
+                for (int i = 0; i < partnerList.Count; i++)
+                {
+                    if (lblFirstnameP.Content.ToString() == partnerList[i].Firstname)
+                    {
+                        index = i;
+                        break;
+                    }
+                }
+            }
+
+            return index;
+        }
+
+        /* Deletes selected partner from partner list and show another partner */
+        private void deletePartner() {
+            if (partnerList.Count == 0)
+            {
+                MessageBox.Show("No existen socios en la lista", "Error al eliminar socio", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                deleteAction = true;
+                int index = getCurrentIndexPartners();
+
+                if (MessageBox.Show("¿Desea eliminar el animal " + partnerList[index].Firstname + " " + partnerList[index].Lastname + "?", "Eliminar socio", MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.Yes)
+                {
+                    partnerList.RemoveAt(index);
+
+                    int size = lstListaSocios.Items.Count;
+
+                    if (size != 0)
+                    {
+                        imgPicture1.Visibility = Visibility.Visible;
+                        lstListaSocios.SelectedItem = lstListaSocios.Items[size - 1];
+                        lstListaSocios.ScrollIntoView(lstListaSocios.Items[size - 1]);
+
+                    }
+                    else {
+                        imgPicture1.Visibility = Visibility.Hidden;
+                    }
+
+                }
+            }
+            deleteAction = false;
+        }
+
         /* Deletes selected animal from animal list and shows another animal */
         private void deleteAnimal() {
             if (animalList.Count == 0)
@@ -352,6 +409,7 @@ namespace Protectora
                     deleteVolunteer();
                     break;
                 case "Socios":
+                    deletePartner();
                     break;
             }           
         }
@@ -650,6 +708,13 @@ namespace Protectora
             else {
                 loaded2++;
             }
-        }   
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.IsEnabled = false;
+            helpWindow = new VersionWindow(this);
+            helpWindow.Show();
+        }
     }
 }
