@@ -30,7 +30,8 @@ namespace Protectora
         public List<Sponsor> sponsorList;
 
         private int imgIndex = 0;
-        private int sizeList = 0;
+        private int sizeListA = 0;
+        private int sizeListP = 0;
 
         bool animalTab = false;
         bool volunteerTab = false;
@@ -324,7 +325,7 @@ namespace Protectora
                         imgPicture1.Visibility = Visibility.Visible;
                         lstListaSocios.SelectedItem = lstListaSocios.Items[size - 1];
                         lstListaSocios.ScrollIntoView(lstListaSocios.Items[size - 1]);
-
+                        fixPartnerImageDisplay(getCurrentIndexPartners());
                     }
                     else {
                         imgPicture1.Visibility = Visibility.Hidden;
@@ -428,7 +429,7 @@ namespace Protectora
                     {
                         this.IsEnabled = false;
                         addAction = true;
-                        sizeList = animalList.Count;
+                        sizeListA = animalList.Count;
                         int index = getCurrentIndexAnimals();
                         editWindow = new EditAnimal(this, animalList[index]);
                         editWindow.Show();
@@ -448,6 +449,20 @@ namespace Protectora
                     }
                     break;
                 case "Socios":
+                    if (partnerList.Count == 0)
+                    {
+                        MessageBox.Show("No existen socios en la lista", "Error al editar socio", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                    else 
+                    {
+                        this.IsEnabled = false;
+                        addAction = true;
+                        sizeListP = partnerList.Count;
+                        int index = getCurrentIndexPartners();
+                        editWindow = new EditPartner(this, partnerList[index]);
+                        editWindow.Show();
+                    }
+
                     break;
             }
         }
@@ -460,7 +475,7 @@ namespace Protectora
                 case "Animales":
                     this.IsEnabled = false;
                     addAction = true;
-                    sizeList = animalList.Count;
+                    sizeListA = animalList.Count;
                     addWindow = new AddAnimal(this, animalList);
                     addWindow.Show();
                     break;
@@ -472,6 +487,7 @@ namespace Protectora
                     break;
                 case "Socios":
                     this.IsEnabled = false;
+                    sizeListP = partnerList.Count;
                     addAction = true;
                     addWindow = new AddPartner(this, partnerList);
                     addWindow.Show();
@@ -595,6 +611,13 @@ namespace Protectora
             Application.Current.Shutdown();
         }
 
+        /* Set current partner image */
+        private void fixPartnerImageDisplay(int index) {
+            var bitmap = new BitmapImage(new Uri(partnerList[index].Photo, UriKind.RelativeOrAbsolute));
+            imgPicture1.Source = bitmap;
+            imgPicture1.Visibility = Visibility.Visible;
+        }
+
         /* Set current animal images */
         private void fixAnimalImageDisplay(int index)
         {
@@ -621,6 +644,14 @@ namespace Protectora
             }
         }
 
+        /* Update partners direfent details */
+        private void updatePartnersDetails(int index) {
+            if (partnerList.Count != 0) {
+                Partner aux = partnerList[index];
+                lblPaymentMethodP.Content = aux.PaymentMethod;
+            }
+        }
+
         /* Update animals diferent details */
         private void updateAnimalsDetails(int index)
         {
@@ -643,9 +674,9 @@ namespace Protectora
                 switch (((TabItem)tcPestanas.SelectedItem).Header.ToString())
                 {
                     case "Animales":
-                        if (sizeList != animalList.Count)
+                        if (sizeListA != animalList.Count)
                         {
-                            sizeList = animalList.Count;
+                            sizeListA = animalList.Count;
                             addAction = false;
                             int size = lstListaAnimales.Items.Count;
                             lstListaAnimales.SelectedItem = lstListaAnimales.Items[size - 1];
@@ -658,6 +689,16 @@ namespace Protectora
                         addAction = false;
                         break;
                     case "Socios":
+
+                        if (sizeListP != partnerList.Count) {
+                            sizeListP = partnerList.Count;
+                            addAction = false;
+                            int size = lstListaSocios.Items.Count;
+                            lstListaSocios.SelectedItem = lstListaSocios.Items[size - 1];
+                            lstListaSocios.ScrollIntoView(lstListaSocios.Items[size - 1]);
+                        }
+                        updatePartnersDetails(getCurrentIndexPartners());
+                        fixPartnerImageDisplay(getCurrentIndexPartners());
                         break;
                 }
             }
@@ -715,6 +756,43 @@ namespace Protectora
             this.IsEnabled = false;
             helpWindow = new VersionWindow(this);
             helpWindow.Show();
+        }
+
+        private void lstListaSocios_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            fixPartnerImageDisplay(getCurrentIndexPartners());
+        }
+
+        private void lstListaSocios_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Down || e.Key == Key.Up)
+            {
+                fixPartnerImageDisplay(getCurrentIndexPartners());
+            }
+        }
+
+        private void lstListaSocios_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (loaded2 > 3)
+            {
+                if (((TabItem)tcPestanas.SelectedItem).Header.ToString() == "Socios" && !deleteAction)
+                {
+                    if (animalTab)
+                    {
+                        updatePartnersDetails(getCurrentIndexPartners());
+                        fixPartnerImageDisplay(getCurrentIndexPartners());
+                    }
+                    else
+                    {
+                        updatePartnersDetails(0);
+                        fixPartnerImageDisplay(0);
+                    }
+                }
+            }
+            else
+            {
+                loaded2++;
+            }
         }
     }
 }

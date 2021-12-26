@@ -1,7 +1,6 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -18,26 +17,29 @@ using System.Windows.Shapes;
 namespace Protectora
 {
     /// <summary>
-    /// Lógica de interacción para AddPartner.xaml
+    /// Lógica de interacción para EditPartner.xaml
     /// </summary>
-    public partial class AddPartner : Window
+    public partial class EditPartner : Window
     {
         private Window parent;
-        private ObservableCollection<Partner> partners;
+        private Partner partner;
         private bool checkFirstName = false;
         private bool checkLastName = false;
         private bool checkDni = false;
         private bool checkBankNumber = false;
         private bool checkMonthlyContribution = false;
-        private bool checkImages = false;
         private string filename;
 
-        public AddPartner(Window window, ObservableCollection<Partner> partnerList)
+        public EditPartner(Window window, Partner p)
         {
             InitializeComponent();
             parent = window;
-            partners = partnerList;
-            DataContext = partners;
+            partner = p;
+            DataContext = partner;
+
+            /* Set other details */
+            setImage(addImages1, partner.Photo);
+            setPaymentMethod(partner.PaymentMethod);
         }
 
         /* When close window enable parent window */
@@ -46,26 +48,59 @@ namespace Protectora
             parent.IsEnabled = true;
         }
 
-        /* Select image */
-        private void addImages1_Click(object sender, RoutedEventArgs e)
-        {
-            var openDialog = new OpenFileDialog();
-            openDialog.Filter = "Images|*.jpg;*.gif;*.bmp;*.png";
+        private void setPaymentMethod(string paymentMethod) {
 
-            if (openDialog.ShowDialog() == true)
+            if (paymentMethod == "Transferencia estándar") {
+                cbPaymentMethod.SelectedIndex = 0;
+            } else if (paymentMethod == "Transferencia puntual") {
+                cbPaymentMethod.SelectedIndex = 1;
+            } else if (paymentMethod == "Transferencia inmediata") {
+                cbPaymentMethod.SelectedIndex = 2;
+            }
+        
+        }
+
+        /* Set a given image in a given button */
+        private void setImage(Button addImages, string image)
+        {
+            var brush = new ImageBrush();
+
+            if (image.Substring(0, 1) == "I")
             {
-                try
-                {
-                    filename = openDialog.FileName;
-                    var brush = new ImageBrush();
-                    brush.ImageSource = new BitmapImage(new Uri(openDialog.FileName, UriKind.RelativeOrAbsolute));
-                    checkImages = true;
-                    addImages1.Background = brush;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al cargar la imagen " + ex.Message);
-                }
+                brush.ImageSource = new BitmapImage(new Uri("pack://application:,,,/" + image, UriKind.RelativeOrAbsolute));
+            }
+            else
+            {
+                brush.ImageSource = new BitmapImage(new Uri(image, UriKind.RelativeOrAbsolute));
+            }
+
+            addImages.Background = brush;
+        }
+
+        /* Edit volunteer checking that all fields are valid */
+        private void btbEdit_Click(object sender, RoutedEventArgs e)
+        {
+            object senders = null;
+            KeyEventArgs es = null;
+            txtFirstName_LostFocus(senders, es);
+            txtLastName_LostFocus(senders, es);
+            txtMonthlyContribution_LostFocus(senders, es);
+            txtDni_LostFocus(senders, es);
+            txtBankNumber_LostFocus(senders, es);
+
+            if (checkFirstName && checkLastName && checkDni && checkBankNumber && checkMonthlyContribution)
+            {
+                partner.PaymentMethod = cbPaymentMethod.Text;
+
+                /*
+                volunteer.Studies = cbStudies.Text;
+                volunteer.TimeAvailability = cbInitial.Text + "-" + cbEnd.Text;
+                */
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Debe de introducir datos correctos en el formulario", "Error en el formulario", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -202,19 +237,19 @@ namespace Protectora
         {
             if (txtBankNumber.Text.Length >= 24 && txtBankNumber.Text.Length <= 30)
             {
-                txtBankNumber.BorderThickness = new Thickness(2);
-                txtBankNumber.BorderBrush = Brushes.Red;
-                //txtLastName.Background = Brushes.LightCoral;
-                imgBankNumber.Visibility = Visibility.Visible;
-                checkBankNumber = false;
-            }
-            else
-            {
                 txtBankNumber.BorderThickness = new Thickness(1);
                 txtBankNumber.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFABADB3");
                 txtBankNumber.Background = Brushes.White;
                 imgBankNumber.Visibility = Visibility.Hidden;
                 checkBankNumber = true;
+            }
+            else
+            {
+                txtBankNumber.BorderThickness = new Thickness(2);
+                txtBankNumber.BorderBrush = Brushes.Red;
+                //txtLastName.Background = Brushes.LightCoral;
+                imgBankNumber.Visibility = Visibility.Visible;
+                checkBankNumber = false;
             }
         }
 
@@ -270,17 +305,26 @@ namespace Protectora
             }
         }
 
-        private void btbAdd_Click(object sender, RoutedEventArgs e)
+        /* Change image of the partner */
+        private void addImages1_Click(object sender, RoutedEventArgs e)
         {
-            if (checkFirstName && checkLastName && checkDni && checkBankNumber && checkMonthlyContribution && checkImages)
+            var openDialog = new OpenFileDialog();
+            openDialog.Filter = "Images|*.jpg;*.gif;*.bmp;*.png";
+
+            if (openDialog.ShowDialog() == true)
             {
-                Partner partner = new Partner(int.Parse(txtDni.Text), txtFirstName.Text, txtLastName.Text, txtBankNumber.Text, int.Parse(txtMonthlyContribution.Text), cbPaymentMethod.Text, filename);
-                partners.Add(partner);
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show("Debe de introducir datos correctos en el formulario", "Error en el formulario", MessageBoxButton.OK, MessageBoxImage.Error);
+                try
+                {
+                    filename = openDialog.FileName;
+                    var brush = new ImageBrush();
+                    brush.ImageSource = new BitmapImage(new Uri(openDialog.FileName, UriKind.RelativeOrAbsolute));
+                    addImages1.Background = brush;
+                    partner.Photo = filename;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al cargar la imagen " + ex.Message);
+                }
             }
         }
     }

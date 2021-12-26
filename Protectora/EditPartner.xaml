@@ -1,4 +1,4 @@
-﻿<Window x:Class="Protectora.AddPartner"
+﻿<Window x:Class="Protectora.EditPartner"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Closing="Window_Closing"
         ResizeMode="NoResize"
-        Title="AddPartner" Height="377" Width="363"  WindowStartupLocation="CenterScreen">
+        Title="EditPartner" Height="377" Width="363"  WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="4*"/>
@@ -34,7 +34,7 @@
             <ColumnDefinition Width="11*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBox x:Name="txtFirstName" Text="" VerticalContentAlignment="Center" TextWrapping="Wrap" Margin="22,9,0,0" Grid.ColumnSpan="2" Grid.Row="2" Grid.RowSpan="2" KeyUp="txtFirstName_KeyUp" LostFocus="txtFirstName_LostFocus">
+        <TextBox x:Name="txtFirstName" Text="{Binding Firstname}" VerticalContentAlignment="Center" TextWrapping="Wrap" Margin="22,9,0,0" Grid.ColumnSpan="2" Grid.Row="2" Grid.RowSpan="2" KeyUp="txtFirstName_KeyUp" LostFocus="txtFirstName_LostFocus">
             <TextBox.Style>
                 <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
                     <Style.Resources>
@@ -66,7 +66,7 @@
         </Image>
 
 
-        <TextBox x:Name="txtLastName" Text="" VerticalContentAlignment="Center" TextWrapping="Wrap" Margin="22,18,0,1" Grid.ColumnSpan="2" Grid.Row="4" Grid.RowSpan="2" KeyUp="txtLastName_KeyUp" LostFocus="txtLastName_LostFocus" >
+        <TextBox x:Name="txtLastName" Text="{Binding Lastname}" VerticalContentAlignment="Center" TextWrapping="Wrap" Margin="22,18,0,1" Grid.ColumnSpan="2" Grid.Row="4" Grid.RowSpan="2" KeyUp="txtLastName_KeyUp" LostFocus="txtLastName_LostFocus" >
             <TextBox.Style>
                 <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
                     <Style.Resources>
@@ -97,7 +97,7 @@
             </Image.ToolTip>
         </Image>
 
-        <TextBox x:Name="txtDni" VerticalContentAlignment="Center" TextWrapping="Wrap" Margin="22,18,0,0" Grid.Row="6" Grid.ColumnSpan="2" Grid.RowSpan="2" KeyUp="txtDni_KeyUp" LostFocus="txtDni_LostFocus">
+        <TextBox x:Name="txtDni" Text="{Binding Dni}" VerticalContentAlignment="Center" TextWrapping="Wrap" Margin="22,18,0,0" Grid.Row="6" Grid.ColumnSpan="2" Grid.RowSpan="2" KeyUp="txtDni_KeyUp" LostFocus="txtDni_LostFocus">
 
             <TextBox.Style>
                 <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
@@ -136,7 +136,7 @@
         </ComboBox>
 
 
-        <TextBox x:Name="txtBankNumber" Text="" TextWrapping="Wrap" VerticalContentAlignment="Center" Margin="22,18,22,0" Grid.Row="8" Grid.ColumnSpan="5" Grid.RowSpan="2" KeyUp="txtBankNumber_KeyUp" LostFocus="txtBankNumber_LostFocus">
+        <TextBox x:Name="txtBankNumber" Text="{Binding BankAccountNumber}" TextWrapping="Wrap" VerticalContentAlignment="Center" Margin="22,18,22,0" Grid.Row="8" Grid.ColumnSpan="5" Grid.RowSpan="2" KeyUp="txtBankNumber_KeyUp" LostFocus="txtBankNumber_LostFocus">
             <TextBox.Style>
                 <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
                     <Style.Resources>
@@ -167,7 +167,7 @@
             </Image.ToolTip>
         </Image>
 
-        <TextBox x:Name="txtMonthlyContribution" VerticalContentAlignment="Center" TextWrapping="Wrap" Margin="22,18,16,0" Grid.Row="10" Grid.ColumnSpan="3" Grid.RowSpan="2" KeyUp="txtMonthlyContribution_KeyUp" LostFocus="txtMonthlyContribution_LostFocus">
+        <TextBox x:Name="txtMonthlyContribution" Text="{Binding MonthlyContribution}" VerticalContentAlignment="Center" TextWrapping="Wrap" Margin="22,18,16,0" Grid.Row="10" Grid.ColumnSpan="3" Grid.RowSpan="2" KeyUp="txtMonthlyContribution_KeyUp" LostFocus="txtMonthlyContribution_LostFocus">
 
             <TextBox.Style>
                 <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
@@ -205,8 +205,8 @@
             </Button.Background>
         </Button>
 
-        <Button Style="{StaticResource RoundedButtonStyle}" Background="#FF556080" Foreground="White" x:Name="btbAdd" Content="Añadir" Grid.ColumnSpan="5" Grid.Row="12" Margin="22,18,22,0" Grid.RowSpan="2" Click="btbAdd_Click"/>
-        <Label Content="Añadir socio" VerticalAlignment="Center" Height="38" Grid.ColumnSpan="5" HorizontalContentAlignment="Center" FontSize="16" Margin="22,0,22,0" Grid.Row="1"/>
+        <Button Style="{StaticResource RoundedButtonStyle}" Background="#FF556080" Foreground="White" x:Name="btbEdit" Content="Editar" Grid.ColumnSpan="5" Grid.Row="12" Margin="22,18,22,0" Grid.RowSpan="2" Click="btbEdit_Click"/>
+        <Label Content="Editar socio" VerticalAlignment="Center" Height="38" Grid.ColumnSpan="5" HorizontalContentAlignment="Center" FontSize="16" Margin="22,0,22,0" Grid.Row="1"/>
 
     </Grid>
 </Window>

@@ -162,7 +162,7 @@
                         <ColumnDefinition Width="9"/>
                         <ColumnDefinition Width="579"/>
                     </Grid.ColumnDefinitions>
-                    <ListBox x:Name="lstListaSocios" Grid.Column="0" SelectedIndex="0" Margin="5,5,3,5" ItemsSource="{Binding}" MouseLeftButtonUp="lstListaAnimales_MouseLeftButtonUp" KeyUp="lstListaAnimales_KeyUp" SelectionChanged="lstListaAnimales_SelectionChanged">
+                    <ListBox x:Name="lstListaSocios" Grid.Column="0" SelectedIndex="0" Margin="5,5,3,5" ItemsSource="{Binding}" MouseLeftButtonUp="lstListaSocios_MouseLeftButtonUp" KeyUp="lstListaSocios_KeyUp" SelectionChanged="lstListaSocios_SelectionChanged">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
