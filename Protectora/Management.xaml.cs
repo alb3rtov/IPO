@@ -777,7 +777,7 @@ namespace Protectora
             {
                 if (((TabItem)tcPestanas.SelectedItem).Header.ToString() == "Socios" && !deleteAction)
                 {
-                    if (animalTab)
+                    if (partnerTab)
                     {
                         updatePartnersDetails(getCurrentIndexPartners());
                         fixPartnerImageDisplay(getCurrentIndexPartners());

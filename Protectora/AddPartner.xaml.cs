@@ -202,19 +202,19 @@ namespace Protectora
         {
             if (txtBankNumber.Text.Length >= 24 && txtBankNumber.Text.Length <= 30)
             {
-                txtBankNumber.BorderThickness = new Thickness(2);
-                txtBankNumber.BorderBrush = Brushes.Red;
-                //txtLastName.Background = Brushes.LightCoral;
-                imgBankNumber.Visibility = Visibility.Visible;
-                checkBankNumber = false;
-            }
-            else
-            {
                 txtBankNumber.BorderThickness = new Thickness(1);
                 txtBankNumber.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFABADB3");
                 txtBankNumber.Background = Brushes.White;
                 imgBankNumber.Visibility = Visibility.Hidden;
                 checkBankNumber = true;
+            }
+            else
+            {
+                txtBankNumber.BorderThickness = new Thickness(2);
+                txtBankNumber.BorderBrush = Brushes.Red;
+                //txtLastName.Background = Brushes.LightCoral;
+                imgBankNumber.Visibility = Visibility.Visible;
+                checkBankNumber = false;
             }
         }
 
