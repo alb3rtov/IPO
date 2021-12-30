@@ -26,6 +26,7 @@ namespace Protectora
         public VideoWindow(Window window, Animal animal)
         {
             InitializeComponent();
+            this.Title = "Video de " + animal.Name;
             parent = window;
             DataContext = animal;
             lblName.Content = "Video sobre " + animal.Name;

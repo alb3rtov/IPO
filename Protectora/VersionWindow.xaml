@@ -7,10 +7,7 @@
         mc:Ignorable="d"
         Closing="Window_Closing"
         ResizeMode="NoResize"
-        Title="Versión" Height="291" Width="291" WindowStartupLocation="CenterScreen">
-    <Window.Background>
-        <ImageBrush ImageSource="/Images/background.jpg"/>
-    </Window.Background>
+        Title="Versión" Height="291" Width="291" WindowStartupLocation="CenterScreen" Background="#FFD8ECFF">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="11*"/>

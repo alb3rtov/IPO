@@ -6,6 +6,8 @@
         xmlns:local="clr-namespace:Protectora"
         mc:Ignorable="d"
         Closing="Window_Closing"
+        MinWidth="600"
+        MinHeight="500"
         Title="Gestion de protectora" Height="450" Width="800" WindowStartupLocation="CenterScreen" IsEnabledChanged="Window_IsEnabledChanged" Background="#FFD8ECFF">
     <Grid>
         <Grid.RowDefinitions>
@@ -13,11 +15,12 @@
             <RowDefinition Height="55*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="787*"/>
+            <ColumnDefinition Width="397*"/>
+            <ColumnDefinition Width="390*"/>
             <ColumnDefinition Width="13*"/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Orientation="Horizontal" Height="49" VerticalAlignment="Center" Margin="0,0,393,0">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="49" VerticalAlignment="Top">
             <Button x:Name="btnAdd"  Height="42" Width="42" ToolTip="Añadir" Click="btnAniadir_Click" BorderBrush="{x:Null}" Background="{x:Null}">
                 <Image Source="Images/add_c2.png" />
             </Button>
@@ -34,13 +37,13 @@
         </StackPanel>
 
 
-        <StackPanel Orientation="Horizontal" Margin="494,0,0,0" HorizontalAlignment="Left" Width="293">
+        <StackPanel Orientation="Horizontal" Margin="0,10,10,0" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Column="1">
             <Label x:Name="lblLastDate" FontSize="10" Width="187" Height="21" VerticalAlignment="Center" Grid.RowSpan="2" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right"/>
             <Image Source="/Images/login_small.png" Height="33" Width="43"/>
             <Label x:Name="lblUser" Content=""  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
         </StackPanel>
 
-        <TabControl x:Name="tcPestanas" Margin="10,49,10,10" Grid.ColumnSpan="2" SelectionChanged="tcPestanas_SelectionChanged" Grid.RowSpan="2">
+        <TabControl x:Name="tcPestanas" Margin="10,49,10,10" Grid.ColumnSpan="3" SelectionChanged="tcPestanas_SelectionChanged" Grid.RowSpan="2">
             <TabItem Header="Animales">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -75,13 +78,14 @@
                     <ScrollViewer Grid.Column="2" Margin="3,0,0,0">
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
+                                <ColumnDefinition Width="205*"/>
+                                <ColumnDefinition Width="354*"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
                             <Label x:Name="lblName" FontWeight="Bold" FontSize="20" Content="{Binding ElementName=lstListaAnimales,Path=SelectedItem.Name}" Margin="3,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="36" Width="184"/>
-                            <StackPanel x:Name="spDetallesAnimal1" Orientation="Vertical" Margin="3,36,451,0">
+                            <StackPanel x:Name="spDetallesAnimal1" Orientation="Vertical" Margin="3,36,97,0">
                                 <Label FontWeight="Bold" Content="Sexo:"/>
                                 <Label x:Name="lblSex" Content="{Binding SelectedItem.Sex, ElementName=lstListaAnimales}"/>
                                 <Label FontWeight="Bold" Content="Raza:"/>
@@ -94,7 +98,7 @@
                                 <Label x:Name="lblSociableChildren" Content="{Binding SelectedItem.SociableChildren, ElementName=lstListaAnimales}"/>
 
                             </StackPanel>
-                            <StackPanel x:Name="spDetallesAnimal2" Orientation="Vertical"  Margin="111,36,356,0">
+                            <StackPanel x:Name="spDetallesAnimal2" Orientation="Vertical"  Margin="111,36,2,0">
 
                                 <Label FontWeight="Bold">Peso:</Label>
                                 <Label x:Name="lblWeight" Content="{Binding ElementName=lstListaAnimales, Path=SelectedItem.Weight}"/>
@@ -108,7 +112,7 @@
                                 <Label x:Name="lblSociableDogs" Content="{Binding SelectedItem.SociableDogs, ElementName=lstListaAnimales}"/>
                             </StackPanel>
 
-                            <StackPanel x:Name="spImage"  HorizontalAlignment="Left" Orientation="Horizontal" Width="338" Margin="207,36,0,161">
+                            <StackPanel x:Name="spImage" VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Horizontal" Width="338" Margin="2,36,0,161" Grid.Column="1">
                                 <Button  x:Name="btbPreviousImage" Width="24" Click="btbPreviousImage_Click" Height="24" Background="{x:Null}" BorderBrush="{x:Null}">
                                     <Image Source="Images/previous_b.png" />
                                 </Button>
@@ -118,7 +122,7 @@
                                 </Button>
                             </StackPanel>
 
-                            <StackPanel Orientation="Horizontal" Margin="241,220,47,92">
+                            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal" Margin="36,240,47,92" Grid.Column="1">
                                 <Button x:Name="btbSponsor" Style="{StaticResource RoundedButtonStyle}" Background="#FF556080" Foreground="White" Content="Datos padrino/madrina" Click="btbSponsor_Click" Height="36" Width="149" Margin="0,0,5,0"/>
                                 <Button x:Name="btbVideo" Style="{StaticResource RoundedButtonStyle}" Background="#FF556080" Foreground="White" Content="Mostrar video" Height="36" Width="110" Margin="6,0,0,0" Click="btbVideo_Click"/>
                             </StackPanel>
@@ -128,28 +132,28 @@
             </TabItem>
             <TabItem Header="Voluntarios">
                 <Grid>
-                    <DataGrid x:Name="dgVolunteers" Margin="5" ItemsSource="{Binding}" AutoGenerateColumns="False">
+                    <DataGrid x:Name="dgVolunteers" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5" ItemsSource="{Binding}" AutoGenerateColumns="False">
 
                         <DataGrid.Columns>
 
-                            <DataGridTextColumn x:Name="tcDni" Header="Dni" Binding="{Binding Dni}" />
-                            <DataGridTextColumn x:Name="tcFirstname" Header="Nombre" Binding="{Binding Firstname}" />
-                            <DataGridTextColumn x:Name="tcLastname" Header="Apellido" Binding="{Binding Lastname}" />
-                            <DataGridTextColumn x:Name="tcAge" Header="Edad" Binding="{Binding Age}" />
+                            <DataGridTextColumn x:Name="tcDni" Header="Dni" Width="*" Binding="{Binding Dni}" />
+                            <DataGridTextColumn x:Name="tcFirstname" Header="Nombre" Width="*"  Binding="{Binding Firstname}" />
+                            <DataGridTextColumn x:Name="tcLastname" Header="Apellido" Width="*" Binding="{Binding Lastname}" />
+                            <DataGridTextColumn x:Name="tcAge" Header="Edad" Width="*" Binding="{Binding Age}" />
 
-                            <DataGridTemplateColumn Header="Fotografia">
+                            <DataGridTemplateColumn Header="Fotografia" Width="*" >
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Image Width="60" Height="60" Source="{Binding Photo}"/>
+                                        <Image Width="60" Height="60" Stretch="UniformToFill" Source="{Binding Photo}"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
 
-                            <DataGridTextColumn x:Name="tcPhonenumber" Header="Teléfono" Binding="{Binding PhoneNumber}"/>
-                            <DataGridTextColumn x:Name="tcEmail" Header="Email" Binding="{Binding Email}" />
-                            <DataGridTextColumn x:Name="tcTime" Header="Disp. horaria" Binding="{Binding TimeAvailability}" />
-                            <DataGridTextColumn x:Name="tcZone" Header="Zona" Binding="{Binding ZoneAvailability}" />
-                            <DataGridTextColumn x:Name="tcStudies" Header="Estudios" Binding="{Binding Studies}" />
+                            <DataGridTextColumn x:Name="tcPhonenumber" Width="*" Header="Teléfono" Binding="{Binding PhoneNumber}"/>
+                            <DataGridTextColumn x:Name="tcEmail" Width="*"  Header="Email" Binding="{Binding Email}" />
+                            <DataGridTextColumn x:Name="tcTime" Width="*" Header="Disp. horaria" Binding="{Binding TimeAvailability}" />
+                            <DataGridTextColumn x:Name="tcZone" Width="*" Header="Zona" Binding="{Binding ZoneAvailability}" />
+                            <DataGridTextColumn x:Name="tcStudies" Width="*" Header="Estudios" Binding="{Binding Studies}" />
 
                         </DataGrid.Columns>
                     </DataGrid>
@@ -160,7 +164,8 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition Width="9"/>
-                        <ColumnDefinition Width="579"/>
+                        <ColumnDefinition Width="191.2"/>
+                        <ColumnDefinition Width="387.8"/>
                     </Grid.ColumnDefinitions>
                     <ListBox x:Name="lstListaSocios" Grid.Column="0" SelectedIndex="0" Margin="5,5,3,5" ItemsSource="{Binding}" MouseLeftButtonUp="lstListaSocios_MouseLeftButtonUp" KeyUp="lstListaSocios_KeyUp" SelectionChanged="lstListaSocios_SelectionChanged">
                         <ListBox.ItemTemplate>
@@ -186,7 +191,7 @@
                         </ListBox.ItemContainerStyle>
                     </ListBox>
                     <GridSplitter HorizontalAlignment="Stretch" Margin="2,0,2,0" Grid.Column="1" />
-                    <ScrollViewer Grid.Column="2" Margin="3,0,0,0">
+                    <ScrollViewer Grid.Column="2" Margin="3,0,0,0" Grid.ColumnSpan="2">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
@@ -226,7 +231,7 @@
                             </StackPanel>
                                -->
 
-                            <StackPanel x:Name="spImage1"  HorizontalAlignment="Left" Orientation="Horizontal" Width="290" Margin="207,36,0,161">
+                            <StackPanel x:Name="spImage1" VerticalAlignment="Top" HorizontalAlignment="Left"  Orientation="Horizontal" Width="290" Margin="207,36,0,161">
                                 <Image x:Name="imgPicture1" Height="179" Width="270" Source="{Binding SelectedItem.Photo, ElementName=lstListaSocios}" VerticalAlignment="Stretch" Margin="10,0,10,0"/>
                             </StackPanel>
 
@@ -243,13 +248,17 @@
             <TabItem Header="Ayuda">
                 <ScrollViewer>
                     <Grid>
-                        <StackPanel Margin="10,10,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="599*"/>
+                            <ColumnDefinition Width="158*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Margin="10,10,0,0" Grid.ColumnSpan="2">
                             <StackPanel Orientation="Horizontal"  >
                                 <Image Source="Images/animal.png" Height="22" Width="22"/>
                                 <Label Content="Gestión de animales" FontSize="17" FontWeight="Bold"/>
-                                <Button Style="{StaticResource RoundedButtonStyle}" Background="#FF556080" FontSize="11" Foreground="White" Content="Acerca de la aplicación"  Width="131" Margin="400,0,0,0" VerticalAlignment="Center" Height="25" Click="Button_Click"/>
+                                <Button Style="{StaticResource RoundedButtonStyle}" Background="#FF556080" HorizontalAlignment="Right" FontSize="11" Foreground="White" Content="Acerca de la aplicación"  Width="131" Margin="400,0,0,0" VerticalAlignment="Center" Height="25" Click="Button_Click"/>
                             </StackPanel>
-                            <StackPanel Orientation="Vertical" Width="684" Margin="0,0,0,10">
+                            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Vertical" Width="684" Margin="20,0,0,10">
                                 <TextBlock x:Name="subHeaderText1" 
                                             FontSize="14" 
                                            TextWrapping="Wrap" 
@@ -267,7 +276,7 @@
                                 <Image Source="Images/volunteer.png" Height="22" Width="22"/>
                                 <Label Content="Gestión de voluntarios" FontSize="17" FontWeight="Bold"/>
                             </StackPanel>
-                            <StackPanel Orientation="Vertical" Width="684"  Margin="0,0,0,10">
+                            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Vertical" Width="684"  Margin="20,0,0,10">
                                 <TextBlock x:Name="subHeaderText3" 
                                             FontSize="14" 
                                            TextWrapping="Wrap" 
@@ -285,7 +294,7 @@
                                 <Label Content="Gestión de socios" FontSize="17" FontWeight="Bold"/>
                             </StackPanel>
 
-                            <StackPanel Orientation="Vertical" Width="684"  Margin="0,0,0,10">
+                            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Vertical" Width="684"  Margin="20,0,0,10">
                                 <TextBlock x:Name="subHeaderText5" 
                                             FontSize="14" 
                                            TextWrapping="Wrap" 
@@ -298,7 +307,7 @@
                                 <Label Content="Botones dinámicos" FontSize="17" FontWeight="Bold"/>
                             </StackPanel>
 
-                            <StackPanel Orientation="Vertical" Width="684"  Margin="0,0,0,10">
+                            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Vertical" Width="684"  Margin="20,0,0,10">
                                 <TextBlock x:Name="subHeaderText6" 
                                             FontSize="14" 
                                            TextWrapping="Wrap" 

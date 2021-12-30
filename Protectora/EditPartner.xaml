@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Closing="Window_Closing"
         ResizeMode="NoResize"
-        Title="EditPartner" Height="377" Width="363"  WindowStartupLocation="CenterScreen">
+        Title="Editar socio" Height="377" Width="363"  WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="4*"/>
