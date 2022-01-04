@@ -1,7 +1,7 @@
 <Partners>
-	<Partner Dni="11111111" Firstname="Juan" Lastname="Vázquez" PaymentMethod="Transferencia estándar" BankAccountNumber="ES11 1111 1111 11 11 1111 1111" MonthlyContribution="120" Photo="Images/photo6.jpg"/>
-	<Partner Dni="22222222" Firstname="Pedro" Lastname="Fernández" PaymentMethod="Transferencia inmediata" BankAccountNumber="ES22 2222 2222 22 22 2222 2222" MonthlyContribution="210" Photo="Images/photo7.jpg"/>
-	<Partner Dni="33333333" Firstname="Maria" Lastname="Pérez" PaymentMethod="Transferencia estándar" BankAccountNumber="ES33 3333 3333 33 33 3333 3333" MonthlyContribution="320" Photo="Images/photo8.jpg"/>
-	<Partner Dni="44444444" Firstname="Jose" Lastname="Contreras" PaymentMethod="Transferencia estándar" BankAccountNumber="ES44 4444 4444 44 44 4444 4444" MonthlyContribution="180" Photo="Images/photo9.jpg"/>
-	<Partner Dni="55555555" Firstname="Marta" Lastname="Molero" PaymentMethod="Transferencia inmediata" BankAccountNumber="ES55 5555 5555 55 55 5555 5555" MonthlyContribution="250" Photo="Images/photo10.jpg"/>
+	<Partner Dni="11111111" Firstname="Alvaro" Lastname="Lopez" PaymentMethod="Transferencia estándar" BankAccountNumber="ES11 1111 1111 11 11 1111 1111" MonthlyContribution="120" Photo="Images/photo6.jpg"/>
+	<Partner Dni="22222222" Firstname="Roberto" Lastname="Alarcon" PaymentMethod="Transferencia inmediata" BankAccountNumber="ES22 2222 2222 22 22 2222 2222" MonthlyContribution="210" Photo="Images/photo7.jpg"/>
+	<Partner Dni="33333333" Firstname="Ana" Lastname="Jimenez" PaymentMethod="Transferencia estándar" BankAccountNumber="ES33 3333 3333 33 33 3333 3333" MonthlyContribution="320" Photo="Images/photo8.jpg"/>
+	<Partner Dni="44444444" Firstname="Javier" Lastname="Montoro" PaymentMethod="Transferencia estándar" BankAccountNumber="ES44 4444 4444 44 44 4444 4444" MonthlyContribution="180" Photo="Images/photo9.jpg"/>
+	<Partner Dni="55555555" Firstname="Cristina" Lastname="Lopez" PaymentMethod="Transferencia inmediata" BankAccountNumber="ES55 5555 5555 55 55 5555 5555" MonthlyContribution="250" Photo="Images/photo10.jpg"/>
 </Partners>
