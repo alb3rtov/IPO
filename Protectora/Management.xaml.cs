@@ -53,7 +53,7 @@ namespace Protectora
         {
             InitializeComponent();
             lblUser.Content = user;
-            lblLastDate.Content = File.ReadAllText("../../../../Data/datetime.txt");
+            lblLastDate.Content = File.ReadAllText("datetime.txt");
 
             /* Load data from XML files */
             animalList = LoadContentAnimalsXML();
@@ -607,7 +607,7 @@ namespace Protectora
         private void Window_Closing(object sender, CancelEventArgs e)
         {
             string datetime = "Último acceso: " + DateTime.Now.ToString("dd-MM-yyyy HH:mm");
-            File.WriteAllText("../../../../Data/datetime.txt", datetime);
+            File.WriteAllText("datetime.txt", datetime);
             Application.Current.Shutdown();
         }
 
