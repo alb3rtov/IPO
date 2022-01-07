@@ -314,7 +314,7 @@ namespace Protectora
                 deleteAction = true;
                 int index = getCurrentIndexPartners();
 
-                if (MessageBox.Show("¿Desea eliminar el animal " + partnerList[index].Firstname + " " + partnerList[index].Lastname + "?", "Eliminar socio", MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.Yes)
+                if (MessageBox.Show("¿Desea eliminar el socio " + partnerList[index].Firstname + " " + partnerList[index].Lastname + "?", "Eliminar socio", MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.Yes)
                 {
                     partnerList.RemoveAt(index);
 
@@ -520,7 +520,7 @@ namespace Protectora
         /* Change tooltip and set elements depeding on the selected tab */
         private void tcPestanas_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (loaded1 > 3)
+            if (loaded1 > 2)
             {
                 switch (((TabItem)tcPestanas.SelectedItem).Header.ToString())
                 {
